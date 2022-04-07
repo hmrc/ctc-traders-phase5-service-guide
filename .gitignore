@@ -20,3 +20,8 @@ node_modules/
 npm-debug.log
 yarn-debug.log
 yarn-error.log
+.bloop/
+.metals/
+.vscode/
+project/.bloop/
+project/metals.sbt

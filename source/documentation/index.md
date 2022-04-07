@@ -1,17 +1,6 @@
 ---
-title: Example Service Guide
+title: Common Transit Convention Traders Phase 5 Service Guide
 weight: 1
 ---
 
-# Example Service Guide
-
-Version 1.0 issued 1 January 2020
-***
-
-## Overview
-
-## End-to-end user journeys
-
-## Related API documentation
-
-## Changelog
+# Introduction

@@ -1,4 +1,4 @@
 ->      /                                                  health.Routes
-GET     /guides/example-service-guide           controllers.Default.redirect(to = "/guides/example-service-guide/")
-GET     /guides/example-service-guide/          controllers.Assets.at(path="/public", file="index.html")
-GET     /guides/example-service-guide/*file     controllers.Assets.at(path="/public", file)
+GET     /guides/ctc-traders-phase5-service-guide           controllers.Default.redirect(to = "/guides/ctc-traders-phase5-service-guide/")
+GET     /guides/ctc-traders-phase5-service-guide/          controllers.Assets.at(path="/public", file="index.html")
+GET     /guides/ctc-traders-phase5-service-guide/*file     controllers.Assets.at(path="/public", file)

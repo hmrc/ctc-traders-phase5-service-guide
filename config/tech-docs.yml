@@ -1,8 +1,8 @@
 # Human read-able name for this site, displayed in the header bar
-service_name: Example Service Guide/Roadmap
+service_name: Common Transit Convention Traders Phase 5 Service Guide
 
 # The route that will be used to access this site (with tailing slash)
-service_link: /guides/example-service-guide/
+service_link: /guides/ctc-traders-phase5-service-guide/
 
 # ================================================
 # You shouldn't need to edit anything below here
