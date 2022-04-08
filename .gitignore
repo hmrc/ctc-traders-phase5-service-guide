@@ -25,3 +25,9 @@ yarn-error.log
 .vscode/
 project/.bloop/
 project/metals.sbt
+public/
+
+.batect
+.bsp
+package-lock.json
+Gemfile.lock

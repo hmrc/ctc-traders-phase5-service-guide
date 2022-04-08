@@ -1,5 +1,5 @@
 /*
- * Copyright 2021 HM Revenue & Customs
+ * Copyright 2022 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +16,14 @@
 
 package test
 
-import org.scalatest.{Matchers, WordSpec}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 import sys.process._
 
-class BuildSpec extends WordSpec with Matchers {
+class BuildSpec extends AnyWordSpec with Matchers {
   "Building the content" should {
     "produce static files" in {
-      val result = "bundle install" #&& Process("bundle exec middleman build --build-dir=public/ --clean", None) !
+      val result = "bundle install" #&& Process("bundle exec middleman build --verbose --build-dir=public/ --clean", None, "BASE_PATH" -> "/guides/ctc-traders-phase5-service-guide/") !
 
       result shouldBe 0
     }
