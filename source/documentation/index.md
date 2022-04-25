@@ -1,5 +1,5 @@
 ---
-title: CTC Traders Phase 5 service guide
+title: CTC Traders phase 5 service guide
 weight: 1
 description: Software developers, designers, product owners or business analysts. Integrate your software with Common Transit Convention Traders API.
 ---
