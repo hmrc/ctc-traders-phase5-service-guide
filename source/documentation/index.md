@@ -29,14 +29,13 @@ Before starting, you must read and understand:
 
 &nbsp;&nbsp;&nbsp;&nbsp;A full list of key information including messages, message content and sequence diagrams, plus instructions on how to use test message transfer and content.
 
-- [message structure hierarchy for IE007 messages](figures/Message_Structure_Hierarchy_IE007.pdf)
+- <a href="figures/Message_Structure_Hierarchy_IE007.pdf" download>message structure hierarchy for IE007 messages</a>
 
-- [message structure hierarchy for IE015 messages](figures/Message_Structure_Hierarchy_IE015.pdf)
+- <a href="figures/Message_Structure_Hierarchy_IE015.pdf" download>message structure hierarchy for IE015 messages</a>
 
-- [message structure data grouping](figures/Data_Structure_Group_IE15.pdf) 
+- <a href="figures/Data_Structure_Group_IE15.pdf" download>message structure data grouping</a> 
 
-- [P4 to P5 data mapping](figures/NCTS_P4_to_P5_data_mapping_R1_v1_(V5.7_RFC36_aligned).xlsx)
-
+- <a href="figures/NCTS_P4_to_P5_data_mapping_R1_v1_(V5.7_RFC36_aligned).xlsx" download>P4 to P5 data mapping</a>
 
 ## Getting Started
 
