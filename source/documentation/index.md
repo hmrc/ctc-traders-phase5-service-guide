@@ -73,60 +73,22 @@ They will also need to provide:
 * contact details
 
 
-## Message Flow Diagrams
+## Message Flow Diagram
 
-The following diagrams show the expected order of messages that can be sent and received.
+The following diagram shows the expected order of messages that can be sent and received for a standard transit procedure.
 
-### Departures
+<img src="figures/Standard_transit_procedure.svg" alt="Standard transit procedure for departures and arrivals. Flow is described in this section." />
 
-The following diagram shows the messages that the office of departure receives. 
+<a href="figures/Standard_transit_procedure.svg" target="_blank">Open the diagram in a new tab.</a>
 
-<img src="figures/Departures_Diagram.svg" alt="Departures workflow flow. Flow is described in this section." />
-
-<a href="figures/Departures_Diagram.svg" target="_blank">Open the Departures diagram in a new tab.</a>
-
-1. An IE015 message containing declaration data is sent by the user to NCTS.
-2. NCTS responds with one of the following messages: 
-   - An IE016 message if the declaration is rejected. The transit movement ends.
-   - An IE028 message if an MRN is allocated. (Go to step 3.)
-   - An IE928 message for a positive acknowledgment followed by an IE016 or an IE028 (see previous options in this step).
-3. If the user sends an IE014 declaration cancellation request, NCTS sends an IE009 cancellation decision. This also happens following a cancellation request by the office of departure. A cancellation decision has one of the following outcomes: 
-   - The cancellation request is accepted and the transit movement ends.
-   - The cancellation request is rejected and NCTS sends an IE029 release for transit. (Go to step 5.)
-4. If the user does not send an IE014 declaration cancellation request following the allocation of an MRN (see step 2), one of the following actions takes place:
-   - NCTS sends an IE060 control of decision notification, then sends either an IE029 release for transit (Go to step 5.) or an IE051 no release for transit message. 
-   - NCTS sends an IE051 no release for transit message. At this point, the transit movement ends.
-   - NCTS sends an an IE055 guarantee not valid message. If there is an intervention, NCTS then sends an IE029 release for transit. If there is no intervention, NCTS then sends an IE051 no release for transit message. 
-   - NCTS sends an IE029 release for transit message (Go to step 5.)
-5. When NCTS issues an IE029 release for transit (following an IE028, an IE060, or an IE009), one of the following actions takes place:
-   - The user chooses to send an IE014 declaration cancellation request.
-   - A cancellation is requested by the office of departure, which results in NCTS sending an IE009 cancellation decision message. (Go to step 3.)
-   - Upon completion of the arrival, an IE045 write-off notification movement is issued by NCTS. 
-
-### Arrivals
-
-The following diagram shows the messages that the office of destination receives.
-
-<img src="figures/Arrivals_Diagram.svg" alt="Arrivals workflow flow. Flow is described in this section." />
-
-<a href="figures/Arrivals_Diagram.svg" target="_blank">Open the Arrivals diagram in a new tab.</a>
-
-1. An IE007 arrival notification message is sent by the user to NCTS.
-2. One of the following actions takes place:
-   - NCTS sends the user an IE008 arrival notification rejection. (Go to step 1.)
-   - NCTS sends an IE043 unloading permission message. (Go to step 3.)
-   - NCTS sends an IE025 good release notification message. (Go to step 6.)
-3. An IE043 unloading permission message results in one of the following actions:
-   - An IE044 unloading remarks message is sent by the user to NCTS. (Go to step 4.)
-   - If manual helpdesk intervention takes place, NCTS sends an IE025 goods release notification message. (Go to step 6.)
-4. After NCTS receives an IE044 unloading remarks message, one of the following actions takes place:
-   - NCTS sends an IE058 unloading remarks rejection message. (Go to step 5.)
-   - NCTS sends an IE025 goods release notification message. (Go to step 6.)
-   - If manual helpdesk intervention takes place, NCTS sends an IE043 unloading permission message. (Go to step 3.)
-5. After NCTS sends an IE058 unloading remarks rejection message, one of the following actions takes place:
-   - An IE044 unloading remarks message is sent by the user to NCTS. (Go to step 4.)
-   - If manual Border Force intervention takes place, NCTS sends an IE043 unloading permission message. (Go to step 3.)
-6. After NCTS sends an IE025 goods release notification message, NCTS sends an IE045 to the office of departure for the transit movement.
+1. The Holder of the Transit Procedure submits a transit declaration to the Office of
+Departure with the ‘Declaration Data’ E_DEC_DAT (IE015) message.
+2. If the transit declaration is valid, the Office of Departure acknowledges the receipt of the transit declaration with the ‘Positive Acknowledge’ E_POS_ACK (IE928) message.
+3. The Office of Departure communicates the MRN to the Holder of the Transit Procedure with the ‘MRN Allocated’ E_MRN_ALL (IE028) message.
+4. The ‘Release for Transit’ E_REL_TRA (IE029) message is sent to the Holder of the Transit Procedure.
+5. Upon arrival of the movement at the Office of Destination, the Trader at Destination announces it by submitting the ‘Arrival Notification’ E_ARR_NOT (IE007) message.
+6. The goods are released from transit. The Office of Destination sends the ‘Goods Released Notification’ E_GDS_REL (IE025) message to the Trader at Destination.
+7. The Office of Departure sends the ‘Write-Off Notification’ E_WRT_NOT (IE045) message to the Holder of the Transit Procedure.
 
 ## NCTS Message Details
 
