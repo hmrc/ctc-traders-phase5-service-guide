@@ -11,7 +11,7 @@ description: Software developers, designers, product owners or business analysts
 
 [CTC Traders API specification](https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/common-transit-convention-traders/2.0)
 
-[CTC Traders API phase 5 testing guide](https://developer.service.hmrc.gov.uk/guides/common-transit-convention-traders-testing-guide/)
+
 
 ## Introduction
 This guide explains how to use the Common Transit Convention (CTC) Traders API with your software.
@@ -20,31 +20,14 @@ The CTC Traders API allows traders to send and receive arrival and departure mov
 
 **Note:** Current development focuses on small messages (0.5MB and below only). Development for messages larger than 0.5MB will begin at a later date.
 
-## Essential Reading
-Before starting, you must read and understand:
-
-- [New Computerised Transit System: technical interface specifications (TIS)](https://www.gov.uk/government/publications/new-computerised-transit-system-technical-specifications) 
-
-&nbsp;&nbsp;&nbsp;&nbsp;The Technical Interface Specification (TIS) for Direct Trader Input (DTI) to NCTS.
-
-&nbsp;&nbsp;&nbsp;&nbsp;A full list of key information including messages, message content and sequence diagrams, plus instructions on how to use test message transfer and content.
-
-- <a href="figures/Message_Structure_Hierarchy_IE007.pdf" download>message structure hierarchy for IE007 messages</a>
-
-- <a href="figures/Message_Structure_Hierarchy_IE015.pdf" download>message structure hierarchy for IE015 messages</a>
-
-- <a href="figures/Data_Structure_Group_IE15.pdf" download>message structure data grouping</a> 
-
-- <a href="figures/NCTS_P4_to_P5_data_mapping_R1_v1_(V5.7_RFC36_aligned).xlsx" download>P4 to P5 data mapping</a>
-
 ## Getting Started
 
 These steps must be followed before you can use your software in the live environment and access our live API:
 
 1. **Subscribe** to the Developer Hub by [registering for a developer account](https://developer.service.hmrc.gov.uk/developer/registration).
 2. **Create** an application by following the instructions on [Using the Developer Hub](https://developer.qa.tax.service.gov.uk/api-documentation/docs/using-the-hub).
-3. **Subscribe** to the CTC Traders API and to the Test User API using your test application.
-4. **Opt to receive** Push notifications from the CTC Traders API if required using the Subscription Configuration page for your application.
+3. **Subscribe** to the CTC Traders API (V2.0 Beta) and to the Test User API using your test application.
+4. **Opt to receive** Push notifications from the CTC Traders API if required using the Subscription Configuration page for your application. (**not currently supported**)
 5. **Read** about the [Government Gateway Authorisation](https://developer.qa.tax.service.gov.uk/api-documentation/docs/authorisation). Before you can access the CTC Traders API, your software needs to authenticate using OAuth 2.0.
 6. **Read** guidance on the [OAuth 2.0](https://developer.service.hmrc.gov.uk/api-documentation/docs/authorisation) standards required for all of HMRC’s APIs.
 7. **Create** [test users](https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/api-platform-test-user/1.0) before you can test your application.
@@ -104,58 +87,9 @@ Details of the IE messages valid for use in the CTC Traders API are available in
 
 ## API features
 
-### Default Guarantee  Insertion
-
-Our system will automatically insert a default guarantee amount of 10,000 Euros for any transit movement where the trader has not specified a guarantee value.
-
 ### Rate limits
 
 Our API Platform’s standard rate limit is [3 requests per second](https://developer.service.hmrc.gov.uk/api-documentation/docs/reference-guide#rate-limiting). If you need a higher rate limit, you must give us more information about data and limit forecasts when filling in the [Application for Production Credentials checklist](https://developer.service.hmrc.gov.uk/guides/common-transit-convention-traders-testing-guide/figures/CTC_Traders_API_Application_for_Productions_Credentials.docx) form.
-
-### Data cap and using filters
-
-When you submit a request to 'GET all movements' against a single EORI enrolment, we’ll limit the number of movements you get back to 5,000.
-
-This affects the ‘[GET all movements arrivals](https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/common-transit-convention-traders/1.0#_get-all-movement-arrivals_get_accordion)’ and ‘[GET all movement departure](https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/common-transit-convention-traders/1.0#_get-all-movement-departures_get_accordion)’ endpoints (remove links) More information can be viewed on our API CTC Traders documentation page (check APi definition -link to RAML).
-
-You can use filters so that you only get the movements that have been updated since a specified date and time.
-
-You can use the updatedSince parameter in order to retrieve new messages since you last polled. 
- 
-If you do not use filters:
-
- - you’ll only get up to the most recently updated 5,000 movements, within the last 28 days
- - you will not get any additional movements above this cap, within the last 28 days
- 
-In order to manage the limit you need to regularly poll using a filter date and time of the last poll. This will ensure your list of movements requested is less than 5,000.
-
-You must also note:
-
- - the amount of responses that we send back to you will be capped at 5,000 for one single Economic Operator Registration and Identification (EORI) enrolment
- - the EORI enrolment for your application might not be the same as the trader’s EORI associated with a movement
- - the cap is not related to the movement EORI in the XML message
- - if your movements are split over multiple EORI enrolments then each enrolment will have a separate 5,000 cap
- - if you do get results over the 5,000 capped limit, the JSON payload will tell you this cap has happened and how many movements have not been sent to you. For example, the JSON message will state that 5,000 movements of a total of 6,433
- - only the most recent 5,000 data movements in the last 28 days will be returned. This is because we only store message data from the last 28 days
- 
-### Push pull notifications
-
-Our automated service can send you notification updates about new messages from NCTS. This functionality will send you a notification each time there is a new message for you to read.
-
-This means your:
-
- - software will not have to poll for updated information
- - requests are unlikely to be rate limited because they’ll not be as frequent
- - network usage will also go down because you’ll not need to poll
- 
-You should also note:
-
- - smaller messages of less than 100KB will be sent to you directly by our system in the payload of the push notification
- - messages greater than or equal to 100KB will not include the XML in the push notification
- - the push notification will have a field called messageURI which will contain the relative path to the full XML message
- - for messages larger than 100KB you must use the URI to download the XML message from the CTC Traders API
- 
-For more information on how to configure and test this functionality follow the step by step instructions in our [Guide to Testing](https://developer.service.hmrc.gov.uk/guides/common-transit-convention-traders-testing-guide/).
 
 ## Get Support
 
@@ -174,4 +108,3 @@ Email us your questions to [SDSTeam@hmrc.gov.uk](mailto:SDSTeam@hmrc.gov.uk). We
 
  - [CTC Traders API roadmap](https://developer.service.hmrc.gov.uk/roadmaps/common-transit-convention-traders-roadmap/#phase-5)
  - [CTC Traders API phase 5 specification](https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/common-transit-convention-traders/2.0)
- - [CTC Traders API phase 5 testing guide](https://developer.service.hmrc.gov.uk/guides/common-transit-convention-traders-testing-guide/)
