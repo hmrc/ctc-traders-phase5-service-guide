@@ -25,17 +25,16 @@ The CTC Traders API allows traders to send and receive arrival and departure mov
 These steps must be followed before you can use your software in the live environment and access our live API:
 
 1. **Subscribe** to the Developer Hub by [registering for a developer account](/developer/registration).
-2. **Create** an application by following the instructions on [Using the Developer Hub](/api-documentation/docs/using-the-hub).
-3. **Subscribe** to the CTC Traders API (V2.0 Beta) and to the Test User API using your test application.
-4. **Opt to receive** Push notifications from the CTC Traders API if required using the Subscription Configuration page for your application. (**Not currently supported.**)
-5. **Read** about the [Government Gateway Authorisation](/api-documentation/docs/authorisation). Before you can access the CTC Traders API, your software needs to authenticate using OAuth 2.0.
-6. **Read** guidance on the [OAuth 2.0](/api-documentation/docs/authorisation) standards required for all of HMRC’s APIs.
-7. **Create** [test users](/api-documentation/docs/api/service/api-platform-test-user/1.0) before you can test your application.
-8. **Download** reference data to get Customs Offices List (COL) data to use for testing. Visit the [EU’s reference data download page](https://ec.europa.eu/taxation_customs/dds2/rd/rd_download_home.jsp?Lang=en) to download reference data.
-9. **Test** your application in the sandbox environment by following the steps in our [Guide to Testing](/guides/common-transit-convention-traders-testing-guide/).
-10. **Complete** the [Application for Productions Checklist](/guides/common-transit-convention-traders-testing-guide/figures/CTC_Traders_API_Application_for_Productions_Credentials.docx) form.
-11. **Apply** for production credentials through your [developer account](/developer/login) before you go live.
-12. **Get your customers ready** by asking them to apply for an [EORI number](https://www.gov.uk/eori) and a [Government Gateway account](https://www.gov.uk/log-in-register-hmrc-online-services).
+1. **Create** an application by following the instructions on [Using the Developer Hub](/api-documentation/docs/using-the-hub).
+1. **Subscribe** to the CTC Traders API (V2.0 Beta) and to the Test User API using your test application.
+1. **Read** about the [Government Gateway Authorisation](/api-documentation/docs/authorisation). Before you can access the CTC Traders API, your software needs to authenticate using OAuth 2.0.
+1. **Read** guidance on the [OAuth 2.0](/api-documentation/docs/authorisation) standards required for all of HMRC’s APIs.
+1. **Create** [test users](/api-documentation/docs/api/service/api-platform-test-user/1.0) before you can test your application.
+1. **Download** reference data to get Customs Offices List (COL) data to use for testing. Visit the [EU’s reference data download page](https://ec.europa.eu/taxation_customs/dds2/rd/rd_download_home.jsp?Lang=en) to download reference data.
+1. **Test** your application in the sandbox environment by following the steps in our [Guide to Testing](/guides/common-transit-convention-traders-testing-guide/).
+1. **Complete** the [Application for Productions Checklist](/guides/common-transit-convention-traders-testing-guide/figures/CTC_Traders_API_Application_for_Productions_Credentials.docx) form.
+1. **Apply** for production credentials through your [developer account](/developer/login) before you go live.
+1. **Get your customers ready** by asking them to apply for an [EORI number](https://www.gov.uk/eori) and a [Government Gateway account](https://www.gov.uk/log-in-register-hmrc-online-services).
 
 ## Get your customers ready
 
