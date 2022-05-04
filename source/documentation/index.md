@@ -7,9 +7,9 @@ description: Software developers, designers, product owners or business analysts
 # CTC Traders API phase 5 service guide
 
 ## Useful CTC Page Links
-[CTC Traders API roadmap](https://developer.service.hmrc.gov.uk/roadmaps/common-transit-convention-traders-roadmap/#phase-5)
+[CTC Traders API roadmap](/roadmaps/common-transit-convention-traders-roadmap/#phase-5)
 
-[CTC Traders API specification](https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/common-transit-convention-traders/2.0)
+[CTC Traders API specification](/api-documentation/docs/api/service/common-transit-convention-traders/2.0)
 
 
 
@@ -24,17 +24,17 @@ The CTC Traders API allows traders to send and receive arrival and departure mov
 
 These steps must be followed before you can use your software in the live environment and access our live API:
 
-1. **Subscribe** to the Developer Hub by [registering for a developer account](https://developer.service.hmrc.gov.uk/developer/registration).
-2. **Create** an application by following the instructions on [Using the Developer Hub](https://developer.qa.tax.service.gov.uk/api-documentation/docs/using-the-hub).
+1. **Subscribe** to the Developer Hub by [registering for a developer account](/developer/registration).
+2. **Create** an application by following the instructions on [Using the Developer Hub](/api-documentation/docs/using-the-hub).
 3. **Subscribe** to the CTC Traders API (V2.0 Beta) and to the Test User API using your test application.
-4. **Opt to receive** Push notifications from the CTC Traders API if required using the Subscription Configuration page for your application. (**not currently supported**)
-5. **Read** about the [Government Gateway Authorisation](https://developer.qa.tax.service.gov.uk/api-documentation/docs/authorisation). Before you can access the CTC Traders API, your software needs to authenticate using OAuth 2.0.
-6. **Read** guidance on the [OAuth 2.0](https://developer.service.hmrc.gov.uk/api-documentation/docs/authorisation) standards required for all of HMRC’s APIs.
-7. **Create** [test users](https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/api-platform-test-user/1.0) before you can test your application.
+4. **Opt to receive** Push notifications from the CTC Traders API if required using the Subscription Configuration page for your application. (**Not currently supported.**)
+5. **Read** about the [Government Gateway Authorisation](/api-documentation/docs/authorisation). Before you can access the CTC Traders API, your software needs to authenticate using OAuth 2.0.
+6. **Read** guidance on the [OAuth 2.0](/api-documentation/docs/authorisation) standards required for all of HMRC’s APIs.
+7. **Create** [test users](/api-documentation/docs/api/service/api-platform-test-user/1.0) before you can test your application.
 8. **Download** reference data to get Customs Offices List (COL) data to use for testing. Visit the [EU’s reference data download page](https://ec.europa.eu/taxation_customs/dds2/rd/rd_download_home.jsp?Lang=en) to download reference data.
-9. **Test** your application in the sandbox environment by following the steps in our [Guide to Testing](https://developer.service.hmrc.gov.uk/guides/common-transit-convention-traders-testing-guide/).
-10. **Complete** the [Application for Productions Checklist](https://developer.service.hmrc.gov.uk/guides/common-transit-convention-traders-testing-guide/figures/CTC_Traders_API_Application_for_Productions_Credentials.docx) form.
-11. **Apply** for production credentials through your [developer account](https://developer.service.hmrc.gov.uk/developer/login) before you go live.
+9. **Test** your application in the sandbox environment by following the steps in our [Guide to Testing](/guides/common-transit-convention-traders-testing-guide/).
+10. **Complete** the [Application for Productions Checklist](/guides/common-transit-convention-traders-testing-guide/figures/CTC_Traders_API_Application_for_Productions_Credentials.docx) form.
+11. **Apply** for production credentials through your [developer account](/developer/login) before you go live.
 12. **Get your customers ready** by asking them to apply for an [EORI number](https://www.gov.uk/eori) and a [Government Gateway account](https://www.gov.uk/log-in-register-hmrc-online-services).
 
 ## Get your customers ready
@@ -87,7 +87,7 @@ These are standard messages sent to and received from NCTS.
 
 ### Rate limits
 
-Our API Platform’s standard rate limit is [3 requests per second](https://developer.service.hmrc.gov.uk/api-documentation/docs/reference-guide#rate-limiting). If you need a higher rate limit, you must give us more information about data and limit forecasts when filling in the [Application for Production Credentials checklist](https://developer.service.hmrc.gov.uk/guides/common-transit-convention-traders-testing-guide/figures/CTC_Traders_API_Application_for_Productions_Credentials.docx) form.
+Our API Platform’s standard rate limit is [3 requests per second](/api-documentation/docs/reference-guide#rate-limiting). If you need a higher rate limit, you must give us more information about data and limit forecasts when filling in the [Application for Production Credentials checklist](/guides/common-transit-convention-traders-testing-guide/figures/CTC_Traders_API_Application_for_Productions_Credentials.docx) form.
 
 ## Get Support
 
@@ -104,5 +104,5 @@ Email us your questions to [SDSTeam@hmrc.gov.uk](mailto:SDSTeam@hmrc.gov.uk). We
 
 **Useful Links**
 
- - [CTC Traders API roadmap](https://developer.service.hmrc.gov.uk/roadmaps/common-transit-convention-traders-roadmap/#phase-5)
- - [CTC Traders API phase 5 specification](https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/common-transit-convention-traders/2.0)
+ - [CTC Traders API roadmap](/roadmaps/common-transit-convention-traders-roadmap/#phase-5)
+ - [CTC Traders API phase 5 specification](/api-documentation/docs/api/service/common-transit-convention-traders/2.0)
