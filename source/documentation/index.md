@@ -83,8 +83,6 @@ If there are any problems, the IE message will be rejected with a 400 BadRequest
 ### Information Exchange messages
 These are standard messages sent to and received from NCTS.
 
-Details of the IE messages valid for use in the CTC Traders API are available in the TIS.
-
 ## API features
 
 ### Rate limits
