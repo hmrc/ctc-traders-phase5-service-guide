@@ -1,5 +1,5 @@
 # Human read-able name for this site, displayed in the header bar
-service_name: Common Transit Convention Traders Phase 5 Service Guide
+service_name: CTC Traders phase 5 service guide
 
 # The route that will be used to access this site (with tailing slash)
 service_link: /guides/ctc-traders-phase5-service-guide/
@@ -13,12 +13,10 @@ host: developer.service.hmrc.gov.uk
 
 # Header-related options
 show_govuk_logo: true
-service_name: HMRC Developer Hub
-service_link: https://developer.service.hmrc.gov.uk/api-documentation
 
 # Links to show on right-hand-side of header
 header_links:
-  CTC Traders phase 5 service guide: /guides/ctc-traders-phase5-service-guide/
+  HMRC Developer Hub: /guides/ctc-traders-phase5-service-guide/
   Documentation: https://developer.service.hmrc.gov.uk/api-documentation/docs/using-the-hub
   Applications: https://developer.service.hmrc.gov.uk/developer/applications
   Support: https://developer.service.hmrc.gov.uk/developer/support
