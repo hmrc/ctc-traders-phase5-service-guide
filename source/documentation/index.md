@@ -54,24 +54,6 @@ They will also need to provide:
 * email address 
 * contact details
 
-
-## Message Flow Diagram
-
-The following diagram shows the expected order of messages that can be sent and received for a standard transit procedure.
-
-<img src="figures/Standard_transit_procedure.svg" alt="Standard transit procedure for departures and arrivals. Flow is described in this section." />
-
-<a href="figures/Standard_transit_procedure.svg" target="_blank">Open the diagram in a new tab.</a>
-
-1. The Holder of the Transit Procedure submits a transit declaration to the Office of
-Departure with the ‘Declaration Data’ E_DEC_DAT (IE015) message.
-2. If the transit declaration is valid, the Office of Departure acknowledges the receipt of the transit declaration with the ‘Positive Acknowledge’ E_POS_ACK (IE928) message.
-3. The Office of Departure communicates the MRN to the Holder of the Transit Procedure with the ‘MRN Allocated’ E_MRN_ALL (IE028) message.
-4. The ‘Release for Transit’ E_REL_TRA (IE029) message is sent to the Holder of the Transit Procedure.
-5. Upon arrival of the movement at the Office of Destination, the Trader at Destination announces it by submitting the ‘Arrival Notification’ E_ARR_NOT (IE007) message.
-6. The goods are released from transit. The Office of Destination sends the ‘Goods Released Notification’ E_GDS_REL (IE025) message to the Trader at Destination.
-7. The Office of Departure sends the ‘Write-Off Notification’ E_WRT_NOT (IE045) message to the Holder of the Transit Procedure.
-
 ## NCTS Message Details
 
 ### XSD - XML Schema Definition
