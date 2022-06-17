@@ -11,6 +11,8 @@ description: Software developers, designers, product owners or business analysts
 
 [CTC Traders API specification](/api-documentation/docs/api/service/common-transit-convention-traders/2.0)
 
+[NCTS Phase 5 Technical Interface Specification](/guides/ctc-traders-phase5-tis)
+
 
 
 ## Introduction
@@ -53,6 +55,9 @@ They will also need to provide:
  
 * email address 
 * contact details
+
+## Process flows
+Process flows are available in the [NCTS Phase 5 Technical Interface Specification](/guides/ctc-traders-phase5-tis).
 
 ## NCTS Message Details
 
