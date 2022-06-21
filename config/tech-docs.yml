@@ -16,7 +16,7 @@ show_govuk_logo: true
 
 # Links to show on right-hand-side of header
 header_links:
-  HMRC Developer Hub: /guides/ctc-traders-phase5-service-guide/
+  HMRC Developer Hub: https://developer.service.hmrc.gov.uk/
   Documentation: https://developer.service.hmrc.gov.uk/api-documentation/docs/using-the-hub
   Applications: https://developer.service.hmrc.gov.uk/developer/applications
   Support: https://developer.service.hmrc.gov.uk/developer/support
