@@ -66,8 +66,11 @@ The API uses XSD templates to validate all the Information Exchange (IE) message
 
 If there are any problems, the IE message will be rejected with a 400 BadRequest status which will contain an explanation of the problem.
 
+The XML schemas are available for download [here](https://github.com/hmrc/transit-movements-validator/tree/main/conf/xsd).
+
 ### Information Exchange messages
-These are standard messages sent to and received from NCTS.
+
+These are standard messages sent to and received from NCTS. For details, see the [NCTS Phase 5 Technical Interface Specification](/guides/ctc-traders-phase5-tis).
 
 ## API features
 
