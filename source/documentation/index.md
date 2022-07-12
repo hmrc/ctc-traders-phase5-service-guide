@@ -33,8 +33,8 @@ These steps must be followed before you can use your software in the live enviro
 1. **Read** guidance on the [OAuth 2.0](/api-documentation/docs/authorisation) standards required for all of HMRC’s APIs.
 1. **Create** [test users](/api-documentation/docs/api/service/api-platform-test-user/1.0) before you can test your application.
 1. **Download** reference data to get Customs Offices List (COL) data to use for testing. Visit the [EU’s reference data download page](https://ec.europa.eu/taxation_customs/dds2/rd/rd_download_home.jsp?Lang=en) to download reference data.
-1. **Test** your application in the sandbox environment by following the steps in our [Guide to Testing](/guides/common-transit-convention-traders-testing-guide/).
-1. **Complete** the [Application for Productions Checklist](/guides/common-transit-convention-traders-testing-guide/figures/CTC_Traders_API_Application_for_Productions_Credentials.docx) form.
+1. **Test** your application in the sandbox environment by following the steps in our [Guide to Testing](/guides/ctc-traders-phase5-testing-guide/).
+1. **Complete** the [Application for Productions Checklist](/guides/ctc-traders-phase5-testing-guide/figures/CTC_Traders_API_Application_for_Productions_Credentials.docx) form.
 1. **Apply** for production credentials through your [developer account](/developer/login) before you go live.
 1. **Get your customers ready** by asking them to apply for an [EORI number](https://www.gov.uk/eori) and a [Government Gateway account](https://www.gov.uk/log-in-register-hmrc-online-services).
 
@@ -76,7 +76,7 @@ These are standard messages sent to and received from NCTS. For details, see the
 
 ### Rate limits
 
-Our API Platform’s standard rate limit is [3 requests per second](/api-documentation/docs/reference-guide#rate-limiting). If you need a higher rate limit, you must give us more information about data and limit forecasts when filling in the [Application for Production Credentials checklist](/guides/common-transit-convention-traders-testing-guide/figures/CTC_Traders_API_Application_for_Productions_Credentials.docx) form.
+Our API Platform’s standard rate limit is [3 requests per second](/api-documentation/docs/reference-guide#rate-limiting). If you need a higher rate limit, you must give us more information about data and limit forecasts when filling in the [Application for Production Credentials checklist](/guides/ctc-traders-phase5-testing-guide/figures/CTC_Traders_API_Application_for_Productions_Credentials.docx) form.
 
 ## Get Support
 
