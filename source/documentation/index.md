@@ -95,3 +95,4 @@ Email us your questions to [SDSTeam@hmrc.gov.uk](mailto:SDSTeam@hmrc.gov.uk). We
 
  - [CTC Traders API roadmap](/roadmaps/common-transit-convention-traders-roadmap/#phase-5)
  - [CTC Traders API phase 5 specification](/api-documentation/docs/api/service/common-transit-convention-traders/2.0)
+ - [CTC Traders API phase 5 testing guide](/guides/ctc-traders-phase5-testing-guide)
