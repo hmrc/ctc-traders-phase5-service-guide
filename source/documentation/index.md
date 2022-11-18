@@ -22,6 +22,10 @@ The CTC Traders API allows traders to send and receive arrival and departure mov
 
 **Note:** Current development focuses on small messages (0.5MB and below only). Development for messages larger than 0.5MB will begin at a later date.
 
+## Changelog
+
+You can find the changelog in the [ctc-traders-phase5-service-guide](https://github.com/hmrc/ctc-traders-phase5-service-guide/wiki/CTC-Traders-API-phase-5-service-guide-changelog) GitHub wiki.
+
 ## Getting Started
 
 These steps must be followed before you can use your software in the live environment and access our live API:
@@ -52,7 +56,7 @@ Your customers need to [sign up to the CTC Traders API](https://www.tax.service.
   * date of company establishment 
 
 They will also need to provide:
- 
+
 * email address 
 * contact details
 
