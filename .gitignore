@@ -31,3 +31,5 @@ public/
 .bsp
 package-lock.json
 Gemfile.lock
+source/.DS_Store
+.DS_Store
