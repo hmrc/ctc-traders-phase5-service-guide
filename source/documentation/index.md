@@ -27,7 +27,7 @@ This version of the CTC Traders API supports only NCTS phase 5. [CTC Traders API
 
 - [CTC Traders API roadmap](/roadmaps/common-transit-convention-traders-roadmap/#phase-5)
 
-- [CTC Traders API v2.0 reference](api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page)
+- [CTC Traders API v2.0 reference](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page)
 - [NCTS Phase 5 Technical Interface Specification](/guides/ctc-traders-phase5-tis)
 
 ## Getting started
