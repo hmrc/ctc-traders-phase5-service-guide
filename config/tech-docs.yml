@@ -13,6 +13,7 @@ host: developer.service.hmrc.gov.uk
 
 # Header-related options
 show_govuk_logo: true
+phase: Beta
 
 # Links to show on right-hand-side of header
 header_links:
