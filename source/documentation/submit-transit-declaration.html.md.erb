@@ -1,0 +1,13 @@
+---
+title: Submit transit declaration | CTC Traders API phase 5 service guide
+weight: 3
+description: Software developers, designers, product owners or business analysts. Send departure and arrival movement notifications to the NCTS.
+---
+
+# Submit transit declaration
+
+Use the POST endpoint [Send a declaration data message](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Departures/operation/postDeclarationDataMessage) to send a transit declaration to the customs office of departure to notify it that you wish to carry out a transit operation.
+
+This request is also called an 'Declaration Data' E_DEC_DAT (IE015) message. A successful response will contain a URI, which you can use to get the message status. A successful response can also include an optional box ID, which you can use to match this movement to any messages received from the Push Pull Notifications API.
+
+To submit a transit declaration, you must have an EORI number.

@@ -1,7 +1,7 @@
 ---
-title: CTC Traders phase 5 service guide
+title: CTC Traders API phase 5 service guide
 weight: 1
-description: Software developers, designers, product owners or business analysts. Integrate your software with Common Transit Convention Traders API.
+description: Software developers, designers, product owners or business analysts. Send departure and arrival movement notifications to the NCTS.
 ---
 
 # CTC Traders API phase 5 service guide
@@ -12,151 +12,104 @@ Learn how to use [CTC Traders API v2.0](/api-documentation/docs/api/service/comm
 
 The CTC Traders API is based on REST principles with endpoints that return data in JSON format and it uses standard HTTP error response codes.
 
-Use the CTC Traders API to:
+Use the API to:
 
 - send departure and arrival movement notifications to the New Computerised Transit System (NCTS)
 - retrieve messages sent from customs offices of departure and destination
 
-The API endpoints relate only to Great Britain and Northern Ireland. You can also use the HMRC sandbox environment to run tests for Great Britain and Northern Ireland transit movements.
+The API endpoints relate only to Great Britain and Northern Ireland. You can also use the [HMRC sandbox environment](https://test-developer.service.hmrc.gov.uk/api-documentation/docs/sandbox/introduction) to run tests for Great Britain and Northern Ireland transit movements.
 
 ## API status
 
-This version of the CTC Traders API supports only NCTS phase 5. [CTC Traders API v1.0](/api-documentation/docs/api/service/common-transit-convention-traders/1.0) supports only NCTS phase 4.
+This version of the CTC Traders API: 
 
-## Related documentation
+- supports only NCTS phase 5 ([CTC Traders API v1.0](/api-documentation/docs/api/service/common-transit-convention-traders/1.0) supports only phase 4)
+- is currently ready for testing
+- will not be ready for use in production until phase 5 goes live - in the meantime, you should continue using CTC Traders API v1.0
 
-- [CTC Traders API roadmap](/roadmaps/common-transit-convention-traders-roadmap/#phase-5)
+To meet the requirements of the Common Transit Convention (CTC), all member countries must transfer to phase 5 by 30 November 2023.
 
-- [CTC Traders API v2.0 reference](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page)
-- [NCTS Phase 5 Technical Interface Specification](/guides/ctc-traders-phase5-tis)
+There will be a cutover period after phase 5 goes live. During this period, the NCTS phase 4 service will continue running to deal with in-flight transit declarations submitted before go-live while the phase 5 service will handle all new declarations. The phase 5 service will not hold information about any declarations submitted before the go-live date.
 
-## Getting started
+## Quick start
 
-These steps must be followed before you can use your software in the live environment and access our live API:
+Learn how to get started with the CTC Traders API.
 
-1. **Subscribe** to the Developer Hub by [registering for a developer account](/developer/registration).
-1. **Create** an application by following the instructions on [Using the Developer Hub](/api-documentation/docs/using-the-hub).
-1. **Subscribe** to the CTC Traders API (V2.0 Beta) and to the Test User API using your test application.
-1. **Read** about the [Government Gateway Authorisation](/api-documentation/docs/authorisation). Before you can access the CTC Traders API, your software needs to authenticate using OAuth 2.0.
-1. **Read** guidance on the [OAuth 2.0](/api-documentation/docs/authorisation) standards required for all of HMRC’s APIs.
-1. **Create** [test users](/api-documentation/docs/api/service/api-platform-test-user/1.0) before you can test your application.
-1. **Download** reference data to get Customs Offices List (COL) data to use for testing. Visit the [EU’s reference data download page](https://ec.europa.eu/taxation_customs/dds2/rd/rd_download_home.jsp?Lang=en) to download reference data.
-1. **Test** your application in the sandbox environment by following the steps in our Guide to Testing (**currently unavailable**).
-1. **Complete** the Application for Productions Checklist form (**currently unavailable**).
-1. **Apply** for production credentials through your [developer account](/developer/login) before you go live.
-1. **Get your customers ready** by asking them to apply for an [EORI number](https://www.gov.uk/eori) and a [Government Gateway account](https://www.gov.uk/log-in-register-hmrc-online-services).
+If you are new to the NCTS, you should review all of this document before reviewing other documents for phase 5. If you are migrating from NCTS phase 4 to phase 5, you should review this section at least before reviewing other documents for phase 5.
 
-## Get your customers ready
+### Before you start
 
-Your customers need to [sign up to the CTC Traders API](https://www.tax.service.gov.uk/customs-enrolment-services/ctc/subscribe) and provide you with the following details:
+Before you start using the CTC Traders API, you should:
 
-* GB Economic Operators Registration and Identification (EORI) number
-* VAT details (optional) 
-* Standard Industrial Classification (SIC) code
-* company or organisation details: 
-  * unique tax reference (UTR) number 
-  * registered company name (this must be an exact match)
-  * registered company address 
-  * date of company establishment 
+- ensure that you have an HMRC [developer account](/developer/login) - if you don’t have one, you must [register for an account](/developer/registration), activate it by email, and sign in
+- add your subscription to this API to your application
+- learn about the user-restricted [authentication](/api-documentation/docs/authorisation/user-restricted-endpoints) used by the API  
+- [create an application](/developer/applications/) in our sandbox environment
+- use the [Create Test User API](/api-documentation/docs/api/service/api-platform-test-user/1.0) to create one or more test users for your sandbox application
+- download [NCTS-P5 reference data](https://ec.europa.eu/taxation_customs/dds2/rd/rd_download_home.jsp?Lang=en) that can be used for testing
+- read the testing guide (pending) to check that your software is compatible with this version of the API and to learn how to test your application in the sandbox environment
 
-They will also need to provide:
+### Production environment requirements
 
-* email address 
-* contact details
+Before you can use the production environment for the CTC Traders API, you must:
 
-## Percent-encoding of parameters in request URLs
+- complete the CTC Traders API Application for Production Credentials Checklist (pending)
+- use your [developer account](/developer/login) to apply for production credentials
 
-When writing code to use date filters in request URLs, you must always use percent-encoding to avoid getting 400 Bad Request errors. This is because some common characters used in dates and timestamps cannot be used in URLs.
+### Get your customers ready
 
-### Format
+If you work for as software house, each trader you serve must use the [Government Gateway](https://www.access.service.gov.uk/login/signin/creds) to [sign up to the CTC Traders API](https://www.tax.service.gov.uk/customs-enrolment-services/ctc/subscribe?_gl=1*itulmt*_ga*MjA2MDk0MTQyMi4xNjY3Mzk2ODM5*_ga_Y4LWMWY6WS*MTY3NDgyMzU5OC41MS4xLjE2NzQ4NDE2NzcuMC4wLjA.&_ga=2.207635798.536493967.1674469117-2060941422.1667396839) and provide you with the following:
 
-When formatting query parameters into a request URL for date and time filtering functionality, you must use only the [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) standard for the date and time. For example, the timestamp `2021-06-21T09:00+00:00` should be encoded as `2021-06-21T09%3A00%2B00%3A00`. For more information about this, see our [Reference guide](/api-documentation/docs/reference-guide#common-data-types).
+- GB Economic Operators Registration and Identification (EORI) number
+- VAT details (optional)
+- Standard Industrial Classification (SIC) code
+- company or organisation details:
+  - unique tax reference (UTR) number
+  - registered company name (this must be an exact match)
+  - registered company address
+  - date of company establishment
+- email address
+- contact details
 
-You should also note the following:
+## User journeys
 
- - some common data types described in our [Reference guide](/api-documentation/docs/reference-guide#common-data-types) contain characters that are not valid for use in URLs
- - some software libraries and frameworks do percent-encoding for you automatically
+These journeys show examples of use:
 
-### Examples
-
-Below are examples in different programming languages.
-
-#### Java
-
-```java
-java.net.URLEncoder.encode("2021-04-30T16:08:31+00:00");
-```
-
-#### Python
-
-```python
-from urllib.parse import quote
-
-quote('2021-04-30T16:08:31+00:00')
-```
-
-#### C# #
-
-```c#
-Uri.EscapeDataString("2021-04-30T16:08:31+00:00");
-```
-
-### Find out more
-
-For background information about percent-encoding, we recommend the following:
-
- - [RFC](https://datatracker.ietf.org/doc/html/rfc3986)
- - [Wikipedia](https://en.wikipedia.org/wiki/Percent-encoding)
- - [MDN](https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding)
-
-## Push-pull notifications
-
-You can use our Push-Pull-Notification Service (PPNS) to receive notifications of new messages from the NCTS as follows:
-
-* if your endpoint is hosted by Amazon Web Services (AWS), you must use either [edge-optimised custom domain names](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-edge-optimized-custom-domain-name.html) or [regional custom domain names](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-regional-api-custom-domain-create.html)
-* you will receive a push notification each time when there is a new message for you to read
-* for messages less than 100KB, a push notification will contain the message body
-* a push notification will have a field containing the message URI
-* you can use this URI to download the XML message from the CTC Traders API
-
-Using this functionality means that you can avoid polling for new messages and thus save time and resources.
+- [developer setup](documentation/developer-setup.html)
+- [submit a transit declaration](documentation/submit-transit-declaration.html)
+- [query declarations sent](documentation/query-declarations-sent.html)
+- [submit message related to a departure](documentation/submit-message-related-to-departure.html)
+- [submit arrival notification](documentation/submit-arrival-notification.html)
+- [query arrival notifications sent](documentation/query-arrival-notifications-sent.html)
+- [submit message related to an arrival](documentation/submit-message-related-to-arrival.html)
+- [get notifications](documentation/get-notifications.html) 
 
 ## Process flows
 
-Process flows are available in the [NCTS Phase 5 Technical Interface Specification](/guides/ctc-traders-phase5-tis).
+For information about NCTS phase 5 process flows, see [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis/documentation/process_flows.html).
 
-## NCTS message details
+## Terms of use
 
-### XSD - XML schema Definition
-The API uses XSD templates to validate all the Information Exchange (IE) messages that come into the system.
+Your application must comply with [our terms of use](/api-documentation/docs/terms-of-use). You must accept the terms of use before we issue your application’s production credentials.
 
-If there are any problems, the IE message will be rejected with a 400 BadRequest status which will contain an explanation of the problem.
+## Related documentation
 
-The XML schemas are available for download [here](https://github.com/hmrc/transit-movements-validator/tree/main/conf/xsd).
+- [CTC Traders API roadmap](/roadmaps/common-transit-convention-traders-roadmap/)
+- [CTC Traders API v2.0 reference](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page)
+- [CTC Traders API v2.0 changelog](https://github.com/hmrc/common-transit-convention-traders/wiki/CTC-Traders-API-v2.0-changelog) (GitHub)
+- CTC Traders API phase 5 testing guide (pending)
+- [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis/)
+- [NCTS phase 4-phase 5 data mapping spreadsheet](https://github.com/hmrc/ctc-traders-phase5-tis/blob/main/source/figures/NCTS-P5_Datamapping_R2_190123_v1.0.xlsx) (GitHub)
+- [Transit Manual Supplement](https://www.gov.uk/government/publications/transit-manual-supplement) - UK transit procedures (OpenDocument Text document)
 
-### Information exchange messages
+## Getting help and support
 
-These are standard messages sent to and received from NCTS. For details, see the [NCTS Phase 5 Technical Interface Specification](/guides/ctc-traders-phase5-tis).
+Before contacting us, find out if there is planned API downtime or a technical issue by checking [HMRC API Platform Status](https://api-platform-status.production.tax.service.gov.uk/?_ga=2.139406967.536493967.1674469117-2060941422.1667396839) and [New Computerised Transit System service availability](https://www.gov.uk/guidance/new-computerised-transit-system-service-availability?_ga=2.174532070.536493967.1674469117-2060941422.1667396839).
 
-## API features
+If you have specific questions about the CTC Traders API, contact our Software Developer Support (SDS) Team. You’ll get an initial response within 2 working days.
 
-### Rate limits
-
-Our API Platform’s standard rate limit is [3 requests per second](/api-documentation/docs/reference-guide#rate-limiting). If you need a higher rate limit, you must give us more information about data and limit forecasts when filling in the Application for Production Credentials checklist form (**currently unavailable**).
-
-## Get support
-
-Before you get in touch, find out if there are any planned API downtime or technical issues by checking:
-
- - [HMRC API Platform availability](https://api-platform-status.production.tax.service.gov.uk/)
- - [NCTS service availability](https://www.gov.uk/government/publications/new-computerised-transit-system-ncts-web-service-availability-and-issues/new-computerised-transit-system-ncts-web-service-availability-and-issues)
-
-If you have specific questions about the CTC Traders API, get in touch with our Software Developer Support Team.
-
-You’ll get an initial response in 2 working days.
-
-Email us your questions to [SDSTeam@hmrc.gov.uk](mailto:SDSTeam@hmrc.gov.uk). We might ask for more detailed information when we respond.
+You can also email questions to [SDSTeam@hmrc.gov.uk](mailto:SDSTeam@hmrc.gov.uk). We might ask for more detailed information when we respond.
 
 ## Changelog
 
-You can find the changelog in the [ctc-traders-phase5-service-guide](https://github.com/hmrc/ctc-traders-phase5-service-guide/wiki/CTC-Traders-API-phase-5-service-guide-changelog) GitHub wiki.
+You can find the changelog for this document in the [ctc-traders-phase5-service-guide](https://github.com/hmrc/ctc-traders-phase5-service-guide/wiki/CTC-Traders-API-phase-5-service-guide-changelog) GitHub wiki.
