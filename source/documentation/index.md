@@ -31,6 +31,22 @@ To meet the requirements of the Common Transit Convention (CTC), all member coun
 
 There will be a cutover period after phase 5 goes live. During this period, the NCTS phase 4 service will continue running to deal with in-flight transit declarations submitted before go-live while the phase 5 service will handle all new declarations. The phase 5 service will not hold information about any declarations submitted before the go-live date.
 
+## Legacy CTC enrolments
+
+NCTS phase 5 is due to go live during November 2023 and **a legacy Common Transit Convention (CTC) enrolment will not be accepted on phase 5**, so obtaining a new CTC enrolment is a mandatory requirement. A legacy CTC enrolment is an enrolment for phase 3 or earlier of the NCTS.
+
+**Deadline:** Traders must migrate from CTC enrolments before 31 March 2023.
+
+**There is no upgrade path from phase 3 or earlier to phase 5.** Instead, if traders have not already done so, they must first upgrade to phase 4.
+
+To get a new CTC enrolment for phases 4 and 5, traders must complete the following steps:
+
+1. [Get a new Electronic Customs Clearance (ECC) enrolment](https://www.gov.uk/government/publications/new-computerised-transit-system-ncts-how-to-register-and-enrol).
+2. [Get an EORI number](https://www.gov.uk/eori) (if needed).
+3. Start using only your new CTC enrolment for making all of your customs declarations.
+
+[Contact the NCTS Helpdesk](https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries) if you need any help or advice when using the NCTS.
+
 ## Quick start
 
 Learn how to get started with the CTC Traders API.
