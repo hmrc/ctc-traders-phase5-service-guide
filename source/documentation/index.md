@@ -35,7 +35,7 @@ There will be a cutover period after phase 5 goes live. During this period, the 
 
 NCTS phase 5 is due to go live during November 2023 and **a legacy Common Transit Convention (CTC) enrolment will not be accepted on phase 5**, so obtaining a new CTC enrolment is a mandatory requirement. A legacy CTC enrolment is an enrolment for phase 3 or earlier of the NCTS.
 
-**Deadline:** Traders must migrate from CTC enrolments before 31 March 2023.
+**Deadline:** Traders must migrate from legacy CTC enrolments before 31 March 2023.
 
 **There is no upgrade path from phase 3 or earlier to phase 5.** Instead, if traders have not already done so, they must first upgrade to phase 4.
 
