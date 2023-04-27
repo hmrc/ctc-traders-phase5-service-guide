@@ -23,23 +23,23 @@ The API endpoints relate only to Great Britain and Northern Ireland. You can als
 
 This version of the CTC Traders API: 
 
-- supports only NCTS phase 5 ([CTC Traders API v1.0](/api-documentation/docs/api/service/common-transit-convention-traders/1.0) supports only phase 4)
+- supports only NCTS5 ([CTC Traders API v1.0](/api-documentation/docs/api/service/common-transit-convention-traders/1.0) supports only NCTS4)
 - is currently ready for testing
-- will not be ready for use in production until phase 5 goes live - in the meantime, you should continue using CTC Traders API v1.0
+- will not be ready for use in production until NCTS5 goes live - in the meantime, you should continue using CTC Traders API v1.0
 
-To meet the requirements of the Common Transit Convention (CTC), all member countries must transfer to phase 5 by 30 November 2023.
+To meet the requirements of the Common Transit Convention (CTC), all member countries must transfer to NCTS5 by 30 November 2023.
 
-There will be a cutover period after phase 5 goes live. During this period, the NCTS phase 4 service will continue running to deal with in-flight transit declarations submitted before go-live while the phase 5 service will handle all new declarations. The phase 5 service will not hold information about any declarations submitted before the go-live date.
+There will be a transition period after NCTS5 goes live. During this period, the NCTS4 service will continue running to deal with in-flight transit declarations submitted before go-live while the NCTS5 service will handle all new declarations. The NCTS5 service will not hold information about any declarations submitted before the go-live date.
 
 ## Trader CTC enrolments
 
-NCTS phase 5 is due to go live during November 2023 and a legacy Common Transit Convention (CTC) enrolment will not be accepted on phase 5, so obtaining a new CTC enrolment is a mandatory requirement. A legacy CTC enrolment is an enrolment for phase 3 or earlier of the NCTS.
+A legacy CTC enrolment for NCTS3 or earlier will not be accepted on NCTS5, so obtaining a new CTC enrolment is a mandatory requirement if you want to use NCTS5.
 
 **Deadline:** Traders must migrate from legacy CTC enrolments before 31 March 2023.
 
-There is no upgrade path from phase 3 or earlier to phase 5. Instead, if traders have not already done so, they must first upgrade to phase 4.
+There is no upgrade path from NCTS3 or earlier to NCTS5. Instead, if traders have not already done so, they must first upgrade to NCTS4.
 
-To get a new CTC enrolment for phases 4 and 5, traders must complete the following steps:
+To get a new CTC enrolment for NCTS4 and NCTS5, traders must complete the following steps:
 
 1. [Get a new Electronic Customs Clearance (ECC) enrolment](https://www.gov.uk/government/publications/new-computerised-transit-system-ncts-how-to-register-and-enrol).
 2. [Get an EORI number](https://www.gov.uk/eori) (if needed).
@@ -51,14 +51,14 @@ To get a new CTC enrolment for phases 4 and 5, traders must complete the followi
 
 If you are new to the NCTS and you have not used CTC Traders API v1.0, you should:
 
-1. Review all of this document before reviewing other documents for phase 5.
+1. Review all of this document before reviewing other documents for NCTS5.
 2. Review [Trader data](#trader-data).
 3. Follow all of the steps in [First-time CTC Traders API users](#first-time-ctc-traders-api-users).
 4. Review [Making API requests](#making-api-requests).
 
-If you are migrating from NCTS phase 4 to phase 5 and you are familiar with CTC Traders API v1.0, you should:
+If you are migrating from NCTS4 to NCTS5 and you are familiar with CTC Traders API v1.0, you should:
 
-1. Review this section at least before reviewing other documents for phase 5.
+1. Review this section at least before reviewing other documents for NCTS5.
 2. Check whether [Trader data](#trader-data) applies to any traders you serve - any traders impacted will need to take action.
 3. Follow any steps in [CTC Traders API  v1.0 users](#ctc-traders-api-v1-0-users) that apply to you.
 4. Review [Making API requests](#making-api-requests).
@@ -128,7 +128,7 @@ These journeys show examples of use:
 
 ## Process flows
 
-For information about NCTS phase 5 process flows, see [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis/documentation/process_flows.html).
+For information about NCTS5 process flows, see [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis/documentation/process_flows.html).
 
 ## Terms of use
 

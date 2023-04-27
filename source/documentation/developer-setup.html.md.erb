@@ -26,7 +26,7 @@ The main differences between these 2 environments are that:
 - in the sandbox environment you will [create and use test users](/api-documentation/docs/testing/test-users-test-data-stateful-behaviour) to call the endpoints
 - the release version of an API in the sandbox will generally be ahead of the version of the API in production
 
-The purpose of the sandbox (also known as External Test) is to provide an HMRC platform for all external partners to complete their required assurance activities so they are confident in their readiness for migration to NCTS phase 5.
+The purpose of the sandbox (also known as External Test) is to provide an HMRC platform for all external partners to complete their required assurance activities so they are confident in their readiness for migration to NCTS5.
 
 For more information about using our sandbox environments, see [Testing in the sandbox](/api-documentation/docs/testing).
 
@@ -93,6 +93,10 @@ If a response code in the 4XX range is received, the API consumer should examine
 For example, a 400 (Bad Request) with a payload response message stating 'Payload is not valid according to schema' should have its request payload modified so that it validates against the API schemas and then be resent. Similarly, a 406 (Not Acceptable) indicates that the `Accept` header is missing or invalid. The request should be amended accordingly.
 
 If you are receiving these errors consistently, you should report the problem to the SDS Team.
+
+### NCTS error codes
+
+For information about error codes rerturned by the NCTS, see [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis/documentation/messagetypes.html#ncts-error-codes).
 
 ### Best practices recommendations
 
