@@ -92,7 +92,7 @@ If you are migrating from CTC Traders API v1.0, you should:
 
 1. Add your subscription to this API to your application software.
 2. Download [NCTS-P5 reference data](https://ec.europa.eu/taxation_customs/dds2/rd/rd_download_home.jsp?Lang=en) that can be used for testing.
-3. Read the [CTC Traders API phase 5 testing guide](CTC Traders API phase 5 testing guide) to check that your software is compatible with this version of the API.
+3. Read the [CTC Traders API phase 5 testing guide](/guides/ctc-traders-phase5-testing-guide/) to check that your software is compatible with this version of the API.
 
 ### Making API requests
 
