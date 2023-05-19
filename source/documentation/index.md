@@ -88,7 +88,7 @@ If you have not previously used the CTC Traders API, you should:
 4. [Create an application](/developer/applications/) in our sandbox environment.
 5. Use the [Create Test User API](/api-documentation/docs/api/service/api-platform-test-user/1.0) to create one or more test users for your sandbox application.
 6. Download [NCTS-P5 reference data](https://ec.europa.eu/taxation_customs/dds2/rd/rd_download_home.jsp?Lang=en) that can be used for testing.
-7. Read the testing guide (pending) to check that your software is compatible with this version of the API and to learn how to test your application in the sandbox environment.
+7. Read the [CTC Traders API phase 5 testing guide](/guides/ctc-traders-phase5-testing-guide/) to check that your software is compatible with this version of the API and to learn how to test your application in the sandbox environment.
 
 ### CTC Traders API v1.0 users
 
@@ -96,7 +96,7 @@ If you are migrating from CTC Traders API v1.0, you should:
 
 1. Add your subscription to this API to your application software.
 2. Download [NCTS-P5 reference data](https://ec.europa.eu/taxation_customs/dds2/rd/rd_download_home.jsp?Lang=en) that can be used for testing.
-3. Read the testing guide (pending) to check that your software is compatible with this version of the API.
+3. Read the [CTC Traders API phase 5 testing guide](CTC Traders API phase 5 testing guide) to check that your software is compatible with this version of the API.
 
 ### Making API requests
 
@@ -139,7 +139,7 @@ Your application must comply with [our terms of use](/api-documentation/docs/ter
 - [CTC Traders API roadmap](/roadmaps/common-transit-convention-traders-roadmap/)
 - [CTC Traders API v2.0 reference](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page)
 - [CTC Traders API v2.0 changelog](https://github.com/hmrc/common-transit-convention-traders/wiki/CTC-Traders-API-v2.0-changelog) (GitHub)
-- CTC Traders API phase 5 testing guide (pending)
+- [CTC Traders API phase 5 testing guide](/guides/ctc-traders-phase5-testing-guide/)
 - [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis/)
 - [NCTS phase 4-phase 5 data mapping spreadsheet](https://github.com/hmrc/ctc-traders-phase5-tis/blob/main/source/figures/NCTS-P5_Datamapping_R3_140323_v1.0.xlsx) (GitHub)
 - [Transit Manual Supplement](https://www.gov.uk/government/publications/transit-manual-supplement) - UK transit procedures (OpenDocument Text document)
