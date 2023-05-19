@@ -33,15 +33,11 @@ There will be a transition period after NCTS5 goes live. During this period, the
 
 ## Trader CTC enrolments
 
-A legacy CTC enrolment for NCTS3 or earlier will not be accepted on NCTS5, so obtaining a new CTC enrolment is a mandatory requirement if you want to use NCTS5.
-
-**Deadline:** Traders must migrate from legacy CTC enrolments before 31 March 2023.
-
-There is no upgrade path from NCTS3 or earlier to NCTS5. Instead, if traders have not already done so, they must first upgrade to NCTS4.
+Any traders using legacy CTC enrolments must migrate from them before being able to use NCTS5 from 16 November 2023.
 
 To get a new CTC enrolment for NCTS4 and NCTS5, traders must complete the following steps:
 
-1. [Get a new Electronic Customs Clearance (ECC) enrolment](https://www.gov.uk/government/publications/new-computerised-transit-system-ncts-how-to-register-and-enrol).
+1. [Get a new Electronic Customs Clearance (ECC) enrolment](https://www.tax.service.gov.uk/customs-enrolment-services/ctc/subscribe).
 2. [Get an EORI number](https://www.gov.uk/eori) (if needed).
 3. Start using only your new CTC enrolment for making all of your customs declarations.
 
