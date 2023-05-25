@@ -137,7 +137,7 @@ Your application must comply with [our terms of use](/api-documentation/docs/ter
 - [CTC Traders API v2.0 changelog](https://github.com/hmrc/common-transit-convention-traders/wiki/CTC-Traders-API-v2.0-changelog) (GitHub)
 - [CTC Traders API phase 5 testing guide](/guides/ctc-traders-phase5-testing-guide/)
 - [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis/)
-- [NCTS phase 4-phase 5 data mapping spreadsheet](https://github.com/hmrc/ctc-traders-phase5-tis/blob/main/source/figures/NCTS-P5_Datamapping_R3_140323_v1.0.xlsx) (GitHub)
+- [NCTS phase 4-phase 5 data mapping spreadsheet](guides/ctc-traders-phase5-tis/downloads/NCTS-P5_Datamapping_R3_140323_v1.0.xlsx) (GitHub)
 - [Transit Manual Supplement](https://www.gov.uk/government/publications/transit-manual-supplement) - UK transit procedures (OpenDocument Text document)
 
 ## Getting help and support
