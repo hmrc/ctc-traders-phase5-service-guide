@@ -206,7 +206,7 @@ Below are examples of message received push notifications for different small me
 
 Example push notification where the message body is included because the message sent to you is less than 80kB in size.
 
-```xml
+```json
 {
             "messageUri": "/customs/transits/movements/departures/0123456789abcdedf/messages/fedcba9876543210",
             "notificationType": "MESSAGE_RECEIVED",
@@ -244,7 +244,7 @@ Example push notification where the message body is included because the message
 
 Push notification where the message body is not included because the message sent to you is greater than 80kB in size.
 
-```xml
+```json
 {
             "messageUri": "/customs/transits/movements/departures/0123456789abcdedf/messages/fedcba9876543210",
             "notificationType": "MESSAGE_RECEIVED"
