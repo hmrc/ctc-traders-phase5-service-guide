@@ -173,7 +173,6 @@ GEM
     webrick (1.8.1)
 
 PLATFORMS
-
   ruby
 
 DEPENDENCIES
@@ -184,4 +183,3 @@ DEPENDENCIES
 
 BUNDLED WITH
    2.1.4
-
