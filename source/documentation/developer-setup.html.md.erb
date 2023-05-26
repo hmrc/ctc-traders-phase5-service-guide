@@ -150,3 +150,103 @@ You can use our [Push-Pull-Notification Service](/api-documentation/docs/api/ser
 - you can use this URI to download the XML message from the CTC Traders API
 
 Using this functionality means that you can avoid polling for new messages and thus save time and resources.
+
+### Message received push notifications
+
+If you are using our PPNS service and you submit a small message (up to 5MB in size) with an XML payload to the NCTS, you will receive a push notification with:
+
+- the `notificationType` field set to `MESSAGE_RECEIVED`
+- a URI that you can use with the [Get a cached message related to an arrival and message ID](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Arrivals/operation/getCachedMessageRelatedToArrivalAndMessageID) and [Get a cached message related to a departure and message ID](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Departures/operation/postMessageRelatedToDeparture) endpoints to get the message
+
+If the size of the message sent to you is less than 80kB, the message will be included in the push notification as escaped XML in the `messageBody` field.
+
+#### Message received push notifications schema
+
+Message received push notifications must conform to the following JSON schema.
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "id": "https://developer.service.hmrc.gov.uk/common-transit-convention-traders/push-notification.json",
+  "required": [
+    "messageUri",
+    "notificationType"
+  ],
+  "properties": {
+    "messageUri": {
+      "type": "string",
+      "description": "URI of the message."
+    },
+    "notificationType": {
+      "type": "string",
+      "enum": [
+        "MESSAGE_RECEIVED"
+      ],
+      "description": "The notification type. Always MESSAGE_RECEIVED when the notification informs the trader of a new message."
+    },
+    "messageBody": {
+      "type": "string",
+      "description": "Escaped XML that represents the returned message. Will only be present if the message is small."
+    }
+  },
+  "type": [
+    "object"
+  ]
+}
+```
+
+**Note:** This schema is subject to change. You should monitor the [CTC Traders API v2.0 changelog](https://github.com/hmrc/common-transit-convention-traders/wiki/CTC-Traders-API-v2.0-changelog) (GitHub) and the [changelog](https://github.com/hmrc/ctc-traders-phase5-service-guide/wiki/CTC-Traders-API-phase-5-service-guide-changelog) for this document (GitHub) to ensure that you are aware of any changes.
+
+#### Example message received push notifications
+
+Below are examples of message received push notifications for different small message sizes.
+
+##### Below 80kB threshold
+
+Example push notification where the message body is included because the message sent to you is less than 80kB in size.
+
+```xml
+{
+            "messageUri": "/customs/transits/movements/departures/0123456789abcdedf/messages/fedcba9876543210",
+            "notificationType": "MESSAGE_RECEIVED",
+            "messageBody": "
+
+<ncts:CC928C
+	xmlns:ncts=\"http://ncts.dgtaxud.ec\" PhaseID=\"NCTS5.1\">
+	<messageSender>NTA.XI</messageSender>
+	<messageRecipient>swp.transit.agent</messageRecipient>
+	<preparationDateAndTime>2023-05-22T16:00:17</preparationDateAndTime>
+	<messageIdentification>MR3MAJP2BB6890</messageIdentification>
+	<messageType>CC928C</messageType>
+	<correlationIdentifier>messageIdentification0</correlationIdentifier>
+	<TransitOperation>
+		<LRN>MDTP-12</LRN>
+	</TransitOperation>
+	<CustomsOfficeOfDeparture>
+		<referenceNumber>XI000081</referenceNumber>
+	</CustomsOfficeOfDeparture>
+	<HolderOfTheTransitProcedure>
+		<identificationNumber>XI985524247819</identificationNumber>
+		<name>Trader 1</name>
+		<Address>
+			<streetAndNumber>1 TRADER STREET</streetAndNumber>
+			<postcode>BT12 5EE</postcode>
+			<city>Belfast</city>
+			<country>BG</country>
+		</Address>
+	</HolderOfTheTransitProcedure>
+</ncts:CC928C>"
+}
+```
+
+##### Above 80kB threshold
+
+Push notification where the message body is not included because the message sent to you is greater than 80kB in size.
+
+```xml
+{
+            "messageUri": "/customs/transits/movements/departures/0123456789abcdedf/messages/fedcba9876543210",
+            "notificationType": "MESSAGE_RECEIVED"
+} 
+```
