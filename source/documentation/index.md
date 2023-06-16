@@ -131,7 +131,7 @@ These journeys show examples of use:
 
 CTC Traders API v2.0 supports both small (up to 5MB in size) and large (up to 5MB in size - this limit will later increase to 8MB) messages. You can use the large messages functionality of the API to send both large and small messages, but you cannot use the small messages functionality of the API to send large messages.
 
-**Note:** The large messages capability applies only to POST endpoints.
+**Note:** The large messages capability applies only to POST endpoints. However, all GET endpoints of the API can handle messages of any size.
 
 You should consider using the large messages functionality if the transit movements that you usually handle contain large consignments. However, before making any final decisions about how your application software will handle message sizes, consider the following:
 
