@@ -291,7 +291,8 @@ Submission notification push notifications must conform to the following JSON sc
       "additionalProperties": true,
       "properties": {
         "code": {
-          "type": "The response code. Will be 'SUCCESS' if submission was successful.",
+          "type": "string",
+          "description": "The response code. Will be 'SUCCESS' if submission was successful.",
           "message": "A human readable message describing the status."
         }
       }
