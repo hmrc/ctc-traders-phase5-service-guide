@@ -8,7 +8,7 @@ description: Software developers, designers, product owners or business analysts
 
 On a per-message basis, you can choose between sending a message to the NCTS by the small message route or by the large message route.
 
-### Submitting a message as a file 
+## Submitting a message as a file 
 
 Using the large message route means submitting a message as a file. The following endpoints support submitting a message as a file to the NCTS:
 
@@ -34,7 +34,7 @@ An example Python script that submits an IE015 by the large message route is ava
 
 After the file is submitted, any HTTP 2XX status code will indicate a successful upload.
 
-### Tracking progress of messages submitted as files
+## Tracking progress of messages submitted as files
 
 You can check the progress of the processing status of any message. A submitted message has five possible statuses.
 
@@ -53,7 +53,7 @@ You can use the following endpoints to get the status of messages submitted to t
 - [Get all cached messages related to an arrival](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Arrivals/operation/getAllCachedMessagesRelatedToArrival)
 - [Get a cached message related to an arrival and message ID](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Arrivals/operation/getCachedMessageRelatedToArrivalAndMessageID)
 
-### Push notifications for submitted messages submitted as files
+## Push notifications for submitted messages submitted as files
 
 A message submitted by the large message route will receive a push notification of type `SUBMISSION_NOTIFICATION` when it transitions into the `Success` or `Failed` status. If the message failed to send, the error message returned will be identical to that of the small message route.
 
