@@ -250,3 +250,118 @@ Push notification where the message body is not included because the message sen
             "notificationType": "MESSAGE_RECEIVED"
 } 
 ```
+
+## Submission notifications
+
+If you are using our PPNS service and you submit a message by the large message route to the NCTS, you will receive a push notification with:
+
+- the `notificationType` field set to `SUBMISSION_NOTIFICATION`
+- a URI that you can use with the [Get a cached message related to an arrival and message ID](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Arrivals/operation/getCachedMessageRelatedToArrivalAndMessageID) and [Get a cached message related to a departure and message ID](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Departures/operation/postMessageRelatedToDeparture) endpoints to get the submitted message back
+- the response indicating whether the submission succeeded or failed
+
+### Submission notification push notifications schema
+
+Submission notification push notifications must conform to the following JSON schema.
+
+```json
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "additionalProperties": false,
+  "id": "https://developer.service.hmrc.gov.uk/common-transit-convention-traders/push-notification-submission-notification.json",
+  "required": [
+    "messageUri",
+    "notificationType",
+    "response"
+  ],
+  "properties": {
+    "messageUri": {
+      "type": "string",
+      "description": "URI of the message."
+    },
+    "notificationType": {
+      "type": "string",
+      "enum": [
+        "SUBMISSION_NOTIFICATION"
+      ],
+      "description": "The notification type. Always SUBMISSION_NOTIFICATION when the notification informs the trader of submission status."
+    },
+    "response": {
+      "type": "object",
+      "description": "The response object. In the case of failure, this will be identical to faliure cases in the small message route.",
+      "additionalProperties": true,
+      "properties": {
+        "code": {
+          "type": "string",
+          "description": "The response code. Will be 'SUCCESS' if submission was successful.",
+          "message": "A human readable message describing the status."
+        }
+      }
+    }
+  },
+  "type": [
+    "object"
+  ]
+}
+```
+
+**Note:** This schema is subject to change. You should monitor the [CTC Traders API v2.0 changelog](https://github.com/hmrc/common-transit-convention-traders/wiki/CTC-Traders-API-v2.0-changelog) (GitHub) and the [changelog](https://github.com/hmrc/ctc-traders-phase5-service-guide/wiki/CTC-Traders-API-phase-5-service-guide-changelog) for this document (GitHub) to ensure that you are aware of any changes.
+
+### Example submission notifications
+
+Below are examples of submission notification push notifications for different scenarios.
+
+#### Success notification
+
+```json
+{
+   "messageUri": "/customs/transits/movements/departures/6482f76c21a8596e/messages/6482f76c564b0f5f",
+   "notificationType": "SUBMISSION_NOTIFICATION",
+   "response": {
+     "message": "The message 6482f76c564b0f5f for movement 6482f76c21a8596e was successfully processed",
+     "code": "SUCCESS"
+   }
+}
+```
+
+#### Duplicate LRN error notification
+
+```json
+{
+   "messageUri": "/customs/transits/movements/departures/6482f76c21a8596e/messages/6482f76c564b0f5f",
+   "notificationType": "SUBMISSION_NOTIFICATION",
+   "response": {
+     "message": "LRN large-test-47-XI-3 has previously been used and cannot be reused",
+     "code": "CONFLICT"
+   }
+}
+```
+
+#### Schema validation error notification
+
+```json
+{
+   "messageUri": "/customs/transits/movements/departures/6482f76c21a8596e/messages/6482f76c564b0f5f",
+   "notificationType": "SUBMISSION_NOTIFICATION",
+   "response": {
+     "message": "Request failed schema validation",
+     "code": "SCHEMA_VALIDATION",
+     "validationErrors": [
+         {
+          "lineNumber": 1,
+          "columnNumber": 90,
+          "message": "cvc-complex-type.2.4.a: Invalid content was found starting with element 'messageRecipient'. One of '{messageSender}' is expected."
+         },
+         {
+          "lineNumber": 1,
+          "columnNumber": 202,
+          "message": "cvc-pattern-valid: Value 'abcdefg' is not facet-valid with respect to pattern '\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}' for type 'PreparationDateAndTimeContentType'."
+         },
+                  {
+          "lineNumber": 1,
+          "columnNumber": 202,
+          "message": "cvc-type.3.1.3: The value 'abcdefg' of element 'preparationDateAndTime' is not valid."
+         }
+     ]
+   }
+}
+```
