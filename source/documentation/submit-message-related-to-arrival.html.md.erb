@@ -1,6 +1,6 @@
 ---
 title: Submit message related to an arrival | CTC Traders API phase 5 service guide
-weight: 8
+weight: 9
 description: Software developers, designers, product owners or business analysts. Send departure and arrival movement notifications to the NCTS.
 ---
 
@@ -8,6 +8,13 @@ description: Software developers, designers, product owners or business analysts
 
 Use the POST endpoint [Send a message related to an arrival](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Arrivals/operation/postMessageRelatedToArrival) to send a message to the customs office of destination about an arrival.
 
-For example, if you are a trader at destination, you will send an 'Unloading Remarks' E_ULD_REM (IE044) message to the office of destination indicating that unloading of the goods has been completed. A successful response will contain a URI and a message ID related to the arrival, which you can use to get the message status.
+For example, if you are a trader at destination, you will send an 'Unloading Remarks' E_ULD_REM (IE044) message to the office of destination indicating that unloading of the goods has been completed.
+
+If you use this endpoint to send a small message (up to 5MB), a successful response will contain a URI and a message ID related to the arrival, which you can use to get the message status.
+
+If you use this endpoint to send a large message (up to 5MB - this limit will later increase to 8MB), a successful response will include:
+
+- a URL and additional metadata that you must use when uploading your file
+- a message ID that allows you track the status of that specific message
 
 To submit a message related to an arrival, you must have an EORI number.

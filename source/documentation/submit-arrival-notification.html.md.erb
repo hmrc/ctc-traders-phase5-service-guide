@@ -1,6 +1,6 @@
 ---
 title: Submit arrival notification | CTC Traders API phase 5 service guide
-weight: 6
+weight: 7
 description: Software developers, designers, product owners or business analysts. Send departure and arrival movement notifications to the NCTS.
 ---
 
@@ -8,6 +8,17 @@ description: Software developers, designers, product owners or business analysts
 
 Use the POST endpoint [Send an arrival notification message](https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Arrivals/operation/postArrivalNotificationMessage) to notify the customs office of destination that a transit movement has arrived at its final destination.
 
-This request is also called an 'Arrival Notification' E_ARR_NOT (IE007) message. A successful response will contain a URI that you can use to get the message status. A successful response can also include an optional box ID, which you can use to match this movement to any messages received from the Push Pull Notifications API.
+This request is also called an 'Arrival Notification' E_ARR_NOT (IE007) message.
+
+If you use this endpoint to send a small message (up to 5MB), a successful response:
+
+- will contain a URI that you can use to get the message status
+- can also include an optional box ID, which you can use to match this movement to any messages received from our [Push Pull Notifications API](/api-documentation/docs/api/service/push-pull-notifications-api/1.0)
+
+If you use this endpoint to send a large message (up to 5MB - this limit will later increase to 8MB), a successful response will include:
+
+- a URL and additional metadata that you must use when uploading your file
+- a message ID that allows you track the status of that specific message
+- an optional box ID, which you can use to match this movement to any messages received from our Push Pull Notifications API
 
 To submit an arrival notification, you must have an EORI number.

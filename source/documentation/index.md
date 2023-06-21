@@ -17,6 +17,8 @@ Use the API to:
 - send departure and arrival movement notifications to the New Computerised Transit System (NCTS)
 - retrieve messages sent from customs offices of departure and destination
 
+You can use this version of the API to send both small (up to 5MB in size) and large (up to 5MB in size - this limit will later increase to 8MB) messages. The large messages capability applies only to POST endpoints.
+
 The API endpoints relate only to Great Britain and Northern Ireland. You can also use the [HMRC sandbox environment](https://test-developer.service.hmrc.gov.uk/api-documentation/docs/sandbox/introduction) to run tests for Great Britain and Northern Ireland transit movements.
 
 ## API status
@@ -114,6 +116,9 @@ Before you can use the production environment for CTC Traders API v2.0, you must
 These journeys show examples of use:
 
 - [developer setup](documentation/developer-setup.html)
+
+- [upload files for large messages](documentation/upload-files-for-large-messages.html)
+
 - [submit a transit declaration](documentation/submit-transit-declaration.html)
 - [query declarations sent](documentation/query-declarations-sent.html)
 - [submit message related to a departure](documentation/submit-message-related-to-departure.html)
@@ -121,6 +126,26 @@ These journeys show examples of use:
 - [query arrival notifications sent](documentation/query-arrival-notifications-sent.html)
 - [submit message related to an arrival](documentation/submit-message-related-to-arrival.html)
 - [get notifications](documentation/get-notifications.html) 
+
+## Message sizes
+
+CTC Traders API v2.0 supports both small (up to 5MB in size) and large (up to 5MB in size - this limit will later increase to 8MB) messages. You can use the large messages functionality of the API to send both large and small messages, but you cannot use the small messages functionality of the API to send large messages.
+
+**Note:** The large messages capability applies only to POST endpoints. However, all GET endpoints of the API can handle messages of any size.
+
+You should consider using the large messages functionality if the transit movements that you usually handle contain large consignments. However, before making any final decisions about how your application software will handle message sizes, consider the following:
+
+- rule [G0005](/guides/ctc-traders-phase5-tis/documentation/rules-g.html#g0005) in the [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis) restricts the declaration goods item number (a master count of goods items lines) in a transit declaration to a maximum of 1,999
+- if quick response times from the NCTS matter to you or the traders you serve and if your message sizes never exceed 5MB, you should use only the small messages functionality of the API
+
+If you decide to use the large messages functionality, consider making use of our [Push Pull Notifications API](/api-documentation/docs/api/service/push-pull-notifications-api/1.0) to have automatic notifications sent from the NCTS in near real time.
+
+To send a large message, you call the API with an empty payload - a successful response will include:
+
+- a URL and additional metadata that you must use when uploading your file
+- a message ID that allows you track the status of that specific message
+
+For more information about sending large messages, see [Upload files for large messages](documentation/upload-files-for-large-messages.html).
 
 ## Process flows
 

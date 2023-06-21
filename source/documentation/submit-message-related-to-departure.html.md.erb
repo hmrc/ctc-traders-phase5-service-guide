@@ -1,6 +1,6 @@
 ---
 title: Submit message related to a departure | CTC Traders API phase 5 service guide
-weight: 5
+weight: 6
 description: Software developers, designers, product owners or business analysts. Send departure and arrival movement notifications to the NCTS.
 ---
 
@@ -8,6 +8,13 @@ description: Software developers, designers, product owners or business analysts
 
 Use the POST endpoint [Send a message related to a departure](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Departures/operation/postMessageRelatedToDeparture) to send a message to the customs office of departure about a departure.
 
-For example, if you want to cancel a 'Declaration Data' E_DEC_DAT (IE015) message, you must send a 'Declaration Invalidation Request' E_DEC_INV (IE014) message to the office of departure. A successful response will contain a URI and a message ID related to the departure that you can use to get the message status.
+For example, if you want to cancel a 'Declaration Data' E_DEC_DAT (IE015) message, you must send a 'Declaration Invalidation Request' E_DEC_INV (IE014) message to the office of departure.
+
+If you use this endpoint to send a small message (up to 5MB), a successful response will contain a URI and a message ID related to the departure that you can use to get the message status.
+
+If you use this endpoint to send a large message (up to 5MB - this limit will later increase to 8MB), a successful response will include:
+
+- a URL and additional metadata that you must use when uploading your file
+- a message ID that allows you track the status of that specific message
 
 To submit a message related to a departure, you must have an EORI number.
