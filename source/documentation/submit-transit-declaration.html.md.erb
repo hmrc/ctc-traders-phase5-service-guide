@@ -22,3 +22,5 @@ If you use this endpoint to send a large message (up to 5MB - this limit will la
 - an optional box ID, which you can use to match this movement to any messages received from our Push Pull Notifications API
 
 To submit a transit declaration, you must have an EORI number.
+
+**Note:** In NCTS5, a declaration data message starts a transit movement with a given Local Reference Number (LRN) when you submit the message successfully, not when the message is accepted. If the movement is rejected, its LRN has been used up and cannot be reused in any other transit declarations that you send to the NCTS5 service. For more information about this, see Reuse of [Local Reference Numbers](developer-setup.html#reuse-of-local-reference-numbers).
