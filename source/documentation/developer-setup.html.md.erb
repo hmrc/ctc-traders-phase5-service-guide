@@ -141,9 +141,9 @@ For background information about percent-encoding, we recommend the following:
 
 ## Reuse of Local Reference Numbers
 
-In NCTS5, a ‘Declaration Data’ E_DEC_DAT (IE015) message starts a transit movement with a given Local Reference Number (LRN) when you submit the message, not when the message is accepted. This means that you can use the LRN to query the movement before it is accepted.
+In NCTS5, a ‘Declaration Data’ E_DEC_DAT (IE015) message starts a transit movement with a given Local Reference Number (LRN) when you submit the message sucessfully, not when the message is accepted. This means that you can use the LRN to query the movement before it is accepted.
 
-However, if the movement is rejected, its LRN has been used up and cannot be reused in any other transit declarations because an LRN must be a unique identifier for each transit declaration you send.
+If a rejection message, such as a ‘Rejection From Office Of Departure‘ E_DEP_REJ (IE056) message, is received for a movement, its LRN has been used up and cannot be reused in any other transit declarations because an LRN must be a unique identifier for each transit declaration you send.
 
 If you try to submit an IE015 message with a previously used LRN to the NCTS5 service, an HTTP status code 409 (Conflict) will be returned.
 
