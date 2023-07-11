@@ -8,7 +8,7 @@ description: Software developers, designers, product owners or business analysts
 
 Use the POST endpoint [Send a declaration data message](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Departures/operation/postDeclarationDataMessage) to send a transit declaration to the customs office of departure to notify it that you wish to carry out a transit operation.
 
-This request is also called an 'Declaration Data' E_DEC_DAT (IE015) message.
+This request is also called a 'Declaration Data' E_DEC_DAT (IE015) message.
 
 If you use this endpoint to send a small message (up to 5MB), a successful response:
 
@@ -21,6 +21,6 @@ If you use this endpoint to send a large message (up to 5MB - this limit will la
 - a message ID that allows you track the status of that specific message
 - an optional box ID, which you can use to match this movement to any messages received from our Push Pull Notifications API
 
-To submit a transit declaration, you must have an EORI number.
+To submit a transit declaration, you must have an EORI number. For more information about entering message sender and recipient details, see [Message sender and recipient guidelines](developer-setup.html#message-sender-and-recipient-guidelines).
 
 **Note:** In NCTS5, a declaration data message starts a transit movement with a given Local Reference Number (LRN) when you submit the message successfully, not when the message is accepted. If the movement is rejected, its LRN has been used up and cannot be reused in any other transit declarations that you send to the NCTS5 service. For more information about this, see Reuse of [Local Reference Numbers](developer-setup.html#reuse-of-local-reference-numbers).

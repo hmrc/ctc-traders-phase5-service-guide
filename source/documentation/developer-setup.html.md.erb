@@ -96,7 +96,7 @@ If you are receiving these errors consistently, you should report the problem to
 
 ### NCTS error codes
 
-For information about error codes rerturned by the NCTS, see [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis/documentation/messagetypes.html#ncts-error-codes).
+For information about error codes returned by the NCTS, see [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis/documentation/messagetypes.html#ncts-error-codes).
 
 ### Best practices recommendations
 
@@ -139,9 +139,32 @@ For background information about percent-encoding, we recommend the following:
 - [Wikipedia](https://en.wikipedia.org/wiki/Percent-encoding)
 - [MDN](https://developer.mozilla.org/en-US/docs/Glossary/percent-encoding)
 
+## Message sender and recipient guidelines
+
+There are guidelines for entering message sender and recipient details in arrivals and departures messages in the NCTS5 Trader Test environment that will also apply to the production version of the UK NCTS5 service.
+
+### Message sender
+
+When specifying the message sender of an arrival or departure message, you can enter alphanumeric format data up to 35 characters (‘an..35‘).
+
+We recommend that you should enter the EORI number of the organisation (‘the declarant‘) that is physically sending the message. Alternatively, if you do not know the EORI number of the declarant, you can use the EORI number of the transit movement or prompt for it.
+
+### Message recipient
+
+From 26 July 2023, the NCTS5 Trader Test environment will enforce the following rules for message recipient details.
+
+| Message type | Rule                                                         | GB to XI movements | XI to GB movements |
+| ------------ | ------------------------------------------------------------ | ------------------ | ------------------ |
+| Arrival      | You must enter ‘NTA‘ and the correct country code of the **actual** office of destination, which could be different from the declared office of destination. | NTA.XI             | NTA.GB             |
+| Departure    | You must enter ‘NTA‘ and the correct country code of the office of departure. | NTA.GB             | NTA.XI             |
+
+The emphasis on GB to XI movements and XI to GB movements is specific to NCTS5 Trader Test. For the production version of the UK NCTS5 service, these rules will be applied to transit movements originating from or arriving in GB or XI. If your transit movements involve other CTC member countries, you will need to become familiar with the rules used by those countries for the message recipient field in NCTS5 arrivals and departures messages.
+
+**Note:** The rules used by other CTC members for the message recipient field might be similar to but not necessarily the same as those used by the UK.
+
 ## Reuse of Local Reference Numbers
 
-In NCTS5, a ‘Declaration Data’ E_DEC_DAT (IE015) message starts a transit movement with a given Local Reference Number (LRN) when you submit the message sucessfully, not when the message is accepted. This means that you can use the LRN to query the movement before it is accepted.
+In NCTS5, a ‘Declaration Data’ E_DEC_DAT (IE015) message starts a transit movement with a given Local Reference Number (LRN) when you submit the message successfully, not when the message is accepted. This means that you can use the LRN to query the movement before it is accepted.
 
 If a rejection message, such as a ‘Rejection From Office Of Departure‘ E_DEP_REJ (IE056) message, is received for a movement, its LRN has been used up and cannot be reused in any other transit declarations because an LRN must be a unique identifier for each transit declaration you send.
 
