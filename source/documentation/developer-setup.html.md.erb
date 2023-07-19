@@ -202,12 +202,29 @@ Message received push notifications must conform to the following JSON schema.
   "id": "https://developer.service.hmrc.gov.uk/common-transit-convention-traders/push-notification.json",
   "required": [
     "messageUri",
+    "messageId",
     "notificationType"
   ],
   "properties": {
     "messageUri": {
       "type": "string",
       "description": "URI of the message."
+    },
+    "departureId": {
+      "type": "string",
+      "description": "ID of the movement if it's a departure."
+    },
+    "arrivalId": {
+      "type": "string",
+      "description": "ID of the movement if it's an arrival."
+    },
+    "messageId": {
+      "type": "string",
+      "description": "ID of the message that has been received."
+    },
+    "messageType": {
+      "type": "string",
+      "description": "The type of message being received."
     },
     "notificationType": {
       "type": "string",
@@ -240,6 +257,9 @@ Example push notification where the message body is included because the message
 ```json
 {
             "messageUri": "/customs/transits/movements/departures/0123456789abcdedf/messages/fedcba9876543210",
+            "departureId": "0123456789abcdedf",
+            "messageId": "fedcba9876543210",
+            "nessageType": "IE928",
             "notificationType": "MESSAGE_RECEIVED",
             "messageBody": "
 
@@ -277,7 +297,10 @@ Push notification where the message body is not included because the message sen
 
 ```json
 {
-            "messageUri": "/customs/transits/movements/departures/0123456789abcdedf/messages/fedcba9876543210",
+            "messageUri": "/customs/transits/movements/arrivals/0123456789abcdedf/messages/fedcba9876543210",
+            "arrivalId": "0123456789abcdedf",
+            "messageId": "fedcba9876543210",
+            "messageType": "IE025",
             "notificationType": "MESSAGE_RECEIVED"
 } 
 ```
@@ -301,6 +324,7 @@ Submission notification push notifications must conform to the following JSON sc
   "id": "https://developer.service.hmrc.gov.uk/common-transit-convention-traders/push-notification-submission-notification.json",
   "required": [
     "messageUri",
+    "messageId",
     "notificationType",
     "response"
   ],
@@ -308,6 +332,18 @@ Submission notification push notifications must conform to the following JSON sc
     "messageUri": {
       "type": "string",
       "description": "URI of the message."
+    },
+    "departureId": {
+      "type": "string",
+      "description": "ID of the movement if it's a departure."
+    },
+    "arrivalId": {
+      "type": "string",
+      "description": "ID of the movement if it's an arrival."
+    },
+    "messageId": {
+      "type": "string",
+      "description": "ID of the message that is being submitted."
     },
     "notificationType": {
       "type": "string",
@@ -347,6 +383,8 @@ Below are examples of submission notification push notifications for different s
 {
    "messageUri": "/customs/transits/movements/departures/6482f76c21a8596e/messages/6482f76c564b0f5f",
    "notificationType": "SUBMISSION_NOTIFICATION",
+   "departureId": "6482f76c21a8596e",
+   "messageId": "6482f76c564b0f5f",
    "response": {
      "message": "The message 6482f76c564b0f5f for movement 6482f76c21a8596e was successfully processed",
      "code": "SUCCESS"
@@ -359,6 +397,8 @@ Below are examples of submission notification push notifications for different s
 ```json
 {
    "messageUri": "/customs/transits/movements/departures/6482f76c21a8596e/messages/6482f76c564b0f5f",
+   "departureId": "6482f76c21a8596e",
+   "messageId": "6482f76c564b0f5f",
    "notificationType": "SUBMISSION_NOTIFICATION",
    "response": {
      "message": "LRN large-test-47-XI-3 has previously been used and cannot be reused",
@@ -371,8 +411,10 @@ Below are examples of submission notification push notifications for different s
 
 ```json
 {
-   "messageUri": "/customs/transits/movements/departures/6482f76c21a8596e/messages/6482f76c564b0f5f",
+   "messageUri": "/customs/transits/movements/arrivals/6482f76c21a8596e/messages/6482f76c564b0f5f",
    "notificationType": "SUBMISSION_NOTIFICATION",
+   "arrivalId": "6482f76c21a8596e",
+   "messageId": "6482f76c564b0f5f",
    "response": {
      "message": "Request failed schema validation",
      "code": "SCHEMA_VALIDATION",
