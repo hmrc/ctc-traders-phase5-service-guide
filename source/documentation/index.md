@@ -119,6 +119,7 @@ These journeys show examples of use:
 
 - [upload files for large messages](documentation/upload-files-for-large-messages.html)
 
+- [complete a transit declaration](documentation/complete-transit-declaration.html)
 - [submit a transit declaration](documentation/submit-transit-declaration.html)
 - [query declarations sent](documentation/query-declarations-sent.html)
 - [submit message related to a departure](documentation/submit-message-related-to-departure.html)

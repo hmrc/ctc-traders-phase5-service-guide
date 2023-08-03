@@ -1,0 +1,1998 @@
+---
+title: Complete transit declaration | CTC Traders API phase 5 service guide
+weight: 4
+description: Software developers, designers, product owners or business analysts. Send departure and arrival movement notifications to the NCTS.
+---
+
+# Complete transit declaration
+
+....
+
+<p class="s4"> </p>
+<p> </p>
+<table cellspacing="0">
+<tbody>
+<tr>
+<th>Field Name</th>
+<th>Transition Period</th>
+<th>Post-Transition Period (NCTS5 final state)</th>
+<th>Contents</th>
+</tr>
+<tr>
+<td><strong> MESSAGE </strong></td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td> </td>
+</tr>
+<tr>
+<td>- Message sender</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td>Recommendation: Enter the EORI number of the organisation (declarant) that is physically sending the message.</td>
+</tr>
+<tr>
+<td>- Message recipient</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td>Enter prefix <code>NTA.GB</code> for GB departures or <code>NTA.XI</code> for XI departures.</td>
+</tr>
+<tr>
+<td>- Preparation date and time</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td>Enter as appropriate: <code>YYYY-MM-DDThh:mm:ss</code>.</td>
+</tr>
+<tr>
+<td>- Message identification</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td> 
+<table width="813">
+<tbody>
+<tr>
+<td width="813">(Application software-generated reference.)</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>- Message type</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td> Enter <code>CC015C</code>.</td>
+</tr>
+<tr>
+<td>- Correlation identifier</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">D</td>
+<td> 
+<table width="813">
+<tbody>
+<tr>
+<td width="813">Post-transition: if declaration is in set CL610, this field is required; but if declaration is in set CL385, this field is not to be used. Otherwise, this field is optional.</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td><strong> - TRANSIT OPERATION </strong></td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td> </td>
+</tr>
+<tr>
+<td>- - LRN</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td> 
+<table width="813">
+<tbody>
+<tr>
+<td width="813">Enter declarant&rsquo;s own reference number. No strict format, but must not exceed 22 characters. This must be unique for every declaration.</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>- - Declaration type</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td> 
+<table width="813">
+<tbody>
+<tr>
+<td width="813">Enter the declaration type: `T1` (External transit), `T2` (Internal union transit), `T` (Mixed T1 and T2), `TIR` (Transport International Routier Carnet).</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>- - Additional declaration type</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td> 
+<table width="813">
+<tbody>
+<tr>
+<td width="813">Enter `A` for a standard depature (that is, the goods are ready for presentation), or `D` for a pre-lodged departure (that is, goods are not yet available for presentation and the declaration is being pre-lodged in advance).</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>- - TIR Carnet number</td>
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">D</td>
+<td> 
+<table width="813">
+<tbody>
+<tr>
+<td width="813">Do not use unless the `Declaration type` is set to `TIR`, which requires you to enter the TIR carnet number.</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>- - Presentation of the goods date and time</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+<td> 
+<table width="813">
+<tbody>
+<tr>
+<td width="813">(Enter as appropriate.)</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>- - Security</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td> 
+<table width="813">
+<tbody>
+<tr>
+<td width="813">Specify whether the declaration contains any safety and security data for consideration as EXS, ENS, or both (that is, creation of a TSAD). Enter `0` for no S&amp;S data, `1` for ENS data, `2 `for EXS, or`3` for both ENS and EXS data. <strong>Note:</strong> The UK does not currently support the use of TSADs.</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>- - Reduced dataset indicator</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td> 
+<table width="813">
+<tbody>
+<tr>
+<td width="813">Indicate the use of reduced data set. This  field can be used only by an  airline, shipping operator, or rail freight operator with prior authorisation from HMRC. If permitted, enter `1` to indicate the use of reduced data set. </td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>- - Specific circumstance indicator</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+<td> 
+<table width="813">
+<tbody>
+<tr>
+<td width="813">Context: exit summary declarations. Enter `XXX` to indicate Authorised Economic Operator or `A20` to indicate express consignment.</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>- - Communication language at departure</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">O</td>
+<td> 
+<table width="813">
+<tbody>
+<tr>
+<td width="813">Enter the relevant format 2-character ISO country code.</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>- - Binding itinerary</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">R</td>
+<td> 
+<table width="813">
+<tbody>
+<tr>
+<td width="813">Indicate the prescribed route by either the transit holder or office of departure, as appropriate.</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td>- - Limit date</td>
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">D</td>
+<td> 
+<table width="813">
+<tbody>
+<tr>
+<td width="813">Applicable only for simplified procedure departures. Enter the date by which the consignment is expected to arrive and be processed by the office of destination. Optional for pre-lodged departures (see Transit Operation/Additional declaration type). </td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td><strong> - AUTHORISATION </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Type</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - CUSTOMS OFFICE OF DEPARTURE </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - CUSTOMS OFFICE OF DESTINATION (DECLARED) </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - CUSTOMS OFFICE OF TRANSIT (DECLARED) </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Arrival date and time (estimated)</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - CUSTOMS OFFICE OF EXIT FOR TRANSIT (DECLARED) </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - HOLDER OF THE TRANSIT PROCEDURE </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td colspan="1"> </td>
+</tr>
+<tr>
+<td>- - TIR holder identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td colspan="1"> </td>
+</tr>
+<tr>
+<td>- - Name</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td colspan="1"> </td>
+</tr>
+<tr>
+<td><strong> - - ADDRESS </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Street and number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td colspan="1"> </td>
+</tr>
+<tr>
+<td>- - - Postcode</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - City</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Country</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - CONTACT PERSON </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Name</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Phone number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - E-mail address</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - REPRESENTATIVE </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Status</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - CONTACT PERSON </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Name</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Phone number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - E-mail address</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - GUARANTEE </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Guarantee type</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Other guarantee reference</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - GUARANTEE REFERENCE </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - GRN</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Access code</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Amount to be covered</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Currency</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - CONSIGNMENT </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Country of dispatch</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Country of destination</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Container indicator</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Inland mode of transport</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Mode of transport at the border</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Gross mass</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - Reference number UCR</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - CARRIER </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - CONTACT PERSON </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Name</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Phone number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - E-mail address</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - CONSIGNOR </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Name</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - ADDRESS </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Street and number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Postcode</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - City</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Country</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - CONTACT PERSON </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Name</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td colspan="1" rowspan="1"> </td>
+</tr>
+<tr>
+<td>- - - - Phone number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - E-mail address</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td colspan="1"> </td>
+</tr>
+<tr>
+<td><strong> - - CONSIGNEE </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Name</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - ADDRESS </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Street and number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Postcode</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - City</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Country</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - ADDITIONAL SUPPLY CHAIN ACTOR </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Role</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - TRANSPORT EQUIPMENT </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Container identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Number of seals</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - SEAL </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Identifier</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - GOODS REFERENCE </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Declaration goods item number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - LOCATION OF GOODS </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Type of location</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Qualifier of identification</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Authorisation number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Additional identifier</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - UN LOCODE</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - CUSTOMS OFFICE </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - GNSS </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Latitude</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Longitude</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - ECONOMIC OPERATOR </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - ADDRESS </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Street and number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Postcode</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - City</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Country</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - POSTCODE ADDRESS </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - House number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Postcode</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Country</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - CONTACT PERSON </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Name</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Phone number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - E-mail address</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - DEPARTURE TRANSPORT MEANS </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Type of identification</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Nationality</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - COUNTRY OF ROUTING OF CONSIGNMENT </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Country</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - ACTIVE BORDER TRANSPORT MEANS </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Customs office at border reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Type of identification</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Nationality</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Conveyance reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - PLACE OF LOADING </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - UN LOCODE</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Country</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Location</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - PLACE OF UNLOADING </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - UN LOCODE</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Country</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Location</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - PREVIOUS DOCUMENT </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Type</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Complement of information</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - SUPPORTING DOCUMENT </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Type</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Document line item number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Complement of information</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - TRANSPORT DOCUMENT </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Type</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - ADDITIONAL REFERENCE </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Type</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - ADDITIONAL INFORMATION </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Code</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Text</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - TRANSPORT CHARGES </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Method of payment</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - HOUSE CONSIGNMENT </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Country of dispatch</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Gross mass</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - Reference number UCR</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - CONSIGNOR </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Name</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - - ADDRESS </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Street and number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Postcode</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - City</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Country</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - - CONTACT PERSON </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Name</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td colspan="1"> </td>
+</tr>
+<tr>
+<td>- - - - - Phone number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td colspan="1"> </td>
+</tr>
+<tr>
+<td>- - - - - E-mail address</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td colspan="1"> </td>
+</tr>
+<tr>
+<td><strong> - - - CONSIGNEE </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td colspan="1"> </td>
+</tr>
+<tr>
+<td>- - - - Name</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td colspan="1"> </td>
+</tr>
+<tr>
+<td><strong> - - - - ADDRESS </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Street and number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Postcode</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - City</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Country</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - ADDITIONAL SUPPLY CHAIN ACTOR </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Role</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - DEPARTURE TRANSPORT MEANS </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Type of identification</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Nationality</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - PREVIOUS DOCUMENT </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Type</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Complement of information</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - SUPPORTING DOCUMENT </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Type</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Document line item number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Complement of information</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - TRANSPORT DOCUMENT </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Type</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - ADDITIONAL REFERENCE </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Type</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - ADDITIONAL INFORMATION </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Code</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Text</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - TRANSPORT CHARGES </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Method of payment</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - CONSIGNMENT ITEM </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Goods item number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Declaration goods item number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Declaration type</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Country of dispatch</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Country of destination</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - Reference number UCR</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - - CONSIGNEE </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Name</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - - - ADDRESS </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - - Street and number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - - Postcode</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - - City</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - - Country</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - - ADDITIONAL SUPPLY CHAIN ACTOR </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Role</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Identification number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - - COMMODITY </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Description of goods</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - CUS code</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - - - COMMODITY CODE </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - - Harmonized System sub-heading code</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - - Combined nomenclature code</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - - - DANGEROUS GOODS </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - - UN Number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - - - GOODS MEASURE </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - - Gross mass</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td colspan="1"> </td>
+</tr>
+<tr>
+<td>- - - - - - Net mass</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td colspan="1"> </td>
+</tr>
+<tr>
+<td>- - - - - - Supplementary units</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td colspan="1"> </td>
+</tr>
+<tr>
+<td><strong> - - - - PACKAGING </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Type of packages</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Number of packages</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Shipping marks</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - - PREVIOUS DOCUMENT </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Type</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Goods item number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Type of packages</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Number of packages</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Measurement unit and qualifier</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Quantity</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Complement of information</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - - SUPPORTING DOCUMENT </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Type</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Document line item number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Complement of information</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - - TRANSPORT DOCUMENT </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Type</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - - ADDITIONAL REFERENCE </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Type</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Reference number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - - ADDITIONAL INFORMATION </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Sequence number</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Code</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Text</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td><strong> - - - - TRANSPORT CHARGES </strong></td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+<tr>
+<td>- - - - - Method of payment</td>
+<td style="text-align: center;"> </td>
+<td style="text-align: center;"> </td>
+<td> </td>
+</tr>
+</tbody>
+</table>
