@@ -105,20 +105,23 @@ Before sending any requests to CTC Traders API v2.0, you should ensure that you 
 
 ## Applying for production credentials
 
-Before you can use the production environment for CTC Traders API v2.0, you must:
+Before you can use the production environment for CTC Traders API v2.0, you must apply for production credentials. 
 
-1. Complete the CTC Traders API Application for Production Credentials Checklist (pending), which involves submitting test results that are no more than 14 days old (see testing guide).
-2. Use your [developer account](/developer/login) to apply for production credentials.
+Before you can apply for production credentials, you must complete the following:
 
+- accreditation testing
+- an application form
+
+For more information about how to apply for production credentials for the API, see [CTC Traders API phase 5 testing guide](/guides/ctc-traders-phase5-testing-guide/).
+
+Use your [developer account](/developer/login) to apply for production credentials.
 
 ## User journeys
 
 These journeys show examples of use:
 
 - [developer setup](documentation/developer-setup.html)
-
 - [upload files for large messages](documentation/upload-files-for-large-messages.html)
-
 - [submit a transit declaration](documentation/submit-transit-declaration.html)
 - [query declarations sent](documentation/query-declarations-sent.html)
 - [submit message related to a departure](documentation/submit-message-related-to-departure.html)
