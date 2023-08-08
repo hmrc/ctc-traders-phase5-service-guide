@@ -130,6 +130,24 @@ These journeys show examples of use:
 - [submit message related to an arrival](documentation/submit-message-related-to-arrival.html)
 - [get notifications](documentation/get-notifications.html) 
 
+## API endpoints quick reference
+
+The base URLs of the sandbox and production environments are as follows.
+
+| Environment | Base URL |
+| ----------- | -------- |
+| Sandbox | `https://test-api.service.hmrc.gov.uk/` |
+| Production | `https://api.service.hmrc.gov.uk/` |
+
+The following table relates NCTS5 message types to API endpoints.
+
+| Message types | Action | Desccription |
+| ------------- | ------ | ------------ |
+| IE015 | `POST /customs/transits/movements/departures` | Send a declaration data message. |
+| IE013, IE014, IE170 | `POST /customs/transits/movements/departures/{departureId}/messages` | Send a message related to a departure. |
+| IE007 | `POST /customs/transits/movements/arrivals` | Send an arrival notification message. |
+| IE044 | `POST /customs/transits/movements/arrivals/{arrivalId}/messages` | Send a message related to an arrival. |
+
 ## Message sizes
 
 CTC Traders API v2.0 supports both small (up to 5MB in size) and large (up to 5MB in size - this limit will later increase to 8MB) messages. You can use the large messages functionality of the API to send both large and small messages, but you cannot use the small messages functionality of the API to send large messages.
