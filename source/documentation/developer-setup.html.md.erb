@@ -226,6 +226,10 @@ Message received push notifications must conform to the following JSON schema.
       "type": "string",
       "description": "The type of message being received."
     },
+    "enrollmentEORINumber": {
+      "type": "string",
+      "description": "The enrollment EORI number that owns the movement. This parameter replaces customerId in CTC Traders API v1.0."
+    },
     "notificationType": {
       "type": "string",
       "enum": [
@@ -257,6 +261,7 @@ Example push notification where the message body is included because the message
 ```json
 {
             "messageUri": "/customs/transits/movements/departures/0123456789abcdedf/messages/fedcba9876543210",
+            "enrollmentEORINumber": "GB0123456789012",
             "departureId": "0123456789abcdedf",
             "messageId": "fedcba9876543210",
             "nessageType": "IE928",
@@ -298,6 +303,7 @@ Push notification where the message body is not included because the message sen
 ```json
 {
             "messageUri": "/customs/transits/movements/arrivals/0123456789abcdedf/messages/fedcba9876543210",
+            "enrollmentEORINumber": "GB0123456789012",
             "arrivalId": "0123456789abcdedf",
             "messageId": "fedcba9876543210",
             "messageType": "IE025",
@@ -345,6 +351,10 @@ Submission notification push notifications must conform to the following JSON sc
       "type": "string",
       "description": "ID of the message that is being submitted."
     },
+    "enrollmentEORINumber": {
+      "type": "string",
+      "description": "The enrollment EORI number that owns the movement. This parameter replaces customerId in CTC Traders API v1.0."
+    },
     "notificationType": {
       "type": "string",
       "enum": [
@@ -383,6 +393,7 @@ Below are examples of submission notification push notifications for different s
 {
    "messageUri": "/customs/transits/movements/departures/6482f76c21a8596e/messages/6482f76c564b0f5f",
    "notificationType": "SUBMISSION_NOTIFICATION",
+   "enrollementEORINumber": "GB0123456789012",
    "departureId": "6482f76c21a8596e",
    "messageId": "6482f76c564b0f5f",
    "response": {
@@ -399,6 +410,7 @@ Below are examples of submission notification push notifications for different s
    "messageUri": "/customs/transits/movements/departures/6482f76c21a8596e/messages/6482f76c564b0f5f",
    "departureId": "6482f76c21a8596e",
    "messageId": "6482f76c564b0f5f",
+   "enrollementEORINumber": "GB0123456789012",
    "notificationType": "SUBMISSION_NOTIFICATION",
    "response": {
      "message": "LRN large-test-47-XI-3 has previously been used and cannot be reused",
@@ -413,6 +425,7 @@ Below are examples of submission notification push notifications for different s
 {
    "messageUri": "/customs/transits/movements/arrivals/6482f76c21a8596e/messages/6482f76c564b0f5f",
    "notificationType": "SUBMISSION_NOTIFICATION",
+   "enrollementEORINumber": "GB0123456789012",
    "arrivalId": "6482f76c21a8596e",
    "messageId": "6482f76c564b0f5f",
    "response": {
