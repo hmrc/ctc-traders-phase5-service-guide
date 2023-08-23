@@ -105,20 +105,23 @@ Before sending any requests to CTC Traders API v2.0, you should ensure that you 
 
 ## Applying for production credentials
 
-Before you can use the production environment for CTC Traders API v2.0, you must:
+Before you can use the production environment for CTC Traders API v2.0, you must apply for production credentials. 
 
-1. Complete the CTC Traders API Application for Production Credentials Checklist (pending), which involves submitting test results that are no more than 14 days old (see testing guide).
-2. Use your [developer account](/developer/login) to apply for production credentials.
+Before you can apply for production credentials, you must complete the following:
 
+- accreditation testing
+- an application form
+
+For more information about how to apply for production credentials for the API, see [CTC Traders API phase 5 testing guide](/guides/ctc-traders-phase5-testing-guide/).
+
+Use your [developer account](/developer/login) to apply for production credentials.
 
 ## User journeys
 
 These journeys show examples of use:
 
 - [developer setup](documentation/developer-setup.html)
-
 - [upload files for large messages](documentation/upload-files-for-large-messages.html)
-
 - [complete a transit declaration](documentation/complete-transit-declaration.html)
 - [submit a transit declaration](documentation/submit-transit-declaration.html)
 - [query declarations sent](documentation/query-declarations-sent.html)
@@ -127,6 +130,24 @@ These journeys show examples of use:
 - [query arrival notifications sent](documentation/query-arrival-notifications-sent.html)
 - [submit message related to an arrival](documentation/submit-message-related-to-arrival.html)
 - [get notifications](documentation/get-notifications.html) 
+
+## API endpoints quick reference
+
+The base URLs of the sandbox and production environments are as follows.
+
+| Environment | Base URL |
+| ----------- | -------- |
+| Sandbox | `https://test-api.service.hmrc.gov.uk/` |
+| Production | `https://api.service.hmrc.gov.uk/` |
+
+The following table relates NCTS5 message types to API endpoints.
+
+| Message types | Action | Desccription |
+| ------------- | ------ | ------------ |
+| IE015 | `POST /customs/transits/movements/departures` | Send a declaration data message. |
+| IE013, IE014, IE170 | `POST /customs/transits/movements/departures/{departureId}/messages` | Send a message related to a departure. |
+| IE007 | `POST /customs/transits/movements/arrivals` | Send an arrival notification message. |
+| IE044 | `POST /customs/transits/movements/arrivals/{arrivalId}/messages` | Send a message related to an arrival. |
 
 ## Message sizes
 
@@ -163,7 +184,7 @@ Your application must comply with [our terms of use](/api-documentation/docs/ter
 - [CTC Traders API v2.0 changelog](https://github.com/hmrc/common-transit-convention-traders/wiki/CTC-Traders-API-v2.0-changelog) (GitHub)
 - [CTC Traders API phase 5 testing guide](/guides/ctc-traders-phase5-testing-guide/)
 - [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis/)
-- [NCTS phase 4-phase 5 data mapping spreadsheet](/guides/ctc-traders-phase5-tis/downloads/NCTS-P5_Datamapping_R3_140323_v1.0.xlsx) (GitHub)
+- [NCTS phase 4-phase 5 data mapping spreadsheet](/guides/ctc-traders-phase5-tis/downloads/NCTS-P5_Datamapping_R4_080823_v1.0.xlsx) (GitHub)
 - [Transit Manual Supplement](https://www.gov.uk/government/publications/transit-manual-supplement) - UK transit procedures (OpenDocument Text document)
 
 ## Getting help and support
