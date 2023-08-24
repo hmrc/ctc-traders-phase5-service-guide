@@ -1,0 +1,2476 @@
+---
+title: Complete transit declaration | CTC Traders API phase 5 service guide
+weight: 4
+description: Software developers, designers, product owners or business analysts. Send departure and arrival movement notifications to the NCTS.
+---
+
+# Complete transit declaration
+
+Learn how to complete a complete an IE015 message for NCTS5.
+
+## Declaration data
+The characteristics of data groups and data elements in those data groups in a ‘Declaration Data‘ E_DEC_DAT (IE015)  message can have any of the following statuses.
+
+| Status                        | Label | Description |
+| ----------------------------- | ----- | ----------- |
+| Mandatory                     | R     | Required    |
+| Optional                      | O     | Optional    |
+| Conditional                   | D     | Dependent   |
+| Do not use (data groups only) | N     | Not usable  |
+
+The following table provides guidelines for completing an IE015 message for NCTS5.
+
+<table style="width: 766px;" cellspacing="0">
+<tbody>
+<tr>
+<th style="width: 150px;"><strong>Field name</strong></th>
+<th style="width: 81px;"><strong>Transition period</strong></th>
+<th style="width: 88px;"><strong>Post-transition period</strong></th>
+<th style="width: 33.0078px;"><strong>Optionality change</strong></th>
+<th style="width: 398.992px;"><strong>Contents</strong></th>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>MESSAGE</strong></td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- Message sender</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Recommendation: Enter the EORI number of the organisation (declarant) that is physically sending the message.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- Message recipient</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter prefix <code>NTA.GB</code> for a GB departure or <code>NTA.XI</code> for an XI departure.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- Preparation date and time</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter as appropriate (format: <code>YYYY-MM-DDThh:mm:ss</code>).</td>
+</tr>
+<tr>
+<td style="width: 150px;">- Message identification</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">(Application software-generated reference.)</td>
+</tr>
+<tr>
+<td style="width: 150px;">- Message type</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter <code>CC015C</code>.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- Correlation identifier</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Post-transition: if declaration is in set CL610, this data element is required; but if declaration is in set CL385, this data element must not be used. Otherwise, this data element is optional.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- TRANSIT OPERATION</strong></td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - LRN</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter declarant's own reference number. No strict format, but must not exceed 22 characters. This must be unique for every declaration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Declaration type</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the declaration type: <code>T1</code> (External transit), <code>T2</code> (Internal union transit), <code>T</code> (Mixed T1 and T2), <code>TIR</code> (Transport International Routier Carnet).</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Additional declaration type</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter <code>A</code> for a standard depature (that is, the goods are ready for presentation), or <code>D</code> for a pre-lodged departure (that is, goods are not yet available for presentation and the declaration is being pre-lodged in advance).</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - TIR Carnet number</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Do not use unless the `Declaration type` is set to <code>TIR</code>, which requires you to enter the TIR carnet number.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Presentation of the goods date and time</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">(Enter as appropriate.)</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Security</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Specify whether the declaration contains any safety and security data for consideration as EXS, ENS, or both (that is, creation of a TSAD). Enter <code>0</code> for no S&amp;S data, <code>1</code> for ENS data, <code>2</code> for EXS, or <code>3</code> for both ENS and EXS data.<br /><br /><strong>Note:</strong> The UK does not currently support the use of TSADs.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Reduced dataset indicator</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Indicate the use of reduced data set. This data element can be used only by an airline, shipping operator, or rail freight operator with prior authorisation from HMRC.<br /><br />If permitted, enter <code>1</code> to indicate the use of reduced data set.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Specific circumstance indicator</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Context: exit summary declarations. Enter <code>XXX</code> to indicate Authorised Economic Operator or <code>A20</code> to indicate express consignment.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Communication language at departure</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the relevant format 2-character ISO country code.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Binding itinerary</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Indicate the prescribed route by either the transit holder or office of departure, as appropriate.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Limit date</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Applicable only for simplified procedure departures. Enter the date by which the consignment is expected to arrive and be processed by the office of destination.<br /><br />Optional for pre-lodged departures (see Transit Operation/Additional declaration type).</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- AUTHORISATION</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Use this data group to indicate the use of simplified procedure at departure and/or any other authorisation the transit holder wishes to apply to the movement.<br /><br />You can use any combination of authorisations, but each authorisation requires a separate data group with an appropriate sequence number.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Type</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Indicate the type of simplification that you have been authorised for and wish to use. You can combine use of authorisation types, for example, authorised consignor at departure in conjunction with authorisation to use reduced dataset.<br /><br />Enter <code>C521</code> to indicate use of authorised consignor for simplified procedure at departure.<br /><br />Enter <code>C523</code> to indicate use of authorisation to use seals of specific type.<br /><br />Enter <code>C524</code> to indicate use of authorisation for reduced dataset.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Reference number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the authorisation number that was allocated to the consignor when approved to use transit simplification (format: <code>AUTHXXX</code>). This is validated by NCTS.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- CUSTOMS OFFICE OF DEPARTURE</strong></td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Reference number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">This is the office situated in the country where the transit procedure starts. Enter the code in the required format. For example, if the movement starts at Dover port, enter <code>GB000060</code>, and so on.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- CUSTOMS OFFICE OF DESTINATION (DECLARED)</strong></td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Reference number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">This is the office situated in the country where the transit procedure ends. Enter the code in the correct format, for example, <code>IT071100</code>.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- CUSTOMS OFFICE OF TRANSIT (DECLARED)</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">This data group is required for all GB movements that have a different country of destination. This data group is also required where movements start in XI and either transit through or end in GB mainland.<br /><br />This data group is optional for national movements, that is, GB to GB or XI to XI.<br /><br />This data group cannot be used for TIR procedure movements because TIR movements can be made in NCTS only for the portion of the journey that is within the territory of the EU.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Reference number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the code in the correct format, for example, <code>CH006521</code>. Movements departing GB must have a Transit Office reference number that does not start with prefix GB.<br /><br />Movements departing XI that enter GB must have a Transit Office reference number that starts with the prefix GB.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Arrival date and time (estimated)</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Post-transition, this data item is required where ENS data is declared, indicated by <code>1</code> or <code>3</code> (see Transit Operation/Security). Otherwise, it is optional.<br /><br />During transition, this data item is required where ENS and EXS data are declared, indicated by <code>1</code>, <code>2</code>, or <code>3</code>(see Transit Operation/Security) and the Office of Transit is in the EU but the Office of Departure is outside EU. Otherwise, it is optional.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- CUSTOMS OFFICE OF EXIT FOR TRANSIT (DECLARED)</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">This is a new office role named 'Office of Exit for Transit' to perform safety and security checks of the movement before it exits the Security Area, for example, XI departures or GB departures that transit through the European Union to another Common Transit country.<br /><br /> <strong>Important:</strong> Use Customs Office of Exit for Transit only if (a) the movement is departing the EU security zone (the Customs Office of Exit for Transit will be the office through which the movement leaves the security zone) and (b) the declaration contains Export Summary Declaration (EXS) data.<br /><br /><strong>Note:</strong> This type of declaration is considered to be a TSAD and currently the UK does not support use of TSADs - separate EXS/ENS must be completed as required.<br /><br /> In addition, Office of Exit for Transit cannot be used for TIR type departures.<br /><br />This data group is optional if EXS data is declared (indicated by <code>2</code> or <code>3</code> - see Transit Operation/Security) and the goods are leaving the security zone. Otherwise, do not use this data group.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data item is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Reference number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the code in the correct format, for example, <code>XI000142</code>.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- HOLDER OF THE TRANSIT PROCEDURE</strong></td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Previously known as 'Principal'.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Identification number</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;" colspan="1">Where used, enter a GB EORI number for a GB departure or an XI EORI number for an XI departure.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - TIR holder identification number</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;" colspan="1">Required only if the declaration type is <code>TIR</code>. Enter the TIR holder's number. Otherwise, do not use this data element.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Name</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;" colspan="1">If an 'Identification number' has been entered above (a GB EORI number for a GB departure or an XI EORI number for XI departure), this data group is not required.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - ADDRESS</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">If an 'Identification number' has been entered above (a GB EORI number for a GB departure or an XI EORI number for an XI departure), this data group is not required.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Street and number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;" colspan="1">Enter appropriate details from transit holder's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Postcode</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Required for GB and XI addresses. Otherwise, enter a postcode if the transit holder is located in a country that uses postcodes.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - City</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;" colspan="1">Enter appropriate details from transit holder's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Country</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter appropriate details from transit holder's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - CONTACT PERSON</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Use this sub-data group only for communications purposes.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Name</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter an identifiable contact, preferably the full name.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Phone number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter a phone number, including the area code, for contact person.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - E-mail address</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the email address of the contact person.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- REPRESENTATIVE</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">This data group may be used if the transit holder has appointed a direct representative.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Identification number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">For a GB departure, enter a GB EORI number. For an XI departure, enter either an XI or EU EORI number.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Status</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Can only be used for direct representation (within the meaning of Article 18(1) of the Code).</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - CONTACT PERSON</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Information recorded under this data group is used only for communication purposes. The specified contact person has no legal liabilities.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Name</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter an identifiable contact, preferably the full name.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Phone number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter a phone number, including the area code, for the contact person.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - E-mail address</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the email address of the contact person.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- GUARANTEE</strong></td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Guarantee type</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the guarantee type. Codes for guarantee types are <code>0</code> (Guarantee wavier), <code>1</code> (Comprehensive guarantee), <code>2</code> (Individual guarantee), <code>3</code> (Individual guarantee in the form of cash), <code>4</code> (Individual guarantee in the form of vouchers), <code>5</code> (Guarantee waiver), <code>8</code> (Guarantee not required for certain public bodies), <code>9</code> (Individual guarantee with multiple usage), <code>A</code> (Guarantee waiver by agreement), <code>B</code> (TIR).</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Other guarantee reference</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the other guarantee reference number in this data element if the 'Guarantee type' data element contains codes <code>3</code> or <code>8</code>. Otherwise, do not use this data element.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - GUARANTEE REFERENCE</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">This data group is required if 'Guarantee type' data element contains codes <code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, or <code>9</code>. Otherwise, do not use this data element.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - GRN</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the guarantee reference number in this data element if the 'Guarantee type' data element contains codes <code>0</code>, <code>1</code>, <code>2</code>, <code>4</code>, or <code>9</code>. Otherwise, do not use this data element.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Access code</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter your 4-digit confidential access code, which corresponds to your guarantee reference number.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Amount to be covered</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">For type <code>0</code>, <code>1</code>, <code>2</code>, <code>4</code> and <code>9</code> guarantees: UK guarantees &ndash; calculate and enter the appropriate liability amount. This data element must be completed.<br /><br />If not completed, a GBP equivalent of &euro;10,000 will be automatically input by the system and the value in GBP will be displayed after the declaration is accepted.<br /><br /><strong>Note:</strong> This auto insertion functionality may not be available initially at UK NCTS5 go-live.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Currency</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- CONSIGNMENT</strong></td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Country of dispatch</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the country code where the goods' journey started. This may not necessarily be where the goods entered transit. For example, the goods could have started their journey in the United States but entered transit in GB upon arrival.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Country of destination</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the country code of the goods' ultimate destination. This may not necessarily be where the goods end the transit procedure because they may continue their journey to a destination outside of CTC countries.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Container indicator</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">This data element is required unless the declaration is pre-plodged (type D). Enter to <code>1</code> indicate that the goods are in a container.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Inland mode of transport</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the code for the means of transport used upon departure. Codes for SAD harmonisation are <code>1</code> (Sea), <code>2</code> (Rail), <code>3</code> (Road), <code>4</code> (Air), <code>5</code> (Post), <code>7</code> (Fixed transport installation), <code>8</code> (Inland waterway), and <code>9</code> (Own propulsion).</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Mode of transport at the border</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the code for the means of transport that is expected to be used on exit from the customs territory of the UK or EU. Codes for SAD harmonisation are <code>1</code> (Sea), <code>2</code> (Rail), <code>3'</code>(Road), <code>4</code> (Air), <code>5</code> (Post), <code>7</code> (Fixed transport installation), <code>8'</code>(Inland waterway), and <code>9</code> (Own propulsion).</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Gross mass</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the gross mass in kilograms (kg). For a multi-item declaration, this figure must accurately represent the total gross mass of all the items.<br /><br /><strong>Note:</strong> Gross mass is the aggregate mass of the goods with all packaging, excluding containers and transport equipment.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - Reference number UCR</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Unique commercial reference number.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - CARRIER</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Required if the carrier is different to the 'Holder of the Transit Procedure'.<br /><br /><strong>Note:</strong> Do not use this data element if they are identical.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Identification number</td>
+<td style="text-align: center; width: 81px;">&nbsp;</td>
+<td style="text-align: center; width: 88px;">&nbsp;</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter either the EORI number or the Trader Identification Number (TIN) of the carrier.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - CONTACT PERSON</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Information recorded under this data group is used only for communication purposes. The specified contact person will not have any legal liabilities.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Name</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter an identifiable contact, preferably the full name.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Phone number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter a phone number, including the area code, for the contact person.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - E-mail address</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the email address of the contact person.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - CONSIGNOR</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Use this data group if there is only one party consigning the goods.<br /><br /><strong>Note:</strong> If this data group is used, consignor data is not allowed at house consignment level.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Identification number</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">For a GB departure, this must be a GB EORI number. For an XI departure, this must be an XI or EU EORI number.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Name</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">If a national identification number is entered, this data group is not required.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - ADDRESS</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">If a national identification number is entered, this data group is not required.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Street and number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter appropriate details from transit holder's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Postcode</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Required for GB and XI postcodes. For other countries, enter a value if the transit holder is located in a country that uses postcodes.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - City</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter appropriate details from transit holder's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Country</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter appropriate details from transit holder's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - CONTACT PERSON</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Name</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter an identifiable contact, preferably the full name.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Phone number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter a phone number, including the area code, for the contact person.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - E-mail address</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the email address of the contact person.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - CONSIGNEE</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Use this data group if there is only one party to whom the goods are consigned and the country of destination is a Common Transit country. Otherwise, declare consignee data at house consignment level.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Identification number</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter either an XI, GB, or EU EORI number; or a Common Transit country Trader Identification Number (TIN).</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Name</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">This data group is required if the office of departure is GB. It is not required if both the office of departure is XI and the identification number of the consignee is an EU or XI EORI number.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - ADDRESS</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">This data group is required if the office of departure is GB. It is not required if both the office of departure is XI and the identification number of the consignee is an EU or XI EORI number.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Street and number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter appropriate details from consignee's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Postcode</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter appropriate details from consignee's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - City</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter appropriate details from consignee's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Country</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter appropriate details from consignee's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - ADDITIONAL SUPPLY CHAIN ACTOR</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Use this data group to demonstrate that the entire supply chain is covered by holders of the Authorised Economic Operator (AEO) status.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Role</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Required if 'Additional Supply Chain Actor' data group is used.<br /><br />Enter the correct code(s) from CL704: <code>CS</code> (Consolidator), <code>FW</code> (Freight Forwarder), <code>MF</code> (Manufacturer), <code>WH</code> (Warehouse Keeper) to specify role of additional supply chain actor.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Identification number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Required if 'Additional Supply Chain Actor' data group is used. Enter an EORI number or third-country unique identification number.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - TRANSPORT EQUIPMENT</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">This data group is required If 'Container Indicator' data element (above) is set to 1' (goods are in a container).</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Container identification number</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Required if 'Container Indicator' is any value other than <code>0</code>. Otherwise, do not use this data element.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Number of seals</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Number of seals on container.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - SEAL</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">This data group is required If 'Number of seals' exceeds <code>0</code>.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Identifier</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">This data element is required If 'Number of seals' exceeds <code>0</code>. Enter an alphanumeric reference to identify seals.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - GOODS REFERENCE</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">For each container, provide the goods item number(s) for the goods transported on that container.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Declaration goods item number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">For each container, provide the goods item number(s) for the goods transported on that container.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - LOCATION OF GOODS</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">This data group is required by the UK unless the declaration is a pre-lodged declaration. If the data group is not supplied in the IE015 message, it must be provided in IE170 presentation message.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Type of location</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Options are <code>A</code> - Sub Place (any place designated, approved and controlled by a customs office of departure or destination for the presentation and examination of goods, for the purpose of commencing or ending a transit movement at that office); <br /><code>B</code> - Authorised Place (can be sued only in conjunction with C521 Authorisation in Authorisation data group; instead of present the goods at the office of departure, an authorised consignor can present them at a nominated authorised location, which can be the trader's own premises, or a customs controlled area at an office of departure, or other customs approved facilities directly associated with an office of departure; for example, warehouse, DEPS, ERTS, and other temporary storage facilities including unattended or occasionally attended port or airports; authorised locations must be approved by the designated office of departure and must be individually specified in the trader&rsquo;s authorisation);<br /><code>C</code> - Approved Place (for normal procedure movements in accordance with local practice agreed with the office of departure); <code>D</code> - Other (not currently used in the UK).</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Qualifier of identification</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">For location type <code>A</code>, enter the code <code>U</code>, which is referred to as UN LOCODE.<br /><br />For location type <code>B</code>, enter the code <code>Y</code>, which is referred to as authorisation number.<br /><br />For location type <code>C</code>, enter the code as agreed with office of departure - for an overview of possible combinations, see the Declaration Completion Guide.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Authorisation number</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter authorised location code if location type is set to <code>B</code>.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Additional identifier</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">(Not currently used by the UK.)</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - UN LOCODE</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">The UN geographic coding scheme number relating to the location. Enter the UN Locode if location type is set to 'A'.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - CUSTOMS OFFICE</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Details about a customs office where goods would be available for further customs control.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Reference number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the appropriate customs office code for the intended office.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - GNSS</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Global Navigation Satellite System (GNSS) coordinates to specify where the goods will be available.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Latitude</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the GNSS latitude coordinates of the location.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Longitude</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the GNSS longitude coordinates of the location.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - ECONOMIC OPERATOR</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Details about the premises of an economic operator where the goods may be controlled.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Identification number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the identification number of the economic operator.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - ADDRESS</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Details about the address where the goods may be identified and controlled if 'Qualifier of identification' is set to <code>Z</code>.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Street and number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter appropriate details from the location's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Postcode</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter appropriate details from the location's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - City</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter appropriate details from the location's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Country</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter appropriate details from the location's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - POSTCODE ADDRESS</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">If 'Qualifier of identification' is set to <code>T</code> (postal code), this sub-data group may be used to provide a postcode and house number where the goods may be controlled.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - House number</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter house number of the address that the postcode is being used to specify.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Postcode</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the postcode of the address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Country</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the country of the address.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - CONTACT PERSON</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">If 'Qualifier of identification' is set to <code>V</code> (customs office), this data element is not required.</code></td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Name</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter an identifiable contact, preferably the full name.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Phone number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter a phone number, including the area code, for contact person.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - E-mail address</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the email address of the contact person.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - DEPARTURE TRANSPORT MEANS</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Do not use this data group for postal consignments or for goods carried by fixed transport installations.<br /><br />If goods are carried in multimodal transport units, such as containers, swap bodies, and semi-trailers, customs authorities may waive the requirement for the holder of the transit procedure to provide this information if it is not possible to provide the identity and nationality of the means of transport when the goods are released for transit.<br /><br />Multimodal transport units have unique numbers indicated in data element 'Container identification number'.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Type of identification</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the correct code from CL750 to specify the identity of the means of transport.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Identification number</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the identification of the means of transport to which the goods have been directly loaded at the time of export or transit formalities.<br /><br />Enter the name of the ship; or prefix and flight number of the aircraft; or the number of the rail wagon; or the registration number of the road vehicle on which the goods are directly loaded when the goods are presented at the office of departure.<br /><br />If the departure transport means is <code>ROAD</code>, the maximum multiplicity of departure transport means is <code>3</code>, where each instance may be used to cover tractor unit, trailer, and drag trailer, respectively.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Nationality</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">The nationality of the means of transport or vehicle providing propulsion if there are several means of transport.<br /><br />If a tractor unit and trailer are used and they have differing nationalities, use the nationality of the tractor unit.<br /><br />If the nationality of the tractor unit is not known, enter the nationality of the trailer.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - COUNTRY OF ROUTING OF CONSIGNMENT</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Previously known as 'Binding Itinerary'. Use this data group to specify in chronological order which countries the goods will travel through, including the country of departure and destination.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Country</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the appropriate country codes in the correct sequence.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - ACTIVE BORDER TRANSPORT MEANS</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Do not use this data group for postal consignments or for goods carried by fixed transport installations.<br /><br />If goods are carried in multimodal transport units, such as containers, swap bodies, and semi-trailers, customs authorities may waive the requirement for the holder of the transit procedure to provide this information if it is not possible to provide the identify and nationality of the means of transport when the goods are released for transit.<br /><br />Multimodal transport units have unique numbers indicated in data element 'Container identification number'.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Customs office at border reference number</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter the appropriate customs office code for the customs office at the border on exit from all customs territories the movement passes through.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Type of identification</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">If combined transport is used or several means of transport are used, the active means of transport is the one that propels the whole combination. For example, if a lorry is on a ship, the ship will be the active means of transport.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Identification number</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter the identity of the active means of transport that is expected on exit from the customs territory of the UK or EU.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Nationality</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter the nationality of the active means of transport that is expected on exit from the customs territory of the UK or EU.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Conveyance reference number</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter a reference to identify the journey of the means of transport, such as an IATA flight number, a voyage number, or a trip number.<br /><br />If using air transport and the aircraft operator moves goods under code-sharing or other contracting agreements with partners, use the partners' flight numbers.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - PLACE OF LOADING</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">This data group is required unless completing a declaration for a pre-lodged departure.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - UN LOCODE</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the UN geographic coding scheme number of the location where the goods are to be loaded for transport. Example locations include a shed or a wharf.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Country</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">If a UN Locode is not provided, enter the country code for the location where the goods will be loaded.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Location</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">If a UN Locode is not provided, enter a description for the location where the goods will be loaded.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - PLACE OF UNLOADING</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">This data group is required if a declaration contains ENS data ('Security' under 'Transit Operation' is set to <code>1</code> or <code>3</code>).<br /><br />If the declaration does not contain any S&amp;S data ('Security' under 'Transit Operation' is set to <code>0</code>), do not use this data group. Otherwise, it is optional.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - UN LOCODE</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the UN geographic coding scheme number of the location.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Country</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">If a UN Locode is not provided, enter the country code for the location where the goods will be unloaded.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Location</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">If a UN Locode is not provided, enter a description for the location where the goods will be unloaded.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - PREVIOUS DOCUMENT</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Document indicating previous customs procedure/temporary storage/documents.<br /><br />Optional at consignment and house consignment level.<br /><br />Conditional at house consignment goods item level.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Sequence number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Type</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Use the correct code from CL214 to specify the document type.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Reference number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter a reference number to specify the temporary storage, relevant customs documents, or previous customs procedure. If the transit follows export, enter the MRN of the export declaration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Complement of information</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - SUPPORTING DOCUMENT</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter details about any supporting documents for a declaration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Sequence number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Type</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="width: 88px; text-align: center;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Use the correct code from CL213 to specify the document type.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Reference number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter the identification or reference number for any document or certificate produced in support of a declaration. These documents may be national, international, or union documents.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Document line item number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter the sequential number of the item in the supporting document that corresponds to the item in question.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Complement of information</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - TRANSPORT DOCUMENT</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Use this data group for documents that specify the transport used for a declaration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Sequence number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Type</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Use the correct code from CL754 to specify each document type.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Reference number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter a reference number for each document.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - ADDITIONAL REFERENCE</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Sequence number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Type</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Use the correct code from CL380.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Reference number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter the reference number for the specified type.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - ADDITIONAL INFORMATION</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Use this data group to provide information for which Union Legislation does not specify the appropriate data element.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Sequence number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Code</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Use the correct code from CL239.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Text</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter explanatory text for the specified code.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - TRANSPORT CHARGES</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Use this data group only if a declaration contains safety and security data.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Method of payment</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Use the correct code from CL116.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - HOUSE CONSIGNMENT</strong></td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Use this data group to provide all information about the goods being moved.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Country of dispatch</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter the country code where the goods' journey started. This may not necessarily be where the goods entered transit. For example, the goods could have started their journey in the United States but entered transit in GB upon arrival.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Gross mass</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the gross mass in kilograms (kg) for the house consignment. This figure must accurately represent the total gross mass of all the items in the house consignment.<br /><br /> <strong>Note:</strong> Gross mass is the aggregate mass of the goods with all packaging, excluding containers and transport equipment.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - Reference number UCR</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Unique commercial reference number. This data element cannot be used at this level if already used at 'Consignment' or 'Consignment Item' level.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - CONSIGNOR</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">If there are multiple house consignments and this data group is used, at least one occurrence of the consignor declared at this level must be different from the others.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Identification number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">For a GB departure, this must be a GB EORI number. For an XI departure, this must be either an XI or EU EORI number.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Name</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">If a national identification number is entered, this data group is not required.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - ADDRESS</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">If a national identification number is entered, this data group is not required.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Street and number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter appropriate details from transit holder's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Postcode</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Required for GB and XI postcodes. For other countries, enter a value if the transit holder is located in a country that uses postcodes.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - City</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter appropriate details from transit holder's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Country</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter appropriate details from transit holder's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - CONTACT PERSON</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Use this sub-data group only for communications purposes.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Name</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;" colspan="1">Enter an identifiable contact, preferably the full name.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Phone number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;" colspan="1">Enter a phone number, including the area code, for the contact person.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - E-mail address</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;" colspan="1">Enter the email address of the contact person.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - CONSIGNEE</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Use this data group if the country of destination is not a Common Transit country. If there are multiple house consignments and this data group is used, at least one occurrence of the consignee declared at this level must be different from the others.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Identification number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;" colspan="1">Enter either an EU, GB, or XI EORI number; or a Common Transit country Trader Identification Number (TIN).</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Name</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;" colspan="1">Required if the office of departure is GB. Not required if the office of departure is XI and the identification number is an EU or XI EORI number.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - ADDRESS</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">This data group is required if the office of departure is GB. It is not required if the office of departure is XI and the identification number is an EU or XI EORI number.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Street and number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter appropriate details from consignee's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Postcode</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter appropriate details from consignee's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - City</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter appropriate details from consignee's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Country</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter appropriate details from consignee's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - ADDITIONAL SUPPLY CHAIN ACTOR</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Use this data group if the entire supply chain is covered by holders of the AEO status.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Role</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Required if 'Additional Supply Chain Actor' data group is used. Enter the correct code(s) from CL704: <code>CS</code> (Consolidator), <code>FW</code> (Freight Forwarder), <code>MF</code> (Manufacturer), or <code>WH</code> (Warehouse Keeper) to specify role of additional supply chain actor.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Identification number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Required if 'Additional Supply Chain Actor' data group is used. Enter an EORI number or third-country unique identification number.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - DEPARTURE TRANSPORT MEANS</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Do not use this data group if departure transport means is declared at higher consignment level.<br /><br />At higher consignment level: Do not use this data group for postal consignments or for goods carried by fixed transport installations.<br /><br />If goods are carried in multimodal transport units, such as containers, swap bodies, and semi-trailers, customs authorities may waive the requirement for the holder of the transit procedure to provide this information if it is not possible to provide the identity and nationality of the means of transport when the goods are released for transit.<br /><br />Multimodal transport units have unique numbers indicated in data element 'Container identification number'.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Type of identification</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter the correct code from CL750 to specify the identity of the means of transport.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Identification number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter the identification of the means of transport to which the goods have been directly loaded at the time of export or transit formalities.<br /><br />If there are several means of transport, the vehicle providing the propulsion to the others should be identified.<br /><br />If a tractor and trailer with different registration numbers are being used, enter both alongside the nationality of the tractor.<br /><br />If the registration of the tractor is not known, use the trailer registration number.<br /><br />The following are means of transport types followed by their method of identification: <code>Sea and inland waterway transport</code> - Name of vessel; <code>Air transport</code> - Number and date of flight (if no flight number, provide aircraft registration number); <code>Road transport</code> - Vehicle and/or trailer registration number; <code>Rail transport</code> - Wagon number.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Nationality</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">The nationality of the means of transport or vehicle providing propulsion if there are several means of transport.<br /><br />If a tractor unit and trailer are used and they have differing nationalities, use the nationality of the tractor unit. If the nationality of the tractor unit is not known, enter the nationality of the trailer.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - PREVIOUS DOCUMENT</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Document indicating previous customs procedure/temporary storage/documents. Optional at consignment and house consignment level, and conditional at this level.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Type</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Document type. Use the correct code from CL228.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Reference number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Reference number identifying the temporary storage, relevant customs documents, or previous customs procedure. If the transit follows export, enter the MRN of the export declaration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Complement of information</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - SUPPORTING DOCUMENT</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter details about the supporting documents of a transit declaration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Type</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Document type. Use the correct code from CL213.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Reference number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Identification or reference numbers for documents or certificates produced in support of a declaration. These may be national, international, or union documents.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Document line item number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter the sequential number of the item in the supporting document that corresponds to the item in question.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Complement of information</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - TRANSPORT DOCUMENT</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Use this data group for documents about the means of transport used.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Type</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Document type. Use the correct code from CL754.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Reference number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter reference numbers for transport documents.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - ADDITIONAL REFERENCE</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Type</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Document type. Use the correct code from CL380.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Reference number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter a reference number for the specified document type.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - ADDITIONAL INFORMATION</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Use this data group to provide information for which union legislation does not specify the appropriate data element. Applies to all house consignment data group items at this level.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Code</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Use the correct code from CL239.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Text</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter explanatory text for the specified code.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - TRANSPORT CHARGES</strong></td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Use this data group only if a declaration contains safety and security data. Do not use this data group at this level if transport charges are already specified at consignment level.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Method of payment</td>
+<td style="text-align: center; width: 81px;">N</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Use the correct code from CL116.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - CONSIGNMENT ITEM</strong></td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Goods item number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Each 'Goods item number' is unique for the data group to which it belongs. The 'Goods item number' shall be sequential, starting from <code>1</code> for the first iteration of the data group and increasing by 1 for each iteration.<br /><br />If export is followed by transit, the goods items in this data group must be in the same order as the related export declaration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Declaration goods item number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">This number must be sequential and unique for the entire declaration, that is, this is a master item number count.<br /><br /><strong>Important:</strong> The maximum value is 1999, so a single transit declaration can contain no more than 1,999 goods items in total.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Declaration type</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Specify the declaration type if 'Declaration type' at 'Transit Operation' level is set to 'T' (mixed external transit and internal union transit).</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Country of dispatch</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Do not use this data element if 'Country of Dispatch' is specified at 'Transit Operation' level.<br /><br />Enter the country code where the goods' journey started. This may not necessarily be where the goods entered transit. For example, the goods could have started their journey in the United States but entered transit in GB upon arrival.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Country of destination</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Do not use this data element if 'Country of Dispatch' is specified at 'Transit Operation' level or if 'Country of destination' already declared in the 'Consignment' data group.<br /><br /> Enter the country code of the goods' ultimate destination. This may not necessarily be where the goods end the transit procedure because they may continue their journey to a destination outside of CTC countries.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - Reference number UCR</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Unique commercial reference number. This data element cannot be used at this level if already used at 'Consignment' or 'House Consignment' level.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - CONSIGNEE</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">N</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Use this data group to specify an item-specific consignee.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Identification number</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">N</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter either an EU, GB, or XI EORI number; or a Common Transit country Trader Identification Number (TIN).</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Name</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">N</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Required if the office of departure is GB. Not required if the office of departure is XI and the identification number is an EU or XI EORI number.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - - ADDRESS</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">N</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">This data group is required if the office of departure is GB. It is not required if the office of departure is XI and the identification number is an EU or XI EORI number.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - - Street and number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">N</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter appropriate details from consignee's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - - Postcode</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">N</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter appropriate details from consignee's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - - City</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">N</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter appropriate details from consignee's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - - Country</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">N</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter appropriate details from consignee's address.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - ADDITIONAL SUPPLY CHAIN ACTOR</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Use this data group if the entire supply chain is covered by holders of the Authorised Economic Operator (AEO) status.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Role</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Required if 'Additional Supply Chain Actor' data group is used.<br /><br />Enter the correct code(s) from CL704: <code>CS</code> (Consolidator), <code>FW</code> (Freight Forwarder), <code>MF</code> (Manufacturer), or <code>WH</code> (Warehouse Keeper) to specify role of additional supply chain actor.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Identification number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Required if 'Additional Supply Chain Actor' data group is used. Enter an EORI number or third-country unique identification number.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - COMMODITY</strong></td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Description of goods</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter a normal trade description in sufficiently precise terms to allow immediate and unambiguous identification and classification.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - CUS code</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">The identification number assigned to chemical products in the European Customs Inventory of Chemical Substances (ECICS) database.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - - COMMODITY CODE</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">This data group applies to all GB and XI departures, excluding TIR procedure.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - - Harmonized System sub-heading code</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter an item's commodity code (6 digits).</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - - Combined nomenclature code</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Cannot be used in for GB departures but optional for XI departures. Enter the 2 additional digits of the Combined nomenclature code.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - - DANGEROUS GOODS</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - - UN Number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the correct code from CL101.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - - GOODS MEASURE</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - - Gross mass</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;" colspan="1">Enter the gross mass in kilograms (kg) for the item level. This figure must accurately represent the total gross mass of all the items on the item level.<br /><br /><strong>Note:</strong> Gross mass is the aggregate mass of the goods with all their packaging, excluding containers or transport equipment.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - - Net mass</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;" colspan="1">If the 'Reduced Dataset' under 'Transit Operation' is set to <code>1</code>, do not use this data element. Otherwise, it is optional.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - - Supplementary units</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;" colspan="1">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - PACKAGING</strong></td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Type of packages</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the correct code from CL017.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Number of packages</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the relevant writing-off number of packages.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Shipping marks</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Description of the marks and numbers on packages.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - PREVIOUS DOCUMENT</strong></td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter details about documents indicating previous customs procedure or temporary storage/documents. Optional at consignment and house consignment level, but conditional at this level.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Type</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Use the correct code from CL214.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Reference number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Reference number identifying the temporary storage, relevant customs documents, or previous customs procedure. If the transit follows export, enter the MRN of the export declaration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Goods item number</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Type of packages</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the correct code from CL017.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Number of packages</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Measurement unit and qualifier</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the correct code from CL349.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Quantity</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Complement of information</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - SUPPORTING DOCUMENT</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter details about documents supporting the transit declaration.<br /><br /> <strong>Note:</strong> Use exclusively at this level during the transition period (consignment item level only).</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Type</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the correct code from CL213.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Reference number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Identification or reference numbers for documents or certificates produced in support of the declaration. These may be national, international, or union documents.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Document line item number</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">The sequential number of the item in the supporting document that corresponds to the item in question.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Complement of information</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - TRANSPORT DOCUMENT</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">N</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">N</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Type</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">N</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter the correct code from CL754 for each document type.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Reference number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">N</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter the reference numbers for each transport document.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - ADDITIONAL REFERENCE</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">&nbsp;</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Type</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the correct code from CL380.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Reference number</td>
+<td style="text-align: center; width: 81px;">D</td>
+<td style="text-align: center; width: 88px;">D</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the reference number for the specified type.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - ADDITIONAL INFORMATION</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Use this data group to provide information for which Union Legislation does not specify the appropriate field.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Sequence number</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Sequence numbers specify which instance of the same data element is being referred to. Should be unique for this data group starting from <code>1</code> for the first iteration of the data group and increasing sequentially by 1 for each subsequent iteration.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Code</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">R</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter the correct code from CL239.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Text</td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">O</td>
+<td style="width: 33.0078px; text-align: center;">No</td>
+<td style="width: 398.992px;">Enter explanatory text for the specified code.</td>
+</tr>
+<tr>
+<td style="width: 150px;"><strong>- - - - TRANSPORT CHARGES</strong></td>
+<td style="text-align: center; width: 81px;">O</td>
+<td style="text-align: center; width: 88px;">N</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Use this data group only if a declaration contains Safety and Security data.</td>
+</tr>
+<tr>
+<td style="width: 150px;">- - - - - Method of payment</td>
+<td style="text-align: center; width: 81px;">R</td>
+<td style="text-align: center; width: 88px;">N</td>
+<td style="width: 33.0078px; text-align: center;">Yes</td>
+<td style="width: 398.992px;">Enter the correct code from CL116.</td>
+</tr>
+</tbody>
+</table>
+
+## General declaration concepts
+Learn about the concepts that govern how a transit declaration is created.
+
+### Transition period
+
+The transition period is the period of time during which countries may switch to operating NCTS5 at any point and will run until all countries have switched to operating NCTS5. NCTS operations are currently considered to be in the transition period.
+
+**Note:** The end date of the transition period is 2 December 2024. 
+
+During the transition period, those countries that are operating NCTS5 must do so in transitional mode, which is equivalent to a 'backwards compatibility' mode. This is to ensure that messages can be exchanged between NCTS4 and NCTS5 countries, which is handled by an upgrade/downgrade convertor in the common domain, where messages are exchanged at country to country level. For example, notifying the country of destination that the movement has been released or notifying the country of departure that the movement has arrived, and so on.
+
+The UK’s NCTS5 service will go live during the transition period. 
+
+To ensure backwards compatibility with NCTS4 during transition, special rules and conditions have been defined to restrict/prevent usage of new data fields and some functionality until all countries are operating NCTS5. This allows downgrading of NCTS5 messages to NCTS4.
+
+The prefixes of these rules and conditions are as follows.
+
+| Rule prefix | Description |
+| ----------- | ----------- |
+| B | Restrictive business rules effective during transitional period. |
+| E | Restrictive technical rules effective during transitional period. |
+
+During the transition period, NCTS will observe and apply these business ([Rules B](/guides/ctc-traders-phase5-tis/documentation/rules-b.html)) and technical ([Rules E](/guides/ctc-traders-phase5-tis/documentation/rules-e.html)) rules as defined in the [NCTS Phase 5 technical interface specification](/guides/ctc-traders-phase5-tis/).
+
+### Consignment data group
+
+The restructuring of the IE015 declaration in NCTS5 provides for greater flexibility of consignor, consignee, and goods related documentation on a hierarchical basis.
+
+The NCTS5 transit declaration introduces the ability to specify either single or multiple consignor information to associated single or multiple consignees.
+
+The basic consignment hierarchy is as follows:
+
+1. Consignment
+2. Consignment > House consignment
+3. Consignment > House consignment > Consignment item
+
+#### Consignment
+
+Consignment level provides for master, overarching information about a  movement. For example, if there is only one consignor and/or one consignee, it would be declared at this level. Also, any documentation (previous, supporting, transport, and so on) that applies to the movement as a whole may be declared at this level.
+
+#### House consignment
+
+At least one house consignment level data block must be provided, such as for a single consignor. If a transit movement contains goods from more than one consignor, multiple house consignment data blocks must be used. The same consignor can be used in more than one house consignment block, but at least one of the house consignment blocks must have a different consignor.
+
+Additionally, if there is more than one consignee, house consignment blocks can be used on a per consignee basis to specify individual consignee details only once at this level to cover all the goods in the house consignment block. For example, this would apply if a single consignor is moving goods to multiple consignees. The same consignee can be used in more than one house consignment block, but at least one of the house consignment blocks must have a different consignee.
+
+The benefit of this over current NCTS4 operation is the need to provide the consignee details only once for multiple goods instead of repeating the same data for every goods item entered.
+
+If more than one house consignment block is used, the consignor and/or consignee details at this level must be different to those in at least one other block. In other words, you cannot use two or more house consignment blocks if there is only a single consignor and consignee for the movement, irrespective of whether there are more than 999 items (the limit per house consignment).
+
+The maximum number of house consignments per declaration is 99, so this means that the maximum number of unique consignors and the maximum number of unique consignees per declaration is 99.
+
+#### Consignment item
+
+Consignment Item level is where details of all the goods being moved must be declared insofar as they relate to the consignor and/or consignee declared at the higher consignment or house consignment levels.
+
+Goods must be declared on a line-by-line basis, each with an individual item number, description, packaging details, weight, and commodity code (which is mandatory post-transition) details. Consignee details can be entered per goods item at this level only during the transition period.
+
+Previous document, supporting document, and other supporting documentation can all be declared in the same hierarchal fashion explained above at either consignment, house consignment, or consignment item level depending on the coverage of the documents in relation to the goods items.
+
+#### Example usage
+
+<table>
+<tbody>
+<tr>
+<td>&nbsp;</td>
+<td colspan="2"><strong>Declare consignor(s) at&nbsp;</strong>&nbsp;</td>
+<td colspan="2">&nbsp;<strong>Declare consignee(s) at</strong>&nbsp;</td>
+<td><strong>Maximum total goods items per MRN</strong>&nbsp;</td>
+</tr>
+<tr>
+<td><strong>Goods being moved on behalf of</strong>&nbsp;</td>
+<td><strong>Consignment level</strong></td>
+<td>&nbsp;<strong>House consignment level</strong></td>
+<td>&nbsp;<strong>Consignment level</strong></td>
+<td><strong>House consignment level&nbsp;</strong></td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>Co. A to Co. B</td>
+<td style="text-align: center;">X</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">X</td>
+<td>&nbsp;</td>
+<td>&nbsp;999</td>
+</tr>
+<tr>
+<td>Co. A to (Co. B, Co. C, and so on)</td>
+<td style="text-align: center;">X</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">X</td>
+<td>&nbsp;1,999*</td>
+</tr>
+<tr>
+<td>(Co. A + Co. B, and so on) to Co. C</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">X</td>
+<td>&nbsp;</td>
+<td>&nbsp;1,999*</td>
+</tr>
+<tr>
+<td>Co. A to Co. B and; Co. C to Co. D, and so on</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">X</td>
+<td>&nbsp;</td>
+<td style="text-align: center;">X</td>
+<td>&nbsp;1,999*</td>
+</tr>
+</tbody>
+</table>
+<span>&#42;</span> Although a single declaration can hold up to 99 house consignments and each house consignment can hold up to 999 goods items, the maximum total number of goods items that can be included in a declaration as a whole is 1,999. This is because the declaration goods item number data field (a master count of goods items lines) is restricted to a maximum value of 1,999 due to technical restriction [G0005](/guides/ctc-traders-phase5-tis/documentation/rules-g.html#g0005).
+
+### Authorisation data group
+
+The Authorisation data group is a new addition to NCTS5. It allows the holder of the transit procedure to indicate which transit simplifications they wish to use for the movement that they have been previously authorised for.
+
+Example authorisations include the following.
+
+| Authorisation | Description  |
+| ------------- | ------------ |
+| ACR | Authorisation for the status of authorised consignor for Union transit (Column 9b, Annex A of Delegated Regulation (EU) 2015/2446)  |
+| SSE | Authorisation for the use of seals of a special type (Column 9d, Annex A of Delegated Regulation (EU) 2015/2446) |
+| TRD | Authorisation to use transit declaration with a reduced dataset (Column 9e, Annex A of Delegated Regulation (EU) 2015/2446) |
+| ACE | Authorisation for the status of authorised consignee for Union transit (Column 9c, Annex A of Delegated Regulation (EU) 2015/2446) |
+
+Authorisations can be used individually or combined as appropriate.
+
+For a trader to use any transit simplification that it has been authorised to use, such as Authorised consignor for simplified procedure departure, the correct authorisation details must be present in the Authorisation data group and its usage is validated by NCTS.
+
+Where the declarant wishes to use an Authorisation data block must be created with `Authorisation > Type` entry as follows.
+
+| Authorisation type | Description |
+| ------------------ | ----------- |
+| C521 | Authorised consignor for simplified departure process (IE015) |
+| C522 | Authorised consignee for simplified arrival process (IE007) |
+| C523 | Authorised to use seals |
+| C524 | Authorised to use reduced dataset |
+
+The trader’s authorisation number must also be given in the data field `Authorisation > Reference Number`. This will be the reference number given to the trader when they first applied to use simplifications, an example of which may look like `AUTH123A`.
+
+This should not be confused with the data field `Location of Goods > authorisation number` that indicates the exact location the movement will be departing from/arriving at when using the simplified procedure.
+
+### Location of Goods data group
+
+The Location of Goods data group is used to declare the type and geographical position of the location from which a transit movement is intended to depart. The location types available are the same in NCTS4 and NCTS5, but NCTS5 uses a different naming convention and method for identifying a location type being used.
+
+Location designations have been revised for NCTS5 as follows.
+
+| NCTS4 designation | NCTSS5 designation | NCTS5 identifier  |
+| ----------------- | ------------------ | ----------------- |
+| Customs sub place | Designated location | A |
+| Authorised location code | Authorised place | B |
+| Agreed location | Approved place | C |
+
+You must provide the location of goods before the release of a transit movement, either in an IE015 message for a standard departure or in an IE170 message for a pre-lodged departure. You must specify both the type of location (using a single alphabetic character as shown in the table), and the qualifier of that location. The location qualifier is the means you will use to provide the exact locations, such as  address, UN Locode, and so on.
+
+Only certain qualifiers can be used with specific location types. The following table shows the acceptable location type and qualifier combinations (indicated by square brackets []) permitted for NCTS5.
+
+<table>
+<tbody>
+<tr>
+<td>&nbsp;</td>
+<td style="text-align: center;" colspan="4"><strong>Location type code</strong></td>
+</tr>
+<tr>
+<td><strong>Location qualifier</strong></td>
+<td style="text-align: center;"><strong>A</strong></td>
+<td style="text-align: center;"><strong>B</strong></td>
+<td style="text-align: center;"><strong>C</strong></td>
+<td style="text-align: center;"><strong>D</strong></td>
+</tr>
+<tr>
+<td>T = Postal code</td>
+<td style="text-align: center;">A + T</td>
+<td style="text-align: center;">B + T</td>
+<td style="text-align: center;">[C + T]</td>
+<td style="text-align: center;">[D + T]</td>
+</tr>
+<tr>
+<td>U = UN/Locode</td>
+<td style="text-align: center;">[A + U]</td>
+<td style="text-align: center;">B + U</td>
+<td style="text-align: center;">[C + U]</td>
+<td style="text-align: center;">[D + U]</td>
+</tr>
+<tr>
+<td>V = Customs office identifier</td>
+<td style="text-align: center;">[A + V]</td>
+<td style="text-align: center;">B + V</td>
+<td style="text-align: center;">C + V</td>
+<td style="text-align: center;">D + V</td>
+</tr>
+<tr>
+<td>W = GNSS coordinates</td>
+<td style="text-align: center;">A + W</td>
+<td style="text-align: center;">B + W</td>
+<td style="text-align: center;">[C + W]</td>
+<td style="text-align: center;">[D + W]</td>
+</tr>
+<tr>
+<td>X = EORI number</td>
+<td style="text-align: center;">A + X</td>
+<td style="text-align: center;">B + X</td>
+<td style="text-align: center;">[C + X]</td>
+<td style="text-align: center;">D + X</td>
+</tr>
+<tr>
+<td>Y = Authorisation number</td>
+<td style="text-align: center;">A + Y</td>
+<td style="text-align: center;">[B + Y]</td>
+<td style="text-align: center;">C + Y</td>
+<td style="text-align: center;">D + Y</td>
+</tr>
+<tr>
+<td>Z = Address</td>
+<td style="text-align: center;">A + Z</td>
+<td style="text-align: center;">B + Z</td>
+<td style="text-align: center;">[C + Z]</td>
+<td style="text-align: center;">D + Z</td>
+</tr>
+</tbody>
+</table>
+
+Although these are all combinations that NCTS5 supports, see the Location of Goods data group in [Declaration date](#declaration-data) for acceptable practical usage in the UK.
+
+You must provide the actual information relating to the chosen qualifier in the appropriate data subgroup within the Location of Goods data group.
+
+The Location Qualifier > Authorisation Number (`Y`) is correlated with the NCTS4 Authorised Location Code.
+
+A simplified departure procedure declared in NCTS5 must contain the following:
+
+- Authorisation data group: the appropriate Reference number under which the Authorised Consignor status is held, which is an umbrella reference number under which all authorised location codes are contained
+- Location of Goods data group: Location Type Code `B` (authorised place), Location Qualifier `Y` (authorisation number), and the Authorisation Number (NCTS4 authorised location code) in the appropriate data subgroup from which the movement will be started.
+
+If the combination B +Y is used, NCTS validates all authorisation data provided.
+
+### Sequence Numbers
+
+Due to the widespread use of data group multiplicity within NCTS5, sequence numbers have been introduced to indicate intended use of the same data group multiple times to convey different data. The sequence number essentially provides an audit number for every reuse of a specific data group that has the capacity to be used more than once.
+
+Generally, a sequence numbers starts at `1` and increase by 1 incrementally for each instance of the same data group. For example, the Guarantee data group can be used up to 9 times allowing multiple different guarantee types to be used to cover the value of the duties at risk during the goods movement. The first guarantee block (for say Type 1 guarantees) would have sequence number `1`, the second guarantee block would have sequence number `2`, and so on.
+
+**Note:** Although sequence numbers can be entered manually by declarants, it is more efficient to automate them for the traders you serve to prevent unnecessary rejections and to optimise efficiency.
+
+### Amendments and corrections (IE013 only)
+
+Pre-lodged declarations can be corrected as many times as required before a valid IE170 (Presentation Notification For The Pre-Lodged Declaration) message being accepted by the office of departure and an MRN being allocated by an IE028 (MRN Allocated) message. Pre-lodged, simplified, and normal declarations can all be amended after the MRN has been allocated but before the IE029 (Release For Transit) message.
+
+Corrections or amendments are made by submitting an IE013 (Declaration Amendment) message. If successful, an IE004 (Amendment Acceptance) message will be received. Additional changes may be made by sending subsequent IE013 messages. If an IE013 is unsuccessful and is rejected, an IE056 (Rejection from Office of Departure) message will be received, and no change will be made to the declaration. However, further IE013 messages can be used to make corrections or amendments as required before the declaration is either rejected (if it contains errors preventing release) or released (IE029). 
+
+The IE013 message has two variants determined by the IE013 data element `Transit Operation > Amendment type flag`, which may be  `0` or `1`. 
+
+| Flag type  | Usage | Description  |
+| ---------- | ----- | ------------ |
+| 1 | Amendments of only the Guarantee data group | Use this flag type only when a movement has entered state 'Guarantee under amendment'. This state will be entered before movement release (IE029) as a consequence of an error in the Guarantee data group (in the IE015 message or subsequent IE013 message). Notification of the state will be received by means of an IE055 (Guarantee Not Valid) message, and an IE013 with flag type 1 will be expected to amend the guarantee. If this is not provided before the expiration of the guarantee awaiting amendment timer, the declaration will be rejected. |
+| 0 | All other amendment or correction attempts | The list of data groups and elements that cannot be modified using an IE013 message can be found in rule [R0520](/guides/ctc-traders-phase5-tis/documentation/rules-r.html#r0520). |
