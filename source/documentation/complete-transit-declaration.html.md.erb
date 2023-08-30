@@ -74,9 +74,9 @@ The following table provides guidelines for completing an IE015 message for NCTS
 <tr>
 <td style="width: 150px;">- Correlation identifier</td>
 <td style="text-align: center; width: 81px;">O</td>
-<td style="text-align: center; width: 88px;">D</td>
+<td style="text-align: center; width: 88px;">O</td>
 <td style="width: 33.0078px; text-align: center;">Yes</td>
-<td style="width: 398.992px;">Post-transition: if declaration is in set CL610, this data element is required; but if declaration is in set CL385, this data element must not be used. Otherwise, this data element is optional.</td>
+<td style="width: 398.992px;">&nbsp;</td>
 </tr>
 <tr>
 <td style="width: 150px;"><strong>- TRANSIT OPERATION</strong></td>
@@ -188,7 +188,7 @@ The following table provides guidelines for completing an IE015 message for NCTS
 <td style="text-align: center; width: 81px;">R</td>
 <td style="text-align: center; width: 88px;">R</td>
 <td style="width: 33.0078px; text-align: center;">No</td>
-<td style="width: 398.992px;">Enter the authorisation number that was allocated to the consignor when approved to use transit simplification (format: <code>AUTHXXX</code>). This is validated by NCTS.</td>
+<td style="width: 398.992px;">Enter the authorisation number that was allocated to the consignor when approved to use transit simplification (example format: <code>AUTHXXX</code>). The format can vary, so do not rely on example. This is validated by NCTS.</td>
 </tr>
 <tr>
 <td style="width: 150px;"><strong>- CUSTOMS OFFICE OF DEPARTURE</strong></td>
@@ -223,7 +223,7 @@ The following table provides guidelines for completing an IE015 message for NCTS
 <td style="text-align: center; width: 81px;">D</td>
 <td style="text-align: center; width: 88px;">D</td>
 <td style="width: 33.0078px; text-align: center;">No</td>
-<td style="width: 398.992px;">This data group is required for all GB movements that have a different country of destination. This data group is also required where movements start in XI and either transit through or end in GB mainland.<br /><br />This data group is optional for national movements, that is, GB to GB or XI to XI.<br /><br />This data group cannot be used for TIR procedure movements because TIR movements can be made in NCTS only for the portion of the journey that is within the territory of the EU.</td>
+<td style="width: 398.992px;">You must enter an Office of Transit for each point of entry into a different territory made by the transit movement throughout its journey. You should enter these in the anticipated order of crossing territory frontiers.<br /><br />This data group is required for all GB movements that have a different country of destination. This data group is also required where movements start in XI and either transit through or end in GB mainland.<br /><br />This data group is optional for national movements, that is, GB to GB or XI to XI.<br /><br />This data group cannot be used for TIR procedure movements because TIR movements can be made in NCTS only for the portion of the journey that is within the territory of the EU.</td>
 </tr>
 <tr>
 <td style="width: 150px;">- - Sequence number</td>
@@ -279,7 +279,7 @@ The following table provides guidelines for completing an IE015 message for NCTS
 <td style="text-align: center; width: 81px;">O</td>
 <td style="text-align: center; width: 88px;">O</td>
 <td style="width: 33.0078px; text-align: center;">No</td>
-<td style="width: 398.992px;" colspan="1">Where used, enter a GB EORI number for a GB departure or an XI EORI number for an XI departure.</td>
+<td style="width: 398.992px;" colspan="1">If used, enter a GB EORI number for a GB departure, or an XI EORI number or any other EU EORI number for an XI departure.</td>
 </tr>
 <tr>
 <td style="width: 150px;">- - TIR holder identification number</td>
@@ -293,14 +293,14 @@ The following table provides guidelines for completing an IE015 message for NCTS
 <td style="text-align: center; width: 81px;">D</td>
 <td style="text-align: center; width: 88px;">D</td>
 <td style="width: 33.0078px; text-align: center;">No</td>
-<td style="width: 398.992px;" colspan="1">If an 'Identification number' has been entered above (a GB EORI number for a GB departure or an XI EORI number for XI departure), this data group is not required.</td>
+<td style="width: 398.992px;" colspan="1">For GB departures, if a GB EORI number has been provided in 'Identification number', do not use this data group. For XI departures, if either an XI or EU EORI number has been provided in 'Identification number', do not use this data group.</td>
 </tr>
 <tr>
 <td style="width: 150px;"><strong>- - ADDRESS</strong></td>
 <td style="text-align: center; width: 81px;">D</td>
 <td style="text-align: center; width: 88px;">D</td>
 <td style="width: 33.0078px; text-align: center;">No</td>
-<td style="width: 398.992px;">If an 'Identification number' has been entered above (a GB EORI number for a GB departure or an XI EORI number for an XI departure), this data group is not required.</td>
+<td style="width: 398.992px;">For GB departures, if a GB EORI number has been provided in 'Identification number', do not use this data group. For XI departures, if either an XI or EU EORI number has been provided in 'Identification number', do not use this data group.</td>
 </tr>
 <tr>
 <td style="width: 150px;">- - - Street and number</td>
@@ -580,7 +580,7 @@ The following table provides guidelines for completing an IE015 message for NCTS
 <td style="text-align: center; width: 81px;">D</td>
 <td style="text-align: center; width: 88px;">D</td>
 <td style="width: 33.0078px; text-align: center;">No</td>
-<td style="width: 398.992px;">Use this data group if there is only one party consigning the goods.<br /><br /><strong>Note:</strong> If this data group is used, consignor data is not allowed at house consignment level.</td>
+<td style="width: 398.992px;">Use this data group if the party consigning the goods is different from the transit holder.<br /><br /><strong>Note:</strong> If this data group is used, consignor data is not allowed at house consignment level.</td>
 </tr>
 <tr>
 <td style="width: 150px;">- - - Identification number</td>
@@ -594,14 +594,14 @@ The following table provides guidelines for completing an IE015 message for NCTS
 <td style="text-align: center; width: 81px;">D</td>
 <td style="text-align: center; width: 88px;">D</td>
 <td style="width: 33.0078px; text-align: center;">No</td>
-<td style="width: 398.992px;">If a national identification number is entered, this data group is not required.</td>
+<td style="width: 398.992px;">For GB departures, if a GB EORI number has been provided in 'Identification number', do not use this data group. For XI departures, if either an XI or EU EORI number has been provided in 'Identification number', do not use this data group.</td>
 </tr>
 <tr>
 <td style="width: 150px;"><strong>- - - ADDRESS</strong></td>
 <td style="text-align: center; width: 81px;">D</td>
 <td style="text-align: center; width: 88px;">D</td>
 <td style="width: 33.0078px; text-align: center;">No</td>
-<td style="width: 398.992px;">If a national identification number is entered, this data group is not required.</td>
+<td style="width: 398.992px;">For GB departures, if a GB EORI number has been provided in 'Identification number', do not use this data group. For XI departures, if either an XI or EU EORI number has been provided in 'Identification number', do not use this data group.</td>
 </tr>
 <tr>
 <td style="width: 150px;">- - - - Street and number</td>
@@ -678,14 +678,14 @@ The following table provides guidelines for completing an IE015 message for NCTS
 <td style="text-align: center; width: 81px;">D</td>
 <td style="text-align: center; width: 88px;">D</td>
 <td style="width: 33.0078px; text-align: center;">No</td>
-<td style="width: 398.992px;">This data group is required if the office of departure is GB. It is not required if both the office of departure is XI and the identification number of the consignee is an EU or XI EORI number.</td>
+<td style="width: 398.992px;">For GB departures, if a GB EORI number has been provided in 'Identification number', do not use this data group. For XI departures, if either an XI or EU EORI number has been provided in 'Identification number', do not use this data group.</td>
 </tr>
 <tr>
 <td style="width: 150px;"><strong>- - - ADDRESS</strong></td>
 <td style="text-align: center; width: 81px;">D</td>
 <td style="text-align: center; width: 88px;">D</td>
 <td style="width: 33.0078px; text-align: center;">No</td>
-<td style="width: 398.992px;">This data group is required if the office of departure is GB. It is not required if both the office of departure is XI and the identification number of the consignee is an EU or XI EORI number.</td>
+<td style="width: 398.992px;">For GB departures, if a GB EORI number has been provided in 'Identification number', do not use this data group. For XI departures, if either an XI or EU EORI number has been provided in 'Identification number', do not use this data group.</td>
 </tr>
 <tr>
 <td style="width: 150px;">- - - - Street and number</td>
@@ -1385,14 +1385,14 @@ The following table provides guidelines for completing an IE015 message for NCTS
 <td style="text-align: center; width: 81px;">N</td>
 <td style="text-align: center; width: 88px;">D</td>
 <td style="width: 33.0078px; text-align: center;">Yes</td>
-<td style="width: 398.992px;">If a national identification number is entered, this data group is not required.</td>
+<td style="width: 398.992px;">For GB departures, if a GB EORI number has been provided in 'Identification number', do not use this data group. For XI departures, if either an XI or EU EORI number has been provided in 'Identification number', do not use this data group.</td>
 </tr>
 <tr>
 <td style="width: 150px;"><strong>- - - - ADDRESS</strong></td>
 <td style="text-align: center; width: 81px;">N</td>
 <td style="text-align: center; width: 88px;">D</td>
 <td style="width: 33.0078px; text-align: center;">Yes</td>
-<td style="width: 398.992px;">If a national identification number is entered, this data group is not required.</td>
+<td style="width: 398.992px;">For GB departures, if a GB EORI number has been provided in 'Identification number', do not use this data group. For XI departures, if either an XI or EU EORI number has been provided in 'Identification number', do not use this data group.</td>
 </tr>
 <tr>
 <td style="width: 150px;">- - - - - Street and number</td>
@@ -1469,14 +1469,14 @@ The following table provides guidelines for completing an IE015 message for NCTS
 <td style="text-align: center; width: 81px;">N</td>
 <td style="text-align: center; width: 88px;">D</td>
 <td style="width: 33.0078px; text-align: center;">Yes</td>
-<td style="width: 398.992px;" colspan="1">Required if the office of departure is GB. Not required if the office of departure is XI and the identification number is an EU or XI EORI number.</td>
+<td style="width: 398.992px;" colspan="1">For GB departures, if a GB EORI number has been provided in 'Identification number', do not use this data group. For XI departures, if either an XI or EU EORI number has been provided in 'Identification number', do not use this data group.</td>
 </tr>
 <tr>
 <td style="width: 150px;"><strong>- - - - ADDRESS</strong></td>
 <td style="text-align: center; width: 81px;">N</td>
 <td style="text-align: center; width: 88px;">D</td>
 <td style="width: 33.0078px; text-align: center;">Yes</td>
-<td style="width: 398.992px;">This data group is required if the office of departure is GB. It is not required if the office of departure is XI and the identification number is an EU or XI EORI number.</td>
+<td style="width: 398.992px;">For GB departures, if a GB EORI number has been provided in 'Identification number', do not use this data group. For XI departures, if either an XI or EU EORI number has been provided in 'Identification number', do not use this data group.</td>
 </tr>
 <tr>
 <td style="width: 150px;">- - - - - Street and number</td>
