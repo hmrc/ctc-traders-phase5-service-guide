@@ -1,5 +1,5 @@
 # Human read-able name for this site, displayed in the header bar
-service_name: CTC Traders phase 5 service guide
+service_name: CTC Traders API phase 5 service guide
 
 # The route that will be used to access this site (with tailing slash)
 service_link: /guides/ctc-traders-phase5-service-guide/
