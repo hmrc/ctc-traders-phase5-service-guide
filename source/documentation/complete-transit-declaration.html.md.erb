@@ -6,10 +6,10 @@ description: Software developers, designers, product owners or business analysts
 
 # Complete transit declaration
 
-Learn how to complete an IE015 message for NCTS5.
+Learn how to complete a ‘Declaration Data‘ E_DEC_DAT (IE015) message for NCTS5.
 
 ## Declaration data
-The characteristics of data groups and data elements in those data groups in a ‘Declaration Data‘ E_DEC_DAT (IE015)  message can have any of the following statuses.
+The characteristics of data groups and data elements in those data groups in an IE015  message can have any of the following statuses.
 
 | Status                        | Label | Description |
 | ----------------------------- | ----- | ----------- |
@@ -2368,9 +2368,9 @@ Location designations have been revised for NCTS5 as follows.
 
 | NCTS4 designation | NCTSS5 designation | NCTS5 identifier  |
 | ----------------- | ------------------ | ----------------- |
-| Customs sub place | Designated location | A |
-| Authorised location code | Authorised place | B |
-| Agreed location | Approved place | C |
+| Customs sub place | Designated location | `A` |
+| Authorised location code | Authorised place | `B` |
+| Agreed location | Approved place | `C` |
 
 You must provide the location of goods before the release of a transit movement, either in an IE015 message for a standard departure or in an IE170 message for a pre-lodged departure. You must specify both the type of location (using a single alphabetic character as shown in the table), and the qualifier of that location. The location qualifier is the means you will use to provide the exact locations, such as  address, UN Locode, and so on.
 
@@ -2390,58 +2390,58 @@ Only certain qualifiers can be used with specific location types. The following 
 <td style="text-align: center;"><strong>D</strong></td>
 </tr>
 <tr>
-<td>T = Postal code</td>
-<td style="text-align: center;">A + T</td>
-<td style="text-align: center;">B + T</td>
-<td style="text-align: center;">[C + T]</td>
-<td style="text-align: center;">[D + T]</td>
+<td><code>T</code> (Postal code)</td>
+<td style="text-align: center;"><code>A</code> + <code>T</code></td>
+<td style="text-align: center;"><code>B</code> + <code>T</code></td>
+<td style="text-align: center;">[<code>C</code> + <code>T</code>]</td>
+<td style="text-align: center;">[<code>D</code> + <code>T</code>]</td>
 </tr>
 <tr>
-<td>U = UN/Locode</td>
-<td style="text-align: center;">[A + U]</td>
-<td style="text-align: center;">B + U</td>
-<td style="text-align: center;">[C + U]</td>
-<td style="text-align: center;">[D + U]</td>
+<td><code>U</code> (UN/Locode)</td>
+<td style="text-align: center;">[<code>A</code> + <code>U</code>]</td>
+<td style="text-align: center;"><code>B</code> + <code>U</code></td>
+<td style="text-align: center;">[<code>C</code> + <code>U</code>]</td>
+<td style="text-align: center;">[<code>D</code> + <code>U</code>]</td>
 </tr>
 <tr>
-<td>V = Customs office identifier</td>
-<td style="text-align: center;">[A + V]</td>
-<td style="text-align: center;">B + V</td>
-<td style="text-align: center;">C + V</td>
-<td style="text-align: center;">D + V</td>
+<td><code>V</code> (Customs office identifier)</td>
+<td style="text-align: center;">[<code>A</code> + <code>V</code>]</td>
+<td style="text-align: center;"><code>B</code> + <code>V</code></td>
+<td style="text-align: center;"><code>C</code> + <code>V</code></td>
+<td style="text-align: center;"><code>D</code> + <code>V</code></td>
 </tr>
 <tr>
-<td>W = GNSS coordinates</td>
-<td style="text-align: center;">A + W</td>
-<td style="text-align: center;">B + W</td>
-<td style="text-align: center;">[C + W]</td>
-<td style="text-align: center;">[D + W]</td>
+<td><code>W</code> (GNSS coordinates)</td>
+<td style="text-align: center;"><code>A</code> + <code>W</code></td>
+<td style="text-align: center;"><code>B</code> + <code>W</code></td>
+<td style="text-align: center;">[<code>C</code> + <code>W</code>]</td>
+<td style="text-align: center;">[<code>D</code> + <code>W</code>]</td>
 </tr>
 <tr>
-<td>X = EORI number</td>
-<td style="text-align: center;">A + X</td>
-<td style="text-align: center;">B + X</td>
-<td style="text-align: center;">[C + X]</td>
-<td style="text-align: center;">D + X</td>
+<td><code>X</code> (EORI number)</td>
+<td style="text-align: center;"><code>A</code> + <code>X</code></td>
+<td style="text-align: center;"><code>B</code> + <code>X</code></td>
+<td style="text-align: center;">[<code>C</code> + <code>X</code>]</td>
+<td style="text-align: center;"><code>D</code> + <code>X</code></td>
 </tr>
 <tr>
-<td>Y = Authorisation number</td>
-<td style="text-align: center;">A + Y</td>
-<td style="text-align: center;">[B + Y]</td>
-<td style="text-align: center;">C + Y</td>
-<td style="text-align: center;">D + Y</td>
+<td><code>Y</code> (Authorisation number)</td>
+<td style="text-align: center;"><code>A</code> + <code>Y</code></td>
+<td style="text-align: center;">[<code>B</code> + <code>Y</code>]</td>
+<td style="text-align: center;"><code>C</code> + <code>Y</code></td>
+<td style="text-align: center;"><code>D</code> + <code>Y</code></td>
 </tr>
 <tr>
-<td>Z = Address</td>
-<td style="text-align: center;">A + Z</td>
-<td style="text-align: center;">B + Z</td>
-<td style="text-align: center;">[C + Z]</td>
-<td style="text-align: center;">D + Z</td>
+<td><code>Z</code> (Address)</td>
+<td style="text-align: center;"><code>A</code> + <code>Z</code></td>
+<td style="text-align: center;"><code>B</code> +<code> Z</code></td>
+<td style="text-align: center;">[<code>C</code> + <code>Z</code>]</td>
+<td style="text-align: center;"><code>D</code> + <code>Z</code></td>
 </tr>
 </tbody>
 </table>
 
-Although these are all combinations that NCTS5 supports, see the Location of Goods data group in [Declaration date](#declaration-data) for acceptable practical usage in the UK.
+Although these are all combinations that NCTS5 supports, see the Location of Goods data group in [Declaration data](#declaration-data) for acceptable practical usage in the UK.
 
 You must provide the actual information relating to the chosen qualifier in the appropriate data subgroup within the Location of Goods data group.
 
@@ -2452,25 +2452,29 @@ A simplified departure procedure declared in NCTS5 must contain the following:
 - Authorisation data group: the appropriate Reference number under which the Authorised Consignor status is held, which is an umbrella reference number under which all authorised location codes are contained
 - Location of Goods data group: Location Type Code `B` (authorised place), Location Qualifier `Y` (authorisation number), and the Authorisation Number (NCTS4 authorised location code) in the appropriate data subgroup from which the movement will be started.
 
-If the combination B +Y is used, NCTS validates all authorisation data provided.
+If the combination `B` +`Y` is used, NCTS validates all authorisation data provided.
 
-### Sequence Numbers
+### Sequence numbers
 
 Due to the widespread use of data group multiplicity within NCTS5, sequence numbers have been introduced to indicate intended use of the same data group multiple times to convey different data. The sequence number essentially provides an audit number for every reuse of a specific data group that has the capacity to be used more than once.
 
-Generally, a sequence numbers starts at `1` and increase by 1 incrementally for each instance of the same data group. For example, the Guarantee data group can be used up to 9 times allowing multiple different guarantee types to be used to cover the value of the duties at risk during the goods movement. The first guarantee block (for say Type 1 guarantees) would have sequence number `1`, the second guarantee block would have sequence number `2`, and so on.
+Generally, a sequence numbers starts at `1` and increase by 1 incrementally for each instance of the same data group. For example, the Guarantee data group can be used up to 9 times allowing multiple different guarantee types to be used to cover the value of the duties at risk during the goods movement. The first guarantee block (for, say, Type 1 guarantees) would have sequence number `1`, the second guarantee block would have sequence number `2`, and so on.
 
 **Note:** Although sequence numbers can be entered manually by declarants, it is more efficient to automate them for the traders you serve to prevent unnecessary rejections and to optimise efficiency.
 
-### Amendments and corrections (IE013 only)
+### Amendments and corrections (IE013 only)
 
-Pre-lodged declarations can be corrected as many times as required before a valid IE170 (Presentation Notification For The Pre-Lodged Declaration) message being accepted by the office of departure and an MRN being allocated by an IE028 (MRN Allocated) message. Pre-lodged, simplified, and normal declarations can all be amended after the MRN has been allocated but before the IE029 (Release For Transit) message.
+Pre-lodged declarations can be corrected as many times as required before a valid IE170 (‘Presentation Notification For The Pre-Lodged Declaration‘) message being accepted by the office of departure and an MRN being allocated by an IE028 (‘MRN Allocated‘) message.
 
-Corrections or amendments are made by submitting an IE013 (Declaration Amendment) message. If successful, an IE004 (Amendment Acceptance) message will be received. Additional changes may be made by sending subsequent IE013 messages. If an IE013 is unsuccessful and is rejected, an IE056 (Rejection from Office of Departure) message will be received, and no change will be made to the declaration. However, further IE013 messages can be used to make corrections or amendments as required before the declaration is either rejected (if it contains errors preventing release) or released (IE029). 
+Pre-lodged, simplified, and normal declarations can all be amended after the MRN has been allocated but before the IE029 (‘Release For Transit‘) message. Corrections or amendments are made by submitting an IE013 (‘Declaration Amendment‘) message:
 
-The IE013 message has two variants determined by the IE013 data element `Transit Operation > Amendment type flag`, which may be  `0` or `1`. 
+- if message is successful, an IE004 (‘Amendment Acceptance‘) message will be received - but additional changes can be made by sending subsequent IE013 messages
+
+- if message is unsuccessful and rejected, an IE056 (‘Rejection from Office of Departure‘) message will be received, and no change will be made to the declaration - but further IE013 messages can be used to make corrections or amendments as required before the declaration is either rejected (if it contains errors preventing release) or released (IE029)
+
+The IE013 message type has two variants determined by the IE013 data element `Transit Operation > Amendment type flag`, which can be  `0` or `1`. 
 
 | Flag type  | Usage | Description  |
 | ---------- | ----- | ------------ |
-| 1 | Amendments of only the Guarantee data group | Use this flag type only when a movement has entered state 'Guarantee under amendment'. This state will be entered before movement release (IE029) as a consequence of an error in the Guarantee data group (in the IE015 message or subsequent IE013 message). Notification of the state will be received by means of an IE055 (Guarantee Not Valid) message, and an IE013 with flag type 1 will be expected to amend the guarantee. If this is not provided before the expiration of the guarantee awaiting amendment timer, the declaration will be rejected. |
-| 0 | All other amendment or correction attempts | The list of data groups and elements that cannot be modified using an IE013 message can be found in rule [R0520](/guides/ctc-traders-phase5-tis/documentation/rules-r.html#r0520). |
+| `1` | Amendments of only the Guarantee data group | Use this flag type only when a movement has entered state 'Guarantee under amendment'. This state will be entered before movement release (IE029) as a consequence of an error in the Guarantee data group (in the IE015 message or subsequent IE013 message). Notification of the state will be received by means of an IE055 (Guarantee Not Valid) message, and an IE013 with flag type `1` will be expected to amend the guarantee. If this is not provided before the expiration of the guarantee awaiting amendment timer, the declaration will be rejected. |
+| `0` | All other amendment or correction attempts | The list of data groups and elements that cannot be modified using an IE013 message can be found in rule [R0520](/guides/ctc-traders-phase5-tis/documentation/rules-r.html#r0520). |
