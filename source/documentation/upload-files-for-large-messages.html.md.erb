@@ -22,7 +22,7 @@ The process of uploading a message is the same for all of the endpoints listed.
 To upload a file:
 
 1. Send a POST request with an empty body and no `Content-Type`. The API will recognise that you want to upload a file.
-2. The API will respond with a JSON body that contains an `uploadDetails` object with two fields:
+2. The API will respond with a JSON body that contains an `uploadRequest` object with two fields:
 	-  `href` as a string
 	-   `fields` as a set of key-value pairs
 3. With a `Content-Type` of `multipart/form-data`, send a POST request to the URL returned in the `href` field with the following payload:
