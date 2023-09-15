@@ -109,7 +109,7 @@ Before you can use the production environment for CTC Traders API v2.0, you must
 
 Before you can apply for production credentials, you must complete the following:
 
-- accreditation testing
+- production access testing
 - an application form
 
 For more information about how to apply for production credentials for the API, see [CTC Traders API phase 5 testing guide](/guides/ctc-traders-phase5-testing-guide/).
