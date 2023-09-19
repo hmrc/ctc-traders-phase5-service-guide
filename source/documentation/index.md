@@ -33,15 +33,13 @@ To meet the requirements of the Common Transit Convention (CTC), all member coun
 
 There will be a transition period after NCTS5 goes live. During this period, the NCTS4 service will continue running to deal with in-flight transit declarations submitted before go-live while the NCTS5 service will handle all new declarations. The NCTS5 service will not hold information about any declarations submitted before the go-live date.
 
-## Trader CTC enrolments
+## Trader NCTS subscriptions
 
-Any traders using legacy CTC enrolments must migrate from them before being able to use NCTS5 from 16 November 2023.
+Any traders who subscribed to the NCTS before NCTS4 must upgrade their NCTS subscriptions before they can use NCTS5 from 16 November 2023.
 
-To get a new CTC enrolment for NCTS4 and NCTS5, traders must complete the following steps:
+For information about upgrading an NCTS subscription, see [How to subscribe to the New Computerised Transit System](https://www.gov.uk/guidance/how-to-subscribe-to-the-new-computerised-transit-system).
 
-1. [Get a new Electronic Customs Clearance (ECC) enrolment](https://www.tax.service.gov.uk/customs-enrolment-services/ctc/subscribe).
-2. [Get an EORI number](https://www.gov.uk/eori) (if needed).
-3. Start using only your new CTC enrolment for making all of your customs declarations.
+**Note:** After receiving our new NCTS subscription, you must use only that subscription for making all of your NCTS4 and NCTS5 transit declarations.
 
 [Contact the NCTS Helpdesk](https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries) if you need any help or advice when using the NCTS.
 
