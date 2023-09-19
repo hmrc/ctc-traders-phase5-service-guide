@@ -35,11 +35,11 @@ There will be a transition period after NCTS5 goes live. During this period, the
 
 ## Trader NCTS subscriptions
 
-Any traders who subscribed to the NCTS before NCTS4 must upgrade their NCTS subscriptions before they can use NCTS5 from 16 November 2023.
+Any traders who subscribed to the NCTS before NCTS4 must upgrade their NCTS subscriptions before they can use NCTS5.
 
 For information about upgrading an NCTS subscription, see [How to subscribe to the New Computerised Transit System](https://www.gov.uk/guidance/how-to-subscribe-to-the-new-computerised-transit-system).
 
-**Note:** After receiving our new NCTS subscription, you must use only that subscription for making all of your NCTS4 and NCTS5 transit declarations.
+After receiving your upgraded NCTS subscription, you can use it alongside your existing subscription for both NCTS4 and NCTS5 transit declarations. However, after NCTS5 goes live on 16 November 2023, the UK NCTS service will make use of only your upgraded NCTS subscription for all NCTS5 transit declarations.
 
 [Contact the NCTS Helpdesk](https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries) if you need any help or advice when using the NCTS.
 
