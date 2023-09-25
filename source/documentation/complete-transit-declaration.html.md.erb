@@ -11,12 +11,12 @@ Learn how to complete a ‘Declaration Data‘ E_DEC_DAT (IE015) message for NCT
 ## Declaration data
 The characteristics of data groups and data elements in those data groups in an IE015  message can have any of the following statuses.
 
-| Status                        | Label | Description |
-| ----------------------------- | ----- | ----------- |
-| Mandatory                     | R     | Required    |
-| Optional                      | O     | Optional    |
-| Conditional                   | D     | Dependent   |
-| Do not use (data groups only) | N     | Not usable  |
+| Status      | Label | Description |
+| ----------- | ----- | ----------- |
+| Mandatory   | R     | Required    |
+| Optional    | O     | Optional    |
+| Conditional | D     | Dependent   |
+| Do not use  | N     | Not usable  |
 
 The following table provides guidelines for completing an IE015 message for NCTS5.
 
@@ -251,7 +251,7 @@ The following table provides guidelines for completing an IE015 message for NCTS
 <td style="text-align: center; width: 81px;">D</td>
 <td style="text-align: center; width: 88px;">D</td>
 <td style="width: 33.0078px; text-align: center;">No</td>
-<td style="width: 398.992px;">This is a new office role named 'Office of Exit for Transit' to perform safety and security checks of the movement before it exits the Security Area, for example, XI departures or GB departures that transit through the European Union to another Common Transit country.<br /><br /> <strong>Important:</strong> Use Customs Office of Exit for Transit only if (a) the movement is departing the EU security zone (the Customs Office of Exit for Transit will be the office through which the movement leaves the security zone) and (b) the declaration contains Export Summary Declaration (EXS) data.<br /><br /><strong>Note:</strong> This type of declaration is considered to be a TSAD and currently the UK does not support use of TSADs - separate EXS/ENS must be completed as required.<br /><br /> In addition, Office of Exit for Transit cannot be used for TIR type departures.<br /><br />This data group is optional if EXS data is declared (indicated by <code>2</code> or <code>3</code> - see Transit Operation/Security) and the goods are leaving the security zone. Otherwise, do not use this data group.</td>
+<td style="width: 398.992px;">This is a new office role named 'Office of Exit for Transit' to perform safety and security checks of the movement before it exits the Security Area. For example, for XI departures, the Customs Office of Exit for Transit must be provided for a transit declaration that contains Export Summary Declaration (EXS) data when the goods will exit the Security Area to enter (or re-enter) a Common Transit country that is not in the Security Area.<br /><br /> <strong>Important:</strong> Use Customs Office of Exit for Transit only if (a) the movement is departing the EU security zone (the Customs Office of Exit for Transit will be the office through which the movement leaves the security zone) and (b) the declaration contains EXS data.<br /><br /><strong>Note:</strong> This type of declaration is considered to be a TSAD and currently the UK does not support use of TSADs - separate EXS/ENS must be completed as required.<br /><br /> In addition, Office of Exit for Transit cannot be used for TIR type departures.<br /><br />This data group is optional if EXS data is declared (indicated by <code>2</code> or <code>3</code> - see Transit Operation/Security) and the goods are leaving the security zone. Otherwise, do not use this data group.</td>
 </tr>
 <tr>
 <td style="width: 150px;">- - Sequence number</td>
