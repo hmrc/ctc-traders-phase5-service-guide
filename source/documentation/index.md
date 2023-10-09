@@ -8,6 +8,8 @@ description: Software developers, designers, product owners or business analysts
 
 Learn how to use [CTC Traders API v2.0](/api-documentation/docs/api/service/common-transit-convention-traders/2.0) with your software.
 
+For information about key NCTS5 dates, see [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis/#ncts5-key-dates).
+
 ## API overview
 
 The CTC Traders API is based on REST principles with endpoints that return data in JSON format and it uses standard HTTP error response codes.
@@ -29,9 +31,7 @@ This version of the CTC Traders API:
 - is currently ready for testing
 - will not be ready for use in production until NCTS5 goes live - in the meantime, you should continue using CTC Traders API v1.0
 
-To meet the requirements of the Common Transit Convention (CTC), all member countries must transfer to NCTS5 by 30 November 2023.
-
-There will be a transition period after NCTS5 goes live. During this period, the NCTS4 service will continue running to deal with in-flight transit declarations submitted before go-live while the NCTS5 service will handle all new declarations. The NCTS5 service will not hold information about any declarations submitted before the go-live date.
+There will be a cutover period after NCTS5 goes live. During this period, the NCTS4 service will continue running to deal with in-flight transit declarations submitted before go-live while the NCTS5 service will handle all new declarations. The NCTS5 service will not hold information about any declarations submitted before the go-live date.
 
 ## Trader NCTS subscriptions
 
@@ -39,7 +39,7 @@ Any traders who subscribed to the NCTS before NCTS4 must upgrade their NCTS subs
 
 For information about upgrading an NCTS subscription, see [How to subscribe to the New Computerised Transit System](https://www.gov.uk/guidance/how-to-subscribe-to-the-new-computerised-transit-system).
 
-After receiving your upgraded NCTS subscription, you can use it alongside your existing subscription for both NCTS4 and NCTS5 transit declarations. However, after NCTS5 goes live on 16 November 2023, the UK NCTS service will make use of only your upgraded NCTS subscription for all NCTS5 transit declarations.
+After receiving your upgraded NCTS subscription, you can use it alongside your existing subscription for both NCTS4 and NCTS5 transit declarations. However, after the UK NCTS5 service goes live, it will make use of only your upgraded NCTS subscription for all NCTS5 transit declarations.
 
 [Contact the NCTS Helpdesk](https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries) if you need any help or advice when using the NCTS.
 
@@ -182,7 +182,7 @@ Your application must comply with [our terms of use](/api-documentation/docs/ter
 - [CTC Traders API v2.0 changelog](https://github.com/hmrc/common-transit-convention-traders/wiki/CTC-Traders-API-v2.0-changelog) (GitHub)
 - [CTC Traders API phase 5 testing guide](/guides/ctc-traders-phase5-testing-guide/)
 - [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis/)
-- [NCTS phase 4-phase 5 data mapping spreadsheet](/guides/ctc-traders-phase5-tis/downloads/NCTS-P5_Datamapping_R4_080823_v1.0.xlsx) (GitHub)
+- [NCTS phase 4-phase 5 data mapping spreadsheet](/guides/ctc-traders-phase5-tis/downloads/NCTS-P5_Datamapping_R5_111023_v1.0.xlsx) (GitHub)
 - [Transit Manual Supplement](https://www.gov.uk/government/publications/transit-manual-supplement) - UK transit procedures (OpenDocument Text document)
 
 ## Getting help and support
