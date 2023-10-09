@@ -149,15 +149,7 @@ For guidelines about entering message recipient details in messages for GB to XI
 
 In NCTS5, a ‘Declaration Data’ E_DEC_DAT (IE015) message starts a transit movement with a given Local Reference Number (LRN) when you submit the message successfully, not when the message is accepted. This means that you can use the LRN to query the movement before it is accepted.
 
-The rules for LRN reuse are as follows. 
-
-| When an LRN can be reused | When an LRN cannot be (re)used |
-| ------------------------- | ------------------------------ |
-| After initial rejection. For example, an invalid IE015 message is rejected after a first submission attempt and a ‘Rejection From Office Of Departure‘ E_DEP_REJ (IE056) message is received. | After a transit movement has been released (and no cancellation request has been accepted).<br  /><br />This applies irrespective of whether a transit movement has arrived at an office of destination and it is written off (goods and guarantee released, final movement state). |
-| After a cancellation request is accepted and a positive ‘Invalidation Decision‘ E_INV_DEC (IE009) message is sent to the trader at any point during departure, including a customs-instigated cancellation post-movement release. | Two or more times if submitting multiple transit declarations with different data to different offices of departure simultaneously. |
-| | If a transit declaration has been subject to a ‘No Release For Transit‘ E_REL_NOT (IE051) message. |
-
-Based on these rules, if you try to submit an IE015 message with a previously used LRN to the NCTS5 service, an HTTP status code 409 (Conflict) will be returned.
+If you try to submit an IE015 message with a previously used LRN to the NCTS5 service, an HTTP status code 409 (Conflict) will be returned. An exception to this is that an LRN can be reused after initial rejection. For example, if you send an invalid IE015 message that is rejected after a first submission attempt and a ‘Rejection From Office Of Departure‘ E_DEP_REJ (IE056) message is received, you can reuse the LRN from the first submission attempt if you amend the IE015 message to make it valid and resubmit it. 
 
 ## Push-pull notifications
 
