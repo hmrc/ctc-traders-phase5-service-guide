@@ -149,7 +149,12 @@ For guidelines about entering message recipient details in messages for GB to XI
 
 In NCTS5, a ‘Declaration Data’ E_DEC_DAT (IE015) message starts a transit movement with a given Local Reference Number (LRN) when you submit the message successfully, not when the message is accepted. This means that you can use the LRN to query the movement before it is accepted.
 
-If you try to submit an IE015 message with a previously used LRN to the NCTS5 service, an HTTP status code 409 (Conflict) will be returned. An exception to this is that an LRN can be reused after initial rejection. For example, if you send an invalid IE015 message that is rejected after a first submission attempt and a ‘Rejection From Office Of Departure‘ E_DEP_REJ (IE056) message is received, you can reuse the LRN from the first submission attempt if you amend the IE015 message to make it valid and resubmit it. 
+Ordinarily, if you try to submit an IE015 message with a previously used LRN to the NCTS5 service, an HTTP status code 409 (Conflict) will be returned. However, there are 2 scenarios where you can reuse an LRN.
+
+| Scenario                                 | Description                                                  |
+| ---------------------------------------- | ------------------------------------------------------------ |
+| After initial rejection                  | If you send an invalid IE015 message that is rejected after a first submission attempt and a ‘Rejection From Office Of Departure‘ E_DEP_REJ (IE056) message is received, you can reuse the LRN from the first submission attempt if you amend the IE015 message to make it valid and resubmit it. |
+| After a cancellation request is accepted | If a cancellation request is accepted and a positive ‘Invalidation Decision‘ E_INV_DEC (IE009) message is sent to the trader at any point during departure, including a customs-instigated cancellation post-movement release, you can reuse the LRN for the declaration that was cancelled. |
 
 ## Push-pull notifications
 
