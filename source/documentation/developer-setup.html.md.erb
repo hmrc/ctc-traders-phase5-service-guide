@@ -149,7 +149,7 @@ For guidelines about entering message recipient details in messages for GB to XI
 
 In NCTS5, a ‘Declaration Data’ E_DEC_DAT (IE015) message starts a transit movement with a given Local Reference Number (LRN) when you submit the message successfully, not when the message is accepted. This means that you can use the LRN to query the movement before it is accepted.
 
-Ordinarily, if you try to submit an IE015 message with a previously used LRN to the NCTS5 service, an HTTP status code 409 (Conflict) will be returned. However, there are 2 scenarios where you can reuse an LRN.
+Ordinarily, if you try to submit an IE015 message with a previously used LRN to the NCTS5 service, a ‘Rejection From Office Of Departure‘ E_DEP_REJ (IE056) will be returned. However, there are 2 scenarios where you can reuse an LRN.
 
 | Scenario                                 | Description                                                  |
 | ---------------------------------------- | ------------------------------------------------------------ |
