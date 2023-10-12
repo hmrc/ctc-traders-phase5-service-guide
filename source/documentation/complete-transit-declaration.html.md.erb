@@ -90,7 +90,7 @@ The following table provides guidelines for completing an IE015 message for NCTS
 <td style="text-align: center; width: 81px;">R</td>
 <td style="text-align: center; width: 88px;">R</td>
 <td style="width: 33.0078px; text-align: center;">No</td>
-<td style="width: 398.992px;">Enter declarant's own reference number. No strict format, but must not exceed 22 characters. This must be unique for every declaration.</td>
+<td style="width: 398.992px;">Enter declarant's own reference number. No strict format, but must not exceed 22 characters. This must be unique for every declaration.<br /><br /><strong>Note:</strong> If you try to submit an IE015 message with a previously used LRN to the NCTS5 service, an IE056 message will be returned. However, you  can reuse an LRN after initial rejection or after a cancellation request is accepted. For more information, see <a href="https://developer.service.hmrc.gov.uk/guides/ctc-traders-phase5-service-guide/documentation/developer-setup.html#reuse-of-local-reference-numbers">Reuse of Local Reference Numbers</a>.</td>
 </tr>
 <tr>
 <td style="width: 150px;">- - Declaration type</td>
@@ -2223,7 +2223,7 @@ Learn about the concepts that govern how a transit declaration is created.
 
 The transition period is the period of time during which countries may switch to operating NCTS5 at any point and will run until all countries have switched to operating NCTS5. NCTS operations are currently considered to be in the transition period.
 
-**Note:** The end date of the transition period is 2 December 2024. 
+**Note:** For information about the end date of the transition period, see [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis/#ncts5-key-dates).
 
 During the transition period, those countries that are operating NCTS5 must do so in transitional mode, which is equivalent to a 'backwards compatibility' mode. This is to ensure that messages can be exchanged between NCTS4 and NCTS5 countries, which is handled by an upgrade/downgrade convertor in the common domain, where messages are exchanged at country to country level. For example, notifying the country of destination that the movement has been released or notifying the country of departure that the movement has arrived, and so on.
 
