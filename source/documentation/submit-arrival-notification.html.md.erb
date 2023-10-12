@@ -10,12 +10,12 @@ Use the POST endpoint [Send an arrival notification message](https://developer.s
 
 This request is also called an 'Arrival Notification' E_ARR_NOT (IE007) message.
 
-If you use this endpoint to send a small message (up to 5MB), a successful response:
+If you use this endpoint to send a small message (up to 5MB in size), a successful response:
 
 - will contain a URI that you can use to get the message status
 - can also include an optional box ID, which you can use to match this movement to any messages received from our [Push Pull Notifications API](/api-documentation/docs/api/service/push-pull-notifications-api/1.0)
 
-If you use this endpoint to send a large message (up to 5MB - this limit will later increase to 8MB), a successful response will include:
+If you use this endpoint to send a large message (up to 8MB in size), a successful response will include:
 
 - a URL and additional metadata that you must use when uploading your file
 - a message ID that allows you track the status of that specific message

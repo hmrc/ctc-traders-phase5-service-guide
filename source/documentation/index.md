@@ -19,7 +19,7 @@ Use the API to:
 - send departure and arrival movement notifications to the New Computerised Transit System (NCTS)
 - retrieve messages sent from customs offices of departure and destination
 
-You can use this version of the API to send both small (up to 5MB in size) and large (up to 5MB in size - this limit will later increase to 8MB) messages. The large messages capability applies only to POST endpoints.
+You can use this version of the API to send both small (up to 5MB in size) and large (up to 8MB in size) messages. The large messages capability applies only to POST endpoints.
 
 The API endpoints relate only to Great Britain and Northern Ireland. You can also use the [HMRC sandbox environment](https://test-developer.service.hmrc.gov.uk/api-documentation/docs/sandbox/introduction) to run tests for Great Britain and Northern Ireland transit movements.
 
@@ -149,7 +149,7 @@ The following table relates NCTS5 message types to API endpoints.
 
 ## Message sizes
 
-CTC Traders API v2.0 supports both small (up to 5MB in size) and large (up to 5MB in size - this limit will later increase to 8MB) messages. You can use the large messages functionality of the API to send both large and small messages, but you cannot use the small messages functionality of the API to send large messages.
+CTC Traders API v2.0 supports both small (up to 5MB in size) and large (up to 8MB in size) messages. You can use the large messages functionality of the API to send both large and small messages, but you cannot use the small messages functionality of the API to send large messages.
 
 **Note:** The large messages capability applies only to POST endpoints. However, all GET endpoints of the API can handle messages of any size.
 
