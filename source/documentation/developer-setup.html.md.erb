@@ -121,6 +121,8 @@ You should also note the following:
 - some common data types described in our [Reference guide](/api-documentation/docs/reference-guide#common-data-types) contain characters that are not valid for use in URLs
 - some software libraries and frameworks do percent-encoding for you automatically
 
+**Important:** Your messages to the NCTS service must conform to the XSD files used by CTC Traders API v2.0. The XSD files do not necessarily conform to the ISO 8601 standard, so your XML payloads might have date-time parameters that do not conform to ISO 8601.               
+
 ### Examples
 
 Below are examples in different programming languages.
