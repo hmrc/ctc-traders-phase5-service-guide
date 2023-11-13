@@ -140,7 +140,7 @@ The base URLs of the sandbox and production environments are as follows.
 
 The following table relates NCTS5 message types to API endpoints.
 
-| Message types | Action | Desccription |
+| Message types | Action | Description |
 | ------------- | ------ | ------------ |
 | IE015 | `POST /customs/transits/movements/departures` | Send a declaration data message. |
 | IE013, IE014, IE170 | `POST /customs/transits/movements/departures/{departureId}/messages` | Send a message related to a departure. |
@@ -160,22 +160,21 @@ The following table summarises the main differences between the large and small 
 | Message size limit | 8MB | 5MB |
 | Submission type | File-based | Direct |
 | Messaging type | Asynchronous | Synchronous |
-| Successful message submission feedback | If you set up push notifications (this is optional), feedback is near real time (not immediate) | Feedback is immediate |
-| Timeout handling | Resilient against timeouts because users do not have to wait for a response | Susceptible to timeouts causing message failures for larger messages |
-| Optimal usage scenario | Average transit declaration size is large | Average transit declaration size is small |
-| Flexibility for sending different message sizes | You can this route to send both large and small messages | You cannot use this route to send large messages |
-| API endpoint limitations | Only the POST endpoints of the API support this route, but all GET endpoints of the API can handle messages of any size | All endpoints of the API support this route |
+| Successful message submission feedback | Near real time (with push notifications) | Immediate |
+| Timeout resilience | Strong | Weak |
+| Transit declaration size suitability (average) | Large | Small |
 
-### Message size handling considerations
+### Determining which message route to use
 
-You should consider using the large messages route if the transit movements that you usually handle contain large consignments.
+You should consider using the large message route if the transit movements that you usually handle contain large consignments.
 
 However, before making any final decisions about how your application software will handle message sizes, consider the following:
 
+- although you can use the large message route to send both large and small messages, only the POST endpoints of the API support the large message route (but all GET endpoints of the API can handle messages of any size)
 - rule [G0005](/guides/ctc-traders-phase5-tis/documentation/rules-g.html#g0005) in the [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis) restricts the declaration goods item number (a master count of goods items lines) in a transit declaration to a maximum of 1,999
 - if quick response times from the NCTS matter to you or the traders you serve and if your message sizes never exceed 5MB, you should use only the small messages functionality of the API
 
-If you decide to use the large messages route, consider making use of our [Push Pull Notifications API](/api-documentation/docs/api/service/push-pull-notifications-api/1.0) to have automatic notifications sent from the NCTS in near real time.
+If you decide to use the large message route, consider making use of our [Push Pull Notifications API](/api-documentation/docs/api/service/push-pull-notifications-api/1.0) to have automatic notifications sent from the NCTS in near real time.
 
 ### Sending large messages
 
