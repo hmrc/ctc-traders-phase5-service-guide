@@ -8,7 +8,63 @@ description: Software developers, designers, product owners or business analysts
 
 Learn how to use [CTC Traders API v2.0](/api-documentation/docs/api/service/common-transit-convention-traders/2.0) with your software.
 
-For information about key NCTS5 dates, see [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis/#ncts5-key-dates).
+[Learn about key NCTS5 dates](/guides/ctc-traders-phase5-tis/#ncts5-key-dates)
+
+<details>
+  <summary>Learn how to navigate CTC Traders API v2.0 documentation</summary>
+
+<p>The following table lists the documents for CTC Traders API v2.0 and outlines the content and intended readers of each document.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Document</th>
+            <th>Content type</th>
+            <th>Granularity</th>
+            <th>Summary</th>
+            <th>Intended readers</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><a href="https://developer.service.hmrc.gov.uk/roadmaps/common-transit-convention-traders-roadmap/">CTC Traders API roadmap</a> (covers NCTS4 onwards)</td>
+            <td>Functional</td>
+            <td>High level</td>
+            <td><p>Outlines current status of API for each NCTS phase</p><p>Outlines any development plans for API</p></td>
+            <td><p>Software developers</p> <p>Technical architects </p> <p>Product managers</p> <p>Business analysts</p></td>
+        </tr>
+        <tr>
+            <td><a href="https://developer.service.hmrc.gov.uk/guides/ctc-traders-phase5-tis/">NCTS phase 5 technical interface specification</a></td>
+            <td>Functional</td>
+            <td>Low level</td>
+            <td><p>Captures UK implementation of NCTS5</p> <p>Shows NCTS5 process flows</p> <p>Lists the message definitions and rules and conditions involved in the exchange of messages between traders and the NCTS for the departure and arrival of transit movements</p></td>
+            <td><p>Software developers</p> <p>Technical architects </p> <p>Product managers</p> <p>Business analysts</p></td>
+        </tr>
+        <tr>
+            <td>CTC Traders API phase 5 service guide (this document)</td>
+            <td>Technical</td>
+            <td>High level</td>
+            <td><p>How to use the API</p> <p>How to self-onboard</p></td>
+            <td><p>Software developers</p> <p>Technical architects</p></td>
+        </tr>
+        <tr>
+            <td><a href="https://developer.service.hmrc.gov.uk/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page">CTC Traders API v2.0 reference</a></td>
+            <td>Technical</td>
+            <td>Low level</td>
+            <td>How to use each API endpoint</td>
+            <td><p>Software developers</p> <p>Technical architects</p></td>
+        </tr>
+        <tr>
+            <td><a href="https://developer.service.hmrc.gov.uk/guides/ctc-traders-phase5-testing-guide/">CTC Traders API phase 5 testing guide</a></td>
+            <td>Functional</td>
+            <td>Low level</td>
+            <td><p>How to carry out assurance testing of your application software to ensure that it is compatible with the API</p> <p>How to carry out production access testing of your software</p></td>
+            <td><p>Software developers</p> <p>Technical architects </p> <p>Product managers</p> <p>Business analysts</p></td>
+        </tr>
+    </tbody>
+</table>
+
+</details>
 
 ## API overview
 
@@ -164,7 +220,7 @@ The following table summarises the main differences between the large and small 
 | Timeout resilience | Strong | Weak |
 | Transit declaration size suitability (average) | Large | Small |
 
-### Determining which message route to use
+### Determining which message route to use
 
 You should consider using the large message route if the transit movements that you usually handle contain large consignments.
 
@@ -195,11 +251,7 @@ Your application must comply with [our terms of use](/api-documentation/docs/ter
 
 ## Related documentation
 
-- [CTC Traders API roadmap](/roadmaps/common-transit-convention-traders-roadmap/)
-- [CTC Traders API v2.0 reference](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page)
 - [CTC Traders API v2.0 changelog](https://github.com/hmrc/common-transit-convention-traders/wiki/CTC-Traders-API-v2.0-changelog) (GitHub)
-- [CTC Traders API phase 5 testing guide](/guides/ctc-traders-phase5-testing-guide/)
-- [NCTS phase 5 technical interface specification](/guides/ctc-traders-phase5-tis/)
 - [NCTS phase 4-phase 5 data mapping spreadsheet](/guides/ctc-traders-phase5-tis/downloads/NCTS-P5_Datamapping_R5_111023_v1.0.xlsx) (GitHub)
 - [Transit Manual Supplement](https://www.gov.uk/government/publications/transit-manual-supplement) - UK transit procedures (OpenDocument Text document)
 
