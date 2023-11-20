@@ -248,7 +248,7 @@ The following table lists the documents for CTC Traders API v2.0 and outlines th
     </tbody>
 </table>
 
-## Related documentation
+## Other related documentation
 
 - [CTC Traders API v2.0 changelog](https://github.com/hmrc/common-transit-convention-traders/wiki/CTC-Traders-API-v2.0-changelog) (GitHub)
 - [NCTS phase 4-phase 5 data mapping spreadsheet](/guides/ctc-traders-phase5-tis/downloads/NCTS-P5_Datamapping_R5_111023_v1.0.xlsx) (GitHub)
