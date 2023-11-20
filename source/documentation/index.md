@@ -195,7 +195,7 @@ For information about NCTS5 process flows, see [NCTS phase 5 technical interface
 
 Your application must comply with [our terms of use](/api-documentation/docs/terms-of-use). You must accept the terms of use before we issue your application’s production credentials.
 
-## CTC Traders API v2.0 documentation
+## CTC Traders API v2.0 documentation
 
 The following table lists the documents for CTC Traders API v2.0 and outlines the content and intended readers of each document.
 
