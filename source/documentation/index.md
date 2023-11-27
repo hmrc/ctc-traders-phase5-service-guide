@@ -218,8 +218,8 @@ The following table lists the documents for CTC Traders API v2.0 and outlines th
             <td><p>Software developers</p> <p>Technical architects </p> <p>Product managers</p> <p>Business analysts</p></td>
         </tr>
         <tr>
-            <td><a href="https://developer.service.hmrc.gov.uk/guides/ctc-traders-phase5-tis/">NCTS phase 5 technical interface specification</a></td>
-            <td>Functional</td>
+            <td><a href="https://developer.service.hmrc.gov.uk/guides/ctc-traders-phase5-tis/">NCTS phase 5 technical interface specification</a> (TIS)</td>
+            <td>Technical (business logic/rules)</td>
             <td>Low level</td>
             <td><p>Captures UK implementation of NCTS5</p> <p>Shows NCTS5 process flows</p> <p>Lists the message definitions and rules and conditions involved in the exchange of messages between traders and the NCTS for the departure and arrival of transit movements</p></td>
             <td><p>Software developers</p> <p>Technical architects </p> <p>Product managers</p> <p>Business analysts</p></td>
@@ -247,6 +247,18 @@ The following table lists the documents for CTC Traders API v2.0 and outlines th
         </tr>
     </tbody>
 </table>
+
+The order in you which you might read these documents can depend on whether you have previous NCTS experience. The following table recommends 2 possible reading orders but you can read the documents in any order you want.
+
+| Suggested reading order | New NCTS users | NCTS4 users migrating to NCTS5 |
+| ----------------------- | -------------- | ------------------------------ |
+| 1                       | Roadmap        | Service guide                  |
+| 2                       | Service guide  | TIS                            |
+| 3                       | TIS            | API reference                  |
+| 4                       | API reference  | Testing guide                  |
+| 5                       | Testing guide  | Roadmap                        |
+
+**Note:** If you have NCTS4 experience,  it is important that you read the NCTS5 service guide and API reference carefully to understand all of the differences between NCTS4 and NCTS5. Reading only the NCTS5 TIS will NOT guide you about all of the differences between the 2 NCTS phases.
 
 ## Other related documentation
 
