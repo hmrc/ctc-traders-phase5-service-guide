@@ -8,9 +8,7 @@ description: Software developers, designers, product owners or business analysts
 
 Learn how to use [CTC Traders API v2.0](/api-documentation/docs/api/service/common-transit-convention-traders/2.0) with your software.
 
-[Learn about key NCTS5 dates](/guides/ctc-traders-phase5-tis/#ncts5-key-dates)
-
-[Learn about CTC Traders API v2.0 documentation](#ctc-traders-api-v2-0-documentation)
+[Learn about key NCTS5 dates](/guides/ctc-traders-phase5-tis/#ncts5-key-dates).
 
 ## API overview
 
@@ -195,7 +193,7 @@ For information about NCTS5 process flows, see [NCTS phase 5 technical interface
 
 Your application must comply with [our terms of use](/api-documentation/docs/terms-of-use). You must accept the terms of use before we issue your application’s production credentials.
 
-## CTC Traders API v2.0 documentation
+## Navigating CTC Traders API v2.0 documentation
 
 The following table lists the documents for CTC Traders API v2.0 and outlines the content and intended readers of each document.
 
@@ -251,16 +249,16 @@ The following table lists the documents for CTC Traders API v2.0 and outlines th
 The order in you which you might read these documents can depend on whether you have previous NCTS experience. The following table recommends 2 possible reading orders but you can read the documents in any order you want.
 
 | Suggested reading order | New NCTS users | NCTS4 users migrating to NCTS5 |
-| ----------------------- | -------------- | ------------------------------ |
-| 1                       | Roadmap        | Service guide                  |
-| 2                       | Service guide  | TIS                            |
-| 3                       | TIS            | API reference                  |
-| 4                       | API reference  | Testing guide                  |
-| 5                       | Testing guide  | Roadmap                        |
+| --- | --- | --- |
+| 1 | Roadmap | Service guide |
+| 2 | Service guide | Technical interface specification |
+| 3 | Technical interface specification | Reference |
+| 4 | Reference | Testing guide |
+| 5 | Testing guide | Roadmap |
 
-**Note:** If you have NCTS4 experience,  it is important that you read the NCTS5 service guide and API reference carefully to understand all of the differences between NCTS4 and NCTS5. Reading only the NCTS5 TIS will NOT guide you about all of the differences between the 2 NCTS phases.
+**Note:** If you have NCTS4 experience,  it is important that you read the NCTS5 service guide and API reference carefully to understand all of the differences between NCTS4 and NCTS5. Reading only the NCTS5 technical interface specification will NOT guide you about all of the differences between the 2 NCTS phases.
 
-## Other related documentation
+## Related documentation
 
 - [CTC Traders API v2.0 changelog](https://github.com/hmrc/common-transit-convention-traders/wiki/CTC-Traders-API-v2.0-changelog) (GitHub)
 - [NCTS phase 4-phase 5 data mapping spreadsheet](/guides/ctc-traders-phase5-tis/downloads/NCTS-P5_Datamapping_R5_111023_v1.0.xlsx) (GitHub)
