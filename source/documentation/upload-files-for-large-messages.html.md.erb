@@ -6,13 +6,17 @@ description: Software developers, designers, product owners or business analysts
 
 # Upload files for large messages
 
-On a per-message basis, you can choose between sending a message to the NCTS by the large message route or by the small message route. The size limit for small messages is 5MB and the size limit for large messages is 8MB.
+The large message route applies exclusively during the **Post-Transition** phase.
 
-**Note:** For more information about these message routes, see [Message sizes](/#message-sizes).
+For each message, you have the option to send it to the NCTS using either the large message route or the small message route. Small messages are limited to 5MB, while large messages can be up to 8MB in size.
+
+For more information about these message routes, see [Message sizes](/guides/ctc-traders-phase5-service-guide/#message-sizes).
 
 ## Submitting a message as a file 
 
-Using the large message route means submitting a message as a file. The following endpoints support submitting a message as a file to the NCTS:
+Using the large message route means submitting a message as a file in the "application/xml" format, with the file extension .xml.
+
+The following endpoints support submitting a message as a file to the NCTS:
 
 - [Send a declaration data message](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Departures/operation/postDeclarationDataMessage)
 - [Send a message related to a departure](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Departures/operation/postMessageRelatedToDeparture)
@@ -47,6 +51,7 @@ You can check the progress of the processing status of any message. A submitted 
 | Success | The API processed the message successfully. |
 | Failed | The API failed to process the message. |
 | Received | This is a message that has been received by HMRC and is intended for a trader. (Although this status is possible, it is not likely to be returned.) |
+**Note:** These statuses are applicable only for file submission status.
 
 You can use the following endpoints to get the status of messages submitted to the NCTS:
 
@@ -58,16 +63,59 @@ You can use the following endpoints to get the status of messages submitted to t
 ## Push notifications for submitted messages submitted as files
 
 A message submitted by the large message route will receive a push notification of type `SUBMISSION_NOTIFICATION` when it transitions into the `Success` or `Failed` status. If the message failed to send, the error message returned will be identical to that of the small message route.
+For the Push Pull Notification Service (PPNS), following are the possible statuses
+
+| Status | Description |
+| -------| ----------- |
+| PENDING | The notification was created but has not been processed. |
+| FAILED | The notification was pushed to your Push/Callback URL, but no HTTP status code 200 was returned. |
+| ACKNOWLEDGED | The notification was successfully pushed to your Push/Callback URL or you processed the notification using the acknowledge a list of notifications endpoint. |
+
+For more details, please refer to [API Documentation](/api-documentation/docs/api/service/push-pull-notifications-api/1.0])
+
+
+**Negative Responses:**
 
 ```json
 {
-   "messageUri":
-"/customs/transits/movements/departures/6482f76c21a8596e/messages/6482f76c564b0f5f",
-   "notificationType": "SUBMISSION_NOTIFICATION",
-   "response": {
-     "message": "LRN large-test-47-XI-3 has previously been used and cannot be reused",
-     "code": "CONFLICT"
-   }
+  "notificationId": "d2369568-1a3a-434c-b61d-e6082d8157d7",
+  "boxId": "2c2278ac-5f7a-4796-a903-5e21bea602b7",
+  "messageContentType": "application/json",
+  "message": {
+    "messageUri": "/customs/transits/movements/departures/6627960c3b68bf41/messages/6627960cb6ee7fa1",
+    "notificationType": "SUBMISSION_NOTIFICATION",
+    "messageId": "6627960cb6ee7fa1",
+    "enrollmentEORINumber": "GB006058146075",
+    "departureId": "6627960c3b68bf41",
+    "response": {
+      "message": "Uploaded file not accepted.",
+      "code": "BAD_REQUEST"
+    }
+  },
+  "status": "PENDING",
+  "createdDateTime": "2024-04-23T11:05:55.011+0000"
+}
+```
+**Positive Response:**
+
+```json
+{
+    "notificationId": "f27719fb-191b-4284-9033-e00c47ed74a5",
+    "boxId": "eaa933c4-c62c-4efa-b665-fbfffdbd22b4",
+    "messageContentType": "application/json",
+    "message": {
+        "messageUri": "/customs/transits/movements/departures/6643810d78876593/messages/6643810d1160ed8d",
+        "notificationType": "SUBMISSION_NOTIFICATION",
+        "messageId": "6643810d1160ed8d",
+        "enrollmentEORINumber": "123456",
+        "departureId": "6643810d78876593",
+        "response": {
+            "message": "The message 6643810d1160ed8d for movement 6643810d78876593 was successfully processed",
+            "code": "SUCCESS"
+        }
+    },
+    "status": "PENDING",
+    "createdDateTime": "2024-05-14T15:26:40.875+0000"
 }
 ```
 
