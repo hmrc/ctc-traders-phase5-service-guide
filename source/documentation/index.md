@@ -42,6 +42,8 @@ Any traders who subscribed to the NCTS before NCTS4 must upgrade their NCTS subs
 
 For information about upgrading an NCTS subscription, see [How to subscribe to the New Computerised Transit System](https://www.gov.uk/guidance/how-to-subscribe-to-the-new-computerised-transit-system).
 
+After receiving your upgraded NCTS subscription, you can use it for both **NCTS4 and NCTS5 transit declarations**. However, now that the UK **NCTS5 service is live**, all NCTS5 transit declarations will exclusively use the upgraded NCTS subscription.
+
 [Contact the NCTS Helpdesk](https://www.gov.uk/government/organisations/hm-revenue-customs/contact/new-computerised-transit-system-enquiries) if you need any help or advice when using the NCTS.
 
 ## Getting started
