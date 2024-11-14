@@ -99,7 +99,7 @@ If you are upgrading from NCTS5 (v2.0) to NCTS5 (v2.1)
 and you are familiar with CTC Traders API v2.0, you should:
 
 1. Review this section at least before reviewing other documents for NCTS5.
-2. Check whether Trader data applies to any traders you serve - any traders impacted will need to take action.
+2. Check whether [Trader data](#trader-data) applies to any traders you serve - any traders impacted will need to take action.
 3. Review Technical Interface Specification(TIS) for updated content
 4. Review Making API requests.
 5. Review [Test scenarios](https://developer.service.hmrc.gov.uk/guides/ctc-traders-phase5-testing-guide/documentation/test-pack.html) for Phase5 Final.
