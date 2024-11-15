@@ -6,7 +6,7 @@ description: Software developers, designers, product owners or business analysts
 
 # Developer setup
 
-To develop using the CTC Traders API v2.0, you must:
+To develop using the CTC Traders API v2.1, you must:
 
 - be familiar with HTTP, RESTful services, XML and OAuth2
 - be registered as a developer on the [HMRC Developer Hub](/api-documentation)
@@ -40,11 +40,11 @@ You can do this by performing a series of compatibility tests on your software u
 
 ## API subscription model
 
-You must subscribe each application you register to the CTC Traders API v2.0. Subscribing allows an application access to all of the endpoints of the API.
+You must subscribe each application you register to the CTC Traders API v2.1. Subscribing allows an application access to all of the endpoints of the API.
 
 ## API access control
 
-The CTC Traders API v2.0 is a public API, so you should be able to gain access to it automatically and subscribe to it easily.
+The CTC Traders API v2.1 is a public API, so you should be able to gain access to it automatically and subscribe to it easily.
 
 ## API versioning
 
@@ -121,16 +121,16 @@ You should also note the following:
 - some common data types described in our [Reference guide](/api-documentation/docs/reference-guide#common-data-types) contain characters that are not valid for use in URLs
 - some software libraries and frameworks do percent-encoding for you automatically
 
-**Important:** Your messages to the NCTS service must conform to the XSD files used by CTC Traders API v2.0. The XSD files do not necessarily conform to the ISO 8601 standard, so your XML payloads might have date-time parameters that do not conform to ISO 8601.               
+**Important:** Your messages to the NCTS service must conform to the XSD files used by CTC Traders API v2.1. The XSD files do not necessarily conform to the ISO 8601 standard, so your XML payloads might have date-time parameters that do not conform to ISO 8601.
 
 ### Examples
 
 Below are examples in different programming languages.
 
-| **Language** | **Example**                                                  |
-| ------------ | ------------------------------------------------------------ |
-| C#           | `Uri.EscapeDataString("2021-04-30T16:08:31+00:00");`         |
-| Java         | `java.net.URLEncoder.encode("2021-04-30T16:08:31+00:00");`   |
+| **Language** | **Example**                                                        |
+|--------------|--------------------------------------------------------------------|
+| C#           | `Uri.EscapeDataString("2021-04-30T16:08:31+00:00");`               |
+| Java         | `java.net.URLEncoder.encode("2021-04-30T16:08:31+00:00");`         |
 | Python       | `from urllib.parse import quotequote('2021-04-30T16:08:31+00:00')` |
 
 ### Find out more
@@ -153,10 +153,10 @@ In NCTS5, a ‘Declaration Data’ E_DEC_DAT (IE015) message starts a transit mo
 
 Ordinarily, if you try to submit an IE015 message with a previously used LRN to the NCTS5 service, a ‘Rejection From Office Of Departure‘ E_DEP_REJ (IE056) message will be returned. However, there are 2 scenarios where you can reuse an LRN.
 
-| Scenario                                 | Description                                                  |
-| ---------------------------------------- | ------------------------------------------------------------ |
+| Scenario                                 | Description                                                                                                                                                                                                                                                                                       |
+|------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | After initial rejection                  | If you send an invalid IE015 message that is rejected after a first submission attempt and a ‘Rejection From Office Of Departure‘ E_DEP_REJ (IE056) message is received, you can reuse the LRN from the first submission attempt if you amend the IE015 message to make it valid and resubmit it. |
-| After a cancellation request is accepted | If a cancellation request is accepted and a positive ‘Invalidation Decision‘ E_INV_DEC (IE009) message is sent to the trader at any point during departure, including a customs-instigated cancellation post-movement release, you can reuse the LRN for the declaration that was cancelled. |
+| After a cancellation request is accepted | If a cancellation request is accepted and a positive ‘Invalidation Decision‘ E_INV_DEC (IE009) message is sent to the trader at any point during departure, including a customs-instigated cancellation post-movement release, you can reuse the LRN for the declaration that was cancelled.      |
 
 ## Push-pull notifications
 
@@ -175,7 +175,7 @@ Using this functionality means that you can avoid polling for new messages and t
 If you are using our PPNS service and you submit a small message (up to 5MB in size) with an XML payload to the NCTS, you will receive a push notification with:
 
 - the `notificationType` field set to `MESSAGE_RECEIVED`
-- a URI that you can use with the [Get a cached message related to an arrival and message ID](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Arrivals/operation/getCachedMessageRelatedToArrivalAndMessageID) and [Get a cached message related to a departure and message ID](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Departures/operation/postMessageRelatedToDeparture) endpoints to get the message
+- a URI that you can use with the [Get a cached message related to an arrival and message ID](/api-documentation/docs/api/service/common-transit-convention-traders/2.1/oas/page#tag/Arrivals/operation/getCachedMessageRelatedToArrivalAndMessageID) and [Get a cached message related to a departure and message ID](/api-documentation/docs/api/service/common-transit-convention-traders/2.1/oas/page#tag/Departures/operation/postMessageRelatedToDeparture) endpoints to get the message
 
 If the size of the message sent to you is less than 80kB, the message will be included in the push notification as escaped XML in the `messageBody` field.
 
@@ -236,7 +236,7 @@ Message received push notifications must conform to the following JSON schema.
 }
 ```
 
-**Note:** This schema is subject to change. You should monitor the [CTC Traders API v2.0 changelog](https://github.com/hmrc/common-transit-convention-traders/wiki/CTC-Traders-API-v2.0-changelog) (GitHub) and the [changelog](https://github.com/hmrc/ctc-traders-phase5-service-guide/wiki/CTC-Traders-API-phase-5-service-guide-changelog) for this document (GitHub) to ensure that you are aware of any changes.
+**Note:** This schema is subject to change. You should monitor the [CTC Traders API v2.1 changelog](https://github.com/hmrc/common-transit-convention-traders/wiki/CTC-Traders-API-v2.1-changelog) (GitHub) and the [changelog](https://github.com/hmrc/ctc-traders-phase5-service-guide/wiki/CTC-Traders-API-phase-5-service-guide-changelog) for this document (GitHub) to ensure that you are aware of any changes.
 
 #### Example message received push notifications
 
@@ -304,7 +304,7 @@ Push notification where the message body is not included because the message sen
 If you are using our PPNS service and you submit a message by the large message route to the NCTS, you will receive a push notification with:
 
 - the `notificationType` field set to `SUBMISSION_NOTIFICATION`
-- a URI that you can use with the [Get a cached message related to an arrival and message ID](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Arrivals/operation/getCachedMessageRelatedToArrivalAndMessageID) and [Get a cached message related to a departure and message ID](/api-documentation/docs/api/service/common-transit-convention-traders/2.0/oas/page#tag/Departures/operation/postMessageRelatedToDeparture) endpoints to get the submitted message back
+- a URI that you can use with the [Get a cached message related to an arrival and message ID](/api-documentation/docs/api/service/common-transit-convention-traders/2.1/oas/page#tag/Arrivals/operation/getCachedMessageRelatedToArrivalAndMessageID) and [Get a cached message related to a departure and message ID](/api-documentation/docs/api/service/common-transit-convention-traders/2.1/oas/page#tag/Departures/operation/postMessageRelatedToDeparture) endpoints to get the submitted message back
 - the response indicating whether the submission succeeded or failed
 
 #### Submission notification push notifications schema
@@ -369,7 +369,7 @@ Submission notification push notifications must conform to the following JSON sc
 }
 ```
 
-**Note:** This schema is subject to change. You should monitor the [CTC Traders API v2.0 changelog](https://github.com/hmrc/common-transit-convention-traders/wiki/CTC-Traders-API-v2.0-changelog) (GitHub) and the [changelog](https://github.com/hmrc/ctc-traders-phase5-service-guide/wiki/CTC-Traders-API-phase-5-service-guide-changelog) for this document (GitHub) to ensure that you are aware of any changes.
+**Note:** This schema is subject to change. You should monitor the [CTC Traders API v2.1 changelog](https://github.com/hmrc/common-transit-convention-traders/wiki/CTC-Traders-API-v2.1-changelog) (GitHub) and the [changelog](https://github.com/hmrc/ctc-traders-phase5-service-guide/wiki/CTC-Traders-API-phase-5-service-guide-changelog) for this document (GitHub) to ensure that you are aware of any changes.
 
 #### Example submission notifications push notifications
 
