@@ -6,7 +6,7 @@ description: Software developers, designers, product owners or business analysts
 
 # CTC Traders API phase 5 service guide
 
-Learn how to use [CTC Traders API v2.0](/api-documentation/docs/api/service/common-transit-convention-traders/2.0) with your software.
+Learn how to use [CTC Traders API v2.1](/api-documentation/docs/api/service/common-transit-convention-traders/2.1) with your software.
 
 [Learn about key NCTS5 dates](/guides/ctc-traders-phase5-tis/#ncts5-key-dates).
 
