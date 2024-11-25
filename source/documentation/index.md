@@ -55,7 +55,7 @@ If you are new to the NCTS and you have not used CTC Traders API v1.0, you shoul
 3. Follow all of the steps in [First-time CTC Traders API users](#first-time-ctc-traders-api-users).
 4. Review [Making API requests](#making-api-requests).
 
-Read this section for [Upgrading from NCTS5(v2.0) to NCTS5(v2.1)](#ctc-traders-api-v20-users)
+Read this section for [Upgrading from NCTS5(v2.0) to NCTS5(v2.1)](#ctc-traders-api-v2-0-users)
 
 
 ### Trader data
