@@ -25,7 +25,7 @@ footer_links:
   Accessibility statement: https://www.tax.service.gov.uk/accessibility-statement/hmrc-developer-hub
 
 # Enables search functionality. This indexes pages only and is not recommended for single-page sites.
-enable_search: false
+enable_search: true
 
 # Enables the tracking consent banner
 tracking_consent_frontend:
