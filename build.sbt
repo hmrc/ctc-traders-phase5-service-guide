@@ -10,6 +10,3 @@ lazy val microservice = Project(appName, file("."))
     majorVersion := 0
   )
   .settings(scalaVersion := "3.3.4")
-  .settings(
-    resolvers += Resolver.jcenterRepo
-  )
